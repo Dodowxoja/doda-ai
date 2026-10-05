@@ -1,0 +1,1 @@
+cd code || python -m doda.interfaces.api

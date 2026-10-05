@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DODA — shaxsiy sun'iy intellekt yordamchi</title>
+<meta name="description" content="DODA — o'zbek, rus va ingliz tilida gaplashadigan, kompyuterni ovoz bilan boshqaradigan shaxsiy sun'iy intellekt yordamchi.">
+<style>
+  :root{
+    --bg:#070d0c; --bg2:#0b1413; --ink:#eaf4f1; --muted:#8ba39d;
+    --line:rgba(80,120,112,.22); --glass:rgba(20,32,30,.55);
+    --accent:#2fd6bd; --accent2:#5ff0da; --accent-deep:#12a893; --wash:rgba(47,214,189,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);overflow-x:hidden;
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- Nav ---------- */
+  nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);
+    background:rgba(7,13,12,.72);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em;font-size:19px}
+  .logo .orb{width:28px;height:28px;border-radius:9px;position:relative;
+    background:radial-gradient(circle at 32% 28%,var(--accent2),var(--accent-deep) 70%);
+    box-shadow:0 0 16px var(--wash)}
+  .logo .orb::before,.logo .orb::after{content:"";position:absolute;top:9px;width:5px;height:6px;border-radius:50%;background:#05201c}
+  .logo .orb::before{left:6px}.logo .orb::after{right:6px}
+  .navlinks{display:flex;gap:26px;font-size:14.5px;color:var(--muted);font-weight:600}
+  .navlinks a:hover{color:var(--accent2)}
+  @media(max-width:680px){.navlinks{display:none}}
+
+  /* ---------- Hero ---------- */
+  header{position:relative;overflow:hidden;padding:88px 0 70px;text-align:center}
+  #net{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.55}
+  header .wrap{position:relative;z-index:1}
+  .tagpill{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent2);background:var(--wash);border:1px solid var(--line);
+    padding:7px 15px;border-radius:40px;margin-bottom:22px}
+  h1{font-size:clamp(44px,9vw,84px);font-weight:900;letter-spacing:-.03em;line-height:1;
+    background:linear-gradient(180deg,#fff,var(--accent2));-webkit-background-clip:text;
+    background-clip:text;-webkit-text-fill-color:transparent}
+  .lead{font-size:clamp(17px,2.4vw,21px);color:var(--muted);max-width:640px;margin:20px auto 0;line-height:1.6}
+  .cta{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .btn{padding:13px 26px;border-radius:40px;font-weight:700;font-size:15px;transition:.18s;cursor:pointer;border:1px solid transparent}
+  .btn.pri{background:linear-gradient(90deg,var(--accent-deep),var(--accent));color:#042420;
+    box-shadow:0 10px 28px -8px var(--accent)}
+  .btn.pri:hover{transform:translateY(-2px)}
+  .btn.sec{background:transparent;border-color:var(--line);color:var(--ink)}
+  .btn.sec:hover{border-color:var(--accent);color:var(--accent2)}
+
+  /* ---------- Stats ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:56px 0 10px}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{text-align:center;padding:22px 12px;border:1px solid var(--line);border-radius:16px;background:var(--glass)}
+  .stat b{display:block;font-size:32px;font-weight:900;
+    background:linear-gradient(180deg,var(--accent2),var(--accent-deep));-webkit-background-clip:text;
+    background-clip:text;-webkit-text-fill-color:transparent}
+  .stat span{font-size:13px;color:var(--muted)}
+
+  /* ---------- Sections ---------- */
+  section{padding:70px 0}
+  .eyebrow{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+  h2{font-size:clamp(28px,4.5vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:16px}
+  .sec-lead{color:var(--muted);max-width:680px;font-size:17px}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+  @media(max-width:860px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:24px;
+    transition:.2s;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-4px);border-color:rgba(47,214,189,.45)}
+  .card .ic{font-size:30px;margin-bottom:14px;display:block}
+  .card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:14.5px;line-height:1.6}
+
+  /* ---------- Tech ---------- */
+  .tech{display:flex;flex-wrap:wrap;gap:11px;margin-top:34px}
+  .badge{padding:9px 16px;border-radius:11px;background:var(--glass);border:1px solid var(--line);
+    font-size:14px;font-weight:600;color:var(--ink)}
+  .badge span{color:var(--accent2)}
+
+  .split{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+  @media(max-width:760px){.split{grid-template-columns:1fr;gap:26px}}
+  .flow{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:26px}
+  .flow .step{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .flow .step:last-child{border:0}
+  .flow .n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+    background:var(--wash);color:var(--accent2);font-weight:800;font-size:14px;border:1px solid var(--line)}
+  .flow .step b{font-size:15px}.flow .step small{color:var(--muted);font-size:13.5px}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);padding:50px 0 40px;text-align:center;margin-top:30px}
+  footer .big{font-size:clamp(24px,4vw,34px);font-weight:800;margin-bottom:10px}
+  footer .muted{color:var(--muted);font-size:14.5px}
+  .contact{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:24px 0 30px}
+  .contact a{padding:11px 20px;border-radius:12px;border:1px solid var(--line);background:var(--glass);
+    font-weight:600;font-size:14.5px;transition:.18s}
+  .contact a:hover{border-color:var(--accent);color:var(--accent2)}
+  .copy{color:var(--muted);font-size:13px;margin-top:8px}
+  .sig{color:var(--accent-deep)}
+
+  /* ---------- Til almashtirgich (yangi element — mavjud rang palitrasi bilan) ---------- */
+  .nav-right{display:flex;align-items:center;gap:24px}
+  .lang-switch{display:flex;gap:4px}
+  .lang-switch button{background:transparent;border:1px solid var(--line);color:var(--muted);
+    font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:5px 9px;border-radius:8px;
+    cursor:pointer;transition:.15s;font-family:inherit}
+  .lang-switch button:hover{color:var(--accent2);border-color:var(--accent)}
+  .lang-switch button.active{background:var(--wash);color:var(--accent2);border-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <div class="logo"><span class="orb"></span> DODA</div>
+  <div class="nav-right">
+    <div class="navlinks">
+      <a href="#nima" data-i18n="nav_nima"></a>
+      <a href="#imkoniyatlar" data-i18n="nav_features"></a>
+      <a href="#texnologiya" data-i18n="nav_tech"></a>
+      <a href="#aloqa" data-i18n="nav_contact"></a>
+    </div>
+    <div class="lang-switch">
+      <button type="button" data-lang="uz">UZ</button>
+      <button type="button" data-lang="ru">RU</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+</div></nav>
+
+<header>
+  <canvas id="net"></canvas>
+  <div class="wrap">
+    <span class="tagpill" data-i18n="hero_pill"></span>
+    <h1>DODA</h1>
+    <p class="lead" data-i18n="hero_lead"></p>
+    <div class="cta">
+      <a class="btn pri" href="#imkoniyatlar" data-i18n="hero_cta1"></a>
+      <a class="btn sec" href="#aloqa" data-i18n="hero_cta2"></a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>3</b><span data-i18n="stat_1"></span></div>
+      <div class="stat"><b>130+</b><span data-i18n="stat_2"></span></div>
+      <div class="stat"><b>24/7</b><span data-i18n="stat_3"></span></div>
+      <div class="stat"><b>100%</b><span data-i18n="stat_4"></span></div>
+    </div>
+  </div>
+</header>
+
+<section id="nima"><div class="wrap">
+  <div class="eyebrow" data-i18n="s1_eyebrow"></div>
+  <h2 data-i18n="s1_h2"></h2>
+  <p class="sec-lead" data-i18n="s1_lead"></p>
+</div></section>
+
+<section id="imkoniyatlar" style="padding-top:20px"><div class="wrap">
+  <div class="eyebrow" data-i18n="s2_eyebrow"></div>
+  <h2 data-i18n="s2_h2"></h2>
+  <div class="cards">
+    <div class="card"><span class="ic">🎙️</span><h3 data-i18n="card1_t"></h3><p data-i18n="card1_d"></p></div>
+    <div class="card"><span class="ic">🧠</span><h3 data-i18n="card2_t"></h3><p data-i18n="card2_d"></p></div>
+    <div class="card"><span class="ic">🛠️</span><h3 data-i18n="card3_t"></h3><p data-i18n="card3_d"></p></div>
+    <div class="card"><span class="ic">👁️</span><h3 data-i18n="card4_t"></h3><p data-i18n="card4_d"></p></div>
+    <div class="card"><span class="ic">🙂</span><h3 data-i18n="card5_t"></h3><p data-i18n="card5_d"></p></div>
+    <div class="card"><span class="ic">📱</span><h3 data-i18n="card6_t"></h3><p data-i18n="card6_d"></p></div>
+    <div class="card"><span class="ic">⏰</span><h3 data-i18n="card7_t"></h3><p data-i18n="card7_d"></p></div>
+    <div class="card"><span class="ic">🌐</span><h3 data-i18n="card8_t"></h3><p data-i18n="card8_d"></p></div>
+    <div class="card"><span class="ic">🏠</span><h3 data-i18n="card9_t"></h3><p data-i18n="card9_d"></p></div>
+  </div>
+</div></section>
+
+<section id="texnologiya"><div class="wrap">
+  <div class="split">
+    <div>
+      <div class="eyebrow" data-i18n="s3_eyebrow"></div>
+      <h2 data-i18n="s3_h2"></h2>
+      <p class="sec-lead" data-i18n="s3_lead"></p>
+      <div class="tech">
+        <div class="badge"><span>Python</span></div>
+        <div class="badge">Claude <span>AI</span></div>
+        <div class="badge">Whisper <span>STT</span></div>
+        <div class="badge">edge-tts</div>
+        <div class="badge">face_recognition</div>
+        <div class="badge">Telegram Bot</div>
+        <div class="badge">Cloudflare Tunnel</div>
+        <div class="badge">macOS <span>launchd</span></div>
+      </div>
+    </div>
+    <div class="flow">
+      <div class="step"><span class="n">1</span><div><b data-i18n="step1_t"></b><br><small data-i18n="step1_d"></small></div></div>
+      <div class="step"><span class="n">2</span><div><b data-i18n="step2_t"></b><br><small data-i18n="step2_d"></small></div></div>
+      <div class="step"><span class="n">3</span><div><b data-i18n="step3_t"></b><br><small data-i18n="step3_d"></small></div></div>
+      <div class="step"><span class="n">4</span><div><b data-i18n="step4_t"></b><br><small data-i18n="step4_d"></small></div></div>
+    </div>
+  </div>
+</div></section>
+
+<footer id="aloqa"><div class="wrap">
+  <div class="big" data-i18n="foot_big"></div>
+  <p class="muted" data-i18n="foot_muted"></p>
+  <div class="contact">
+    <a href="https://github.com/Dodowxoja" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://t.me/voice_doda_bot" target="_blank" rel="noopener" data-i18n="foot_tg"></a>
+  </div>
+  <p class="copy" data-i18n="foot_copy"></p>
+</div></footer>
+
+<script>
+/* ==================== i18n (3 til: uz / ru / en) ==================== */
+const AUTHOR = '<a class="sig" href="https://dodow.netlify.app/" target="_blank" rel="noopener noreferrer">Dodow Dev</a>';
+const I18N = {
+  uz: {
+    meta_title: "DODA — shaxsiy sun'iy intellekt yordamchi",
+    meta_desc: "DODA — o'zbek, rus va ingliz tilida gaplashadigan, kompyuterni ovoz bilan boshqaradigan shaxsiy sun'iy intellekt yordamchi.",
+    nav_nima: "DODA nima", nav_features: "Imkoniyatlar", nav_tech: "Texnologiya", nav_contact: "Aloqa",
+    hero_pill: "Shaxsiy sun'iy intellekt · O'zbekcha",
+    hero_lead: "O'zbek, rus va ingliz tilida gaplashadigan, kompyuterni <b>ovoz bilan</b> boshqaradigan va o'ylab javob beradigan shaxsiy sun'iy intellekt yordamchi.",
+    hero_cta1: "Imkoniyatlarni ko'rish", hero_cta2: "Bog'lanish",
+    stat_1: "til — uz · ru · en", stat_2: "buyruq turi", stat_3: "doimo ishlaydi", stat_4: "ovozli boshqaruv",
+    s1_eyebrow: "DODA nima",
+    s1_h2: "Sizni tushunadigan, ko'radigan va yordam beradigan yordamchi",
+    s1_lead: "DODA — bu oddiy dastur emas, balki haqiqiy sun'iy intellekt yordamchi. U sizning ovozingizni eshitadi, javob beradi, kompyuteringizni to'liq boshqaradi, kamera orqali ko'radi va odamlarni yuzidan taniydi. Telefoningizdan turib ham — istalgan joydan — kompyuteringizni boshqarasiz.",
+    s2_eyebrow: "Imkoniyatlar", s2_h2: "DODA nimalar qila oladi?",
+    card1_t: "Ovozli boshqaruv", card1_d: "«Doda» deб chaqirasiz — u tinglaydi va bajaradi. Ilova ochish, musiqa, tizim sozlamalari — hammasi ovoz bilan.",
+    card2_t: "Sun'iy intellekt suhbat", card2_d: "Claude asosida — har qanday savolga o'ylab, tabiiy javob beradi. Shunchaki yordamchi emas, suhbatdosh.",
+    card3_t: "Agent rejimi", card3_d: "Fayl yaratadi, kod yozadi, terminal buyruqlarini bajaradi — xuddi dasturchi kabi haqiqiy ishlarni o'zi qiladi.",
+    card4_t: "Ko'rish qobiliyati", card4_d: "Kamera va ekranga qarab, nima ko'rayotganini tushuntiradi. Atrofdagi narsalarni, harakatlarni taniydi.",
+    card5_t: "Yuzdan tanish", card5_d: "Odamlarni ism bilan eslab qoladi va keyingi safar yuzidan taniydi. «Meni eslab qol» — va sizni unutmaydi.",
+    card6_t: "Masofaviy boshqaruv", card6_d: "Telegram bot va veb-panel orqali istalgan joydan Mac'ni boshqarasiz — ekran, kamera, sichqoncha, klaviatura.",
+    card7_t: "Eslatma va uyg'otkich", card7_d: "«Ertaga soat 7 da uyg'ot», «har dushanba eslat» — vaqtida telefoningizga bildirishnoma yuboradi.",
+    card8_t: "Foydali xizmatlar", card8_d: "Ob-havo, valyuta, tarjima, yangiliklar, namoz vaqtlari, hisob-kitob — barchasi bir ovozli so'rov bilan.",
+    card9_t: "Uy tarmog'i nazorati", card9_d: "Uy Wi-Fi'ingizga kim ulanganini kuzatadi va yangi qurilma paydo bo'lsa xabar beradi.",
+    s3_eyebrow: "Texnologiya", s3_h2: "Zamonaviy poydevorda qurilgan",
+    s3_lead: "DODA ochiq texnologiyalar va yetakchi sun'iy intellekt modellari asosida ishlaydi. Barcha ma'lumot foydalanuvchining o'z kompyuterida — maxfiy va xavfsiz.",
+    step1_t: "Eshitadi", step1_d: "Ovozingizni matnga aylantiradi (uz/ru/en)",
+    step2_t: "Tushunadi", step2_d: "Niyatni aniqlaydi yoki AI bilan o'ylaydi",
+    step3_t: "Bajaradi", step3_d: "Kompyuterni boshqaradi yoki javob topadi",
+    step4_t: "Gapiradi", step4_d: "Natijani ovoz bilan aytadi",
+    foot_big: "DODA bilan tanishing",
+    foot_muted: "Shaxsiy sun'iy intellekt yordamchi — o'zbek tili uchun, o'zbeklar tomonidan.",
+    foot_tg: "Telegram bot",
+    foot_copy: "© {year} DODA · " + AUTHOR + " tomonidan yaratilgan",
+  },
+  ru: {
+    meta_title: "DODA — персональный ИИ-ассистент",
+    meta_desc: "DODA — персональный ИИ-ассистент, который говорит на узбекском, русском и английском и управляет компьютером голосом.",
+    nav_nima: "Что такое DODA", nav_features: "Возможности", nav_tech: "Технологии", nav_contact: "Контакты",
+    hero_pill: "Персональный ИИ · говорит по-узбекски",
+    hero_lead: "Персональный ИИ-ассистент, который говорит на узбекском, русском и английском, управляет компьютером <b>голосом</b> и осмысленно отвечает.",
+    hero_cta1: "Смотреть возможности", hero_cta2: "Связаться",
+    stat_1: "языка — uz · ru · en", stat_2: "типов команд", stat_3: "всегда на связи", stat_4: "голосовое управление",
+    s1_eyebrow: "Что такое DODA",
+    s1_h2: "Ассистент, который вас понимает, видит и помогает",
+    s1_lead: "DODA — это не просто программа, а настоящий ИИ-ассистент. Он слышит ваш голос, отвечает, полностью управляет компьютером, видит через камеру и узнаёт людей по лицу. Управляйте компьютером откуда угодно — прямо с телефона.",
+    s2_eyebrow: "Возможности", s2_h2: "Что умеет DODA?",
+    card1_t: "Голосовое управление", card1_d: "Скажите «Doda» — он слушает и выполняет. Запуск приложений, музыка, настройки системы — всё голосом.",
+    card2_t: "Общение с ИИ", card2_d: "На базе Claude — обдуманно и естественно отвечает на любой вопрос. Не просто ассистент, а собеседник.",
+    card3_t: "Режим агента", card3_d: "Создаёт файлы, пишет код, выполняет команды в терминале — делает настоящую работу, как разработчик.",
+    card4_t: "Зрение", card4_d: "Смотрит через камеру и экран и объясняет, что видит. Распознаёт предметы и действия вокруг.",
+    card5_t: "Распознавание лиц", card5_d: "Запоминает людей по имени и узнаёт их в следующий раз. «Запомни меня» — и он вас не забудет.",
+    card6_t: "Удалённое управление", card6_d: "Через Telegram-бот и веб-панель управляйте Mac откуда угодно — экран, камера, мышь, клавиатура.",
+    card7_t: "Напоминания и будильник", card7_d: "«Разбуди завтра в 7», «напоминай каждый понедельник» — вовремя пришлёт уведомление на телефон.",
+    card8_t: "Полезные сервисы", card8_d: "Погода, валюта, перевод, новости, время намаза, вычисления — всё одним голосовым запросом.",
+    card9_t: "Мониторинг домашней сети", card9_d: "Следит, кто подключился к домашнему Wi-Fi, и сообщает о новых устройствах.",
+    s3_eyebrow: "Технологии", s3_h2: "Построен на современном фундаменте",
+    s3_lead: "DODA работает на открытых технологиях и ведущих ИИ-моделях. Все данные — на компьютере самого пользователя, приватно и безопасно.",
+    step1_t: "Слышит", step1_d: "Преобразует вашу речь в текст (uz/ru/en)",
+    step2_t: "Понимает", step2_d: "Определяет намерение или думает с ИИ",
+    step3_t: "Выполняет", step3_d: "Управляет компьютером или находит ответ",
+    step4_t: "Отвечает голосом", step4_d: "Озвучивает результат",
+    foot_big: "Познакомьтесь с DODA",
+    foot_muted: "Персональный ИИ-ассистент — для узбекского языка.",
+    foot_tg: "Телеграм-бот",
+    foot_copy: "© {year} DODA · создано " + AUTHOR,
+  },
+  en: {
+    meta_title: "DODA — personal AI assistant",
+    meta_desc: "DODA — a personal AI assistant that speaks Uzbek, Russian and English and controls your computer by voice.",
+    nav_nima: "What is DODA", nav_features: "Features", nav_tech: "Technology", nav_contact: "Contact",
+    hero_pill: "Personal AI · speaks Uzbek",
+    hero_lead: "A personal AI assistant that speaks Uzbek, Russian and English, controls your computer <b>by voice</b>, and answers thoughtfully.",
+    hero_cta1: "See features", hero_cta2: "Get in touch",
+    stat_1: "languages — uz · ru · en", stat_2: "command types", stat_3: "always on", stat_4: "voice control",
+    s1_eyebrow: "What is DODA",
+    s1_h2: "An assistant that understands, sees and helps you",
+    s1_lead: "DODA is not just an app — it's a real AI assistant. It hears your voice, replies, fully controls your computer, sees through the camera and recognizes people by face. Control your computer from anywhere — right from your phone.",
+    s2_eyebrow: "Features", s2_h2: "What can DODA do?",
+    card1_t: "Voice control", card1_d: "Say “Doda” — it listens and acts. Open apps, music, system settings — all by voice.",
+    card2_t: "AI conversation", card2_d: "Powered by Claude — answers any question naturally and thoughtfully. Not just an assistant, a companion.",
+    card3_t: "Agent mode", card3_d: "Creates files, writes code, runs terminal commands — does real work like a developer.",
+    card4_t: "Vision", card4_d: "Looks through the camera and screen and explains what it sees. Recognizes objects and actions around you.",
+    card5_t: "Face recognition", card5_d: "Remembers people by name and recognizes them next time. “Remember me” — and it won't forget you.",
+    card6_t: "Remote control", card6_d: "Control your Mac from anywhere via the Telegram bot and web panel — screen, camera, mouse, keyboard.",
+    card7_t: "Reminders & alarm", card7_d: "“Wake me at 7 tomorrow”, “remind me every Monday” — sends a notification to your phone on time.",
+    card8_t: "Useful services", card8_d: "Weather, currency, translation, news, prayer times, calculations — all with a single voice request.",
+    card9_t: "Home network monitoring", card9_d: "Tracks who connects to your home Wi-Fi and alerts you about new devices.",
+    s3_eyebrow: "Technology", s3_h2: "Built on a modern foundation",
+    s3_lead: "DODA runs on open technologies and leading AI models. All data stays on the user's own computer — private and secure.",
+    step1_t: "Hears", step1_d: "Converts your speech to text (uz/ru/en)",
+    step2_t: "Understands", step2_d: "Detects intent or reasons with AI",
+    step3_t: "Acts", step3_d: "Controls the computer or finds the answer",
+    step4_t: "Speaks", step4_d: "Voices the result",
+    foot_big: "Meet DODA",
+    foot_muted: "A personal AI assistant — for the Uzbek language.",
+    foot_tg: "Telegram bot",
+    foot_copy: "© {year} DODA · built by " + AUTHOR,
+  },
+};
+
+const YEAR = new Date().getFullYear();
+function applyLang(lang){
+  if(!I18N[lang]) lang = "uz";
+  const d = I18N[lang];
+  document.documentElement.lang = lang;
+  document.title = d.meta_title;
+  const md = document.querySelector('meta[name="description"]');
+  if(md) md.setAttribute("content", d.meta_desc);
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    const v = d[el.getAttribute("data-i18n")];
+    if(v != null) el.innerHTML = v.replace("{year}", YEAR);
+  });
+  document.querySelectorAll(".lang-switch button").forEach(function(b){
+    b.classList.toggle("active", b.dataset.lang === lang);
+  });
+  try{ localStorage.setItem("doda_lang", lang); }catch(e){}
+}
+(function(){
+  let saved = null;
+  try{ saved = localStorage.getItem("doda_lang"); }catch(e){}
+  applyLang(saved || "uz");
+  document.querySelectorAll(".lang-switch button").forEach(function(b){
+    b.addEventListener("click", function(){ applyLang(b.dataset.lang); });
+  });
+})();
+
+/* ==================== Hero foni: neyron tarmoq animatsiyasi (o'zgarmagan) ==================== */
+(function(){
+  const c = document.getElementById('net'), x = c.getContext('2d');
+  let W, H, pts, DPR = Math.min(devicePixelRatio||1, 1.5);
+  function resize(){
+    const r = c.getBoundingClientRect();
+    W = c.width = r.width*DPR; H = c.height = r.height*DPR;
+    const n = Math.min(72, Math.floor(r.width/16));
+    pts = Array.from({length:n}, ()=>({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.28*DPR, vy:(Math.random()-.5)*.28*DPR
+    }));
+  }
+  function tick(){
+    x.clearRect(0,0,W,H);
+    for(const p of pts){
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>W) p.vx*=-1;
+      if(p.y<0||p.y>H) p.vy*=-1;
+    }
+    const R = 130*DPR;
+    for(let i=0;i<pts.length;i++){
+      for(let j=i+1;j<pts.length;j++){
+        const a=pts[i], b=pts[j], dx=a.x-b.x, dy=a.y-b.y, d=Math.hypot(dx,dy);
+        if(d<R){
+          x.strokeStyle='rgba(47,214,189,'+(0.16*(1-d/R))+')';
+          x.lineWidth=DPR; x.beginPath(); x.moveTo(a.x,a.y); x.lineTo(b.x,b.y); x.stroke();
+        }
+      }
+    }
+    for(const p of pts){
+      x.fillStyle='rgba(95,240,218,.75)';
+      x.beginPath(); x.arc(p.x,p.y,1.7*DPR,0,7); x.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  addEventListener('resize', resize); resize(); tick();
+})();
+</script>
+</body>
+</html>

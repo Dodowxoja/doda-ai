@@ -17,6 +17,7 @@ from code.doda.agent import CognitiveAgent, MemoryManager
 from code.doda.config import Settings
 from code.doda.core.interfaces.agent import Agent
 from code.doda.core.interfaces.bus import EventBus
+from code.doda.core.interfaces.bus import EventBus
 from code.doda.core.interfaces.flags import FeatureFlags
 from code.doda.core.interfaces.llm import LLMProvider
 from code.doda.core.interfaces.observability import Observability

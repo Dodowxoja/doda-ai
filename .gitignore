@@ -1,1 +1,30 @@
-doda-ai-portfolio/
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ===== Loglar (runtime, versiyalanmaydi) =====
+*.log
+
+# ===== OS / muharrir junk =====
+.DS_Store
+desktop.ini
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# ===== Maxfiy / muhit (HECH QACHON commit qilinmasin) =====
+# Asosiy sirlar ~/.doda_* uy papkasida — repoda emas. Bular himoya uchun:
+.env
+*.key
+*.pem
+.doda_*
+
+# ===== Shaxsiy debug artefaktlari =====
+bugs/
+
+# ===== Cloudflare Pages / wrangler =====
+.wrangler/
