@@ -28,3 +28,12 @@ bugs/
 
 # ===== Cloudflare Pages / wrangler =====
 .wrangler/
+
+# Local archive
+archive/
+
+# macOS
+.DS_Store
+
+# Local logs
+*.log
