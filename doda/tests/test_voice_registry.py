@@ -6,10 +6,10 @@ import logging
 
 import pytest
 
-from code.doda.config import VoiceSettings
-from code.doda.core.errors import ConfigError, SecretNotFoundError
-from code.doda.providers.observability import BasicObservability
-from code.doda.providers.voice import (
+from doda.config import VoiceSettings
+from doda.core.errors import ConfigError, SecretNotFoundError
+from doda.providers.observability import BasicObservability
+from doda.providers.voice import (
     EnergyVAD,
     FakeAudioInput,
     FakeAudioOutput,
@@ -22,14 +22,14 @@ from code.doda.providers.voice import (
     build_tts,
     build_vad,
 )
-from code.doda.providers.voice.audio import (
+from doda.providers.voice.audio import (
     LinuxRecorder,
     MacRecorder,
     WindowsRecorder,
 )
-from code.doda.providers.voice.stt import ElevenLabsSTT, WhisperSTT
-from code.doda.providers.voice.tts import EdgeTTS, ElevenLabsTTS
-from code.doda.providers.voice.vad import SileroVAD
+from doda.providers.voice.stt import ElevenLabsSTT, WhisperSTT
+from doda.providers.voice.tts import EdgeTTS, ElevenLabsTTS
+from doda.providers.voice.vad import SileroVAD
 
 
 class FakeSecrets:
@@ -141,7 +141,7 @@ def test_auto_detects_os(platform: str, expected: type, monkeypatch: pytest.Monk
 
 
 def test_build_audio_output_auto(monkeypatch: pytest.MonkeyPatch) -> None:
-    from code.doda.providers.voice.audio import LinuxPlayer, MacPlayer, WindowsPlayer
+    from doda.providers.voice.audio import LinuxPlayer, MacPlayer, WindowsPlayer
 
     for platform, expected in (
         ("darwin", MacPlayer),

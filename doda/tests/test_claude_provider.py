@@ -11,12 +11,12 @@ from typing import Any
 
 import pytest
 
-from code.doda.core.errors import LLMError, LLMUnavailableError
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.models.llm import LLMRequest, Message, Role
-from code.doda.providers.llm import ClaudeProvider
-from code.doda.providers.observability import BasicObservability
-from code.doda.tests.contracts.llm_provider_contract import LLMProviderContract
+from doda.core.errors import LLMError, LLMUnavailableError
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.models.llm import LLMRequest, Message, Role
+from doda.providers.llm import ClaudeProvider
+from doda.providers.observability import BasicObservability
+from doda.tests.contracts.llm_provider_contract import LLMProviderContract
 
 
 class _Usage:

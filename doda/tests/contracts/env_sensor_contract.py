@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.perception import EnvSensor
+from doda.core.interfaces.perception import EnvSensor
 
 
 class EnvSensorContract:

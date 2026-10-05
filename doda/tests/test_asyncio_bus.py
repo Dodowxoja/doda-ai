@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pytest
 
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.models.event import Event
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.observability import BasicObservability
-from code.doda.tests.contracts.event_bus_contract import EventBusContract
+from doda.core.interfaces.bus import EventBus
+from doda.core.models.event import Event
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.observability import BasicObservability
+from doda.tests.contracts.event_bus_contract import EventBusContract
 
 
 class TestAsyncioEventBus(EventBusContract):

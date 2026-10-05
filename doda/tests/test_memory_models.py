@@ -6,7 +6,7 @@ import dataclasses
 
 import pytest
 
-from code.doda.core.models.memory import MemoryItem, MemoryType
+from doda.core.models.memory import MemoryItem, MemoryType
 
 
 def test_create_generates_id_and_defaults() -> None:

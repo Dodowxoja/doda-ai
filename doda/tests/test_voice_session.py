@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import pytest
 
-from code.doda.core.errors import ConfigError
-from code.doda.core.models.event import Event
-from code.doda.core.models.speech import VoiceState
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.observability import BasicObservability
-from code.doda.voice import VoiceSession
+from doda.core.errors import ConfigError
+from doda.core.models.event import Event
+from doda.core.models.speech import VoiceState
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.observability import BasicObservability
+from doda.voice import VoiceSession
 
 
 async def test_valid_transition_flow() -> None:

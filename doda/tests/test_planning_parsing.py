@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.planning.parsing import extract_json_array, extract_json_object
+from doda.planning.parsing import extract_json_array, extract_json_object
 
 
 def test_array_plain() -> None:

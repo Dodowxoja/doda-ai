@@ -11,10 +11,10 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from typing import Any, Protocol, runtime_checkable
 
-from code.doda.core.interfaces.bus import EventBus, Subscription
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.models.event import Event
-from code.doda.interfaces.api.protocol import encode, translate
+from doda.core.interfaces.bus import EventBus, Subscription
+from doda.core.interfaces.observability import Observability
+from doda.core.models.event import Event
+from doda.interfaces.api.protocol import encode, translate
 
 #: Dashboardga uzatiladigan engine-eventlari katalogi (barcha modullardan).
 EVENT_CATALOG: tuple[str, ...] = (

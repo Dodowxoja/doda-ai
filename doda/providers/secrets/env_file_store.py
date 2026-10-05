@@ -15,7 +15,7 @@ import os
 import stat
 from pathlib import Path
 
-from code.doda.core.errors import SecretNotFoundError
+from doda.core.errors import SecretNotFoundError
 
 _ENV_PREFIX = "DODA_SECRET_"
 

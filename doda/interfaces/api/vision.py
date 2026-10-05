@@ -7,8 +7,8 @@ integratsiyasi qayta yozilmaydi. Rasm baytlari loglanmaydi.
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.models.llm import ImageContent, LLMRequest, Message, Role, TextContent
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.models.llm import ImageContent, LLMRequest, Message, Role, TextContent
 
 _VISION_SYSTEM = (
     "Sen DODA'ning ko'zisan. Rasmni diqqat bilan ko'r va O'ZBEK TILIDA qisqa, aniq tasvirla "

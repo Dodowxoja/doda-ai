@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.media import MediaFrame
+from doda.core.models.media import MediaFrame
 
 
 @runtime_checkable

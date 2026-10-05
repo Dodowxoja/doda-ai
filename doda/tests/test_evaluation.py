@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from code.doda.core.models.evaluation import EvalCase, EvalReport, EvalResult
-from code.doda.core.models.event import Event
-from code.doda.evaluation import EvalRunner, KeywordEvaluator, LLMJudge
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.llm import FakeLLMProvider
-from code.doda.providers.observability import BasicObservability
+from doda.core.models.evaluation import EvalCase, EvalReport, EvalResult
+from doda.core.models.event import Event
+from doda.evaluation import EvalRunner, KeywordEvaluator, LLMJudge
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.llm import FakeLLMProvider
+from doda.providers.observability import BasicObservability
 
 
 class ScriptedAgent:

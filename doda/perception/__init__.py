@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.perception.environment import EnvironmentService
-from code.doda.perception.vision_service import VisionService
+from doda.perception.environment import EnvironmentService
+from doda.perception.vision_service import VisionService
 
 __all__ = ["EnvironmentService", "VisionService"]

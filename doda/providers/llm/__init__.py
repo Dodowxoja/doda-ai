@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from code.doda.providers.llm.claude import ClaudeProvider
-from code.doda.providers.llm.fake import FakeLLMProvider
-from code.doda.providers.llm.registry import LLMRegistry, build_llm
+from doda.providers.llm.claude import ClaudeProvider
+from doda.providers.llm.fake import FakeLLMProvider
+from doda.providers.llm.registry import LLMRegistry, build_llm
 
 __all__ = ["ClaudeProvider", "FakeLLMProvider", "LLMRegistry", "build_llm"]

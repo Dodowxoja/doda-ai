@@ -4,6 +4,6 @@
 jamlaydi (salomatlik holati bilan).
 """
 
-from code.doda.telemetry.service import TelemetryService
+from doda.telemetry.service import TelemetryService
 
 __all__ = ["TelemetryService"]

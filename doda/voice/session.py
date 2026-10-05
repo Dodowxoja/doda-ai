@@ -9,11 +9,11 @@ from __future__ import annotations
 
 from uuid import uuid4
 
-from code.doda.core.errors import ConfigError
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.models.event import Event
-from code.doda.core.models.speech import VoiceState
+from doda.core.errors import ConfigError
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.observability import Observability
+from doda.core.models.event import Event
+from doda.core.models.speech import VoiceState
 
 _SOURCE = "voice"
 

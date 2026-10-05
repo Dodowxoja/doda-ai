@@ -6,8 +6,8 @@ belgilaydi — barcha kelishuv testlari avtomatik ishlaydi.
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.models.event import Event
+from doda.core.interfaces.bus import EventBus
+from doda.core.models.event import Event
 
 
 class EventBusContract:

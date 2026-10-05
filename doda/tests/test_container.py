@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from code.doda.config import Settings
-from code.doda.container import build_container
-from code.doda.core.models.event import Event
+from doda.config import Settings
+from doda.container import build_container
+from doda.core.models.event import Event
 
 
 def test_build_container_wires_all_services() -> None:

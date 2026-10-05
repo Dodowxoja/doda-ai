@@ -16,9 +16,9 @@ from __future__ import annotations
 from collections.abc import Sequence
 from datetime import UTC, datetime, timedelta
 
-from code.doda.core.interfaces.memory import EmbeddingProvider, MemoryStore
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.models.memory import MemoryItem, MemoryType
+from doda.core.interfaces.memory import EmbeddingProvider, MemoryStore
+from doda.core.interfaces.observability import Observability
+from doda.core.models.memory import MemoryItem, MemoryType
 
 _PROFILE_TYPES: tuple[MemoryType, ...] = (MemoryType.PREFERENCE,)
 _DEFAULT_KEEP: tuple[MemoryType, ...] = (

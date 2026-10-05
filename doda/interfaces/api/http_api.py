@@ -9,8 +9,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from code.doda.container import Container
-from code.doda.core.interfaces.agent import Agent
+from doda.container import Container
+from doda.core.interfaces.agent import Agent
 
 _VERSION = "2.0.0-dev"
 

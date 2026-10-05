@@ -6,8 +6,8 @@ Yangi provayder (Fake, Claude, kelajakda Gemini/OpenAI) shu klassni meros olib
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.models.llm import Capabilities, LLMRequest, LLMResponse, Message, Role
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.models.llm import Capabilities, LLMRequest, LLMResponse, Message, Role
 
 
 class LLMProviderContract:

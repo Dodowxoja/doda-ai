@@ -9,7 +9,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 from typing import Any
 
-from code.doda.core.interfaces.tool import Tool
+from doda.core.interfaces.tool import Tool
 
 
 class ToolContract:

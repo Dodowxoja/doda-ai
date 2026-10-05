@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 from typing import Any
 
-from code.doda.tools.runner import CommandRunner, subprocess_run
+from doda.tools.runner import CommandRunner, subprocess_run
 
 _MAX_CHARS = 2000
 

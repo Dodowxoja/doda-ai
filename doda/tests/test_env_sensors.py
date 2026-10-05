@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from code.doda.core.interfaces.perception import EnvSensor
-from code.doda.providers.env import (
+from doda.core.interfaces.perception import EnvSensor
+from doda.providers.env import (
     ActiveWindowSensor,
     ClipboardSensor,
     ClockSensor,
     FakeEnvSensor,
 )
-from code.doda.tests.contracts.env_sensor_contract import EnvSensorContract
+from doda.tests.contracts.env_sensor_contract import EnvSensorContract
 
 
 async def _text_runner(command: Sequence[str]) -> str:

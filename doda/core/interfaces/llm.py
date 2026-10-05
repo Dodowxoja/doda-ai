@@ -10,7 +10,7 @@ from __future__ import annotations
 from collections.abc import AsyncIterator
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.llm import Capabilities, LLMRequest, LLMResponse, StreamChunk
+from doda.core.models.llm import Capabilities, LLMRequest, LLMResponse, StreamChunk
 
 
 @runtime_checkable

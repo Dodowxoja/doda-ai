@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.perception import VisionProvider
-from code.doda.core.models.media import MediaFrame
+from doda.core.interfaces.perception import VisionProvider
+from doda.core.models.media import MediaFrame
 
 
 class VisionProviderContract:

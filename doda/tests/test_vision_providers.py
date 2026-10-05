@@ -7,15 +7,15 @@ from pathlib import Path
 
 import pytest
 
-from code.doda.core.errors import ConfigError
-from code.doda.core.interfaces.perception import VisionProvider
-from code.doda.providers.vision import (
+from doda.core.errors import ConfigError
+from doda.core.interfaces.perception import VisionProvider
+from doda.providers.vision import (
     FakeVisionProvider,
     MacCameraProvider,
     ScreenCaptureProvider,
     build_vision_provider,
 )
-from code.doda.tests.contracts.vision_provider_contract import VisionProviderContract
+from doda.tests.contracts.vision_provider_contract import VisionProviderContract
 
 
 async def _write_runner(command: Sequence[str], output_path: Path) -> None:

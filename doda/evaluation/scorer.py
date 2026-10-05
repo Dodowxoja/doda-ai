@@ -6,7 +6,7 @@ ball = topilgan belgilar ulushi. Kutilgan belgi bo'lmasa, holat avtomatik o'tadi
 
 from __future__ import annotations
 
-from code.doda.core.models.evaluation import EvalCase, EvalResult
+from doda.core.models.evaluation import EvalCase, EvalResult
 
 
 class KeywordEvaluator:

@@ -6,7 +6,7 @@ import dataclasses
 
 import pytest
 
-from code.doda.core.models.plan import Plan, PlanStep, Verdict
+from doda.core.models.plan import Plan, PlanStep, Verdict
 
 
 def test_plan_fields() -> None:

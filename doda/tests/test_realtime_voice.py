@@ -4,17 +4,17 @@ from __future__ import annotations
 
 import asyncio
 
-from code.doda.core.models.event import Event
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.observability import BasicObservability
-from code.doda.providers.voice import (
+from doda.core.models.event import Event
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.observability import BasicObservability
+from doda.providers.voice import (
     FakeAudioOutput,
     FakeStreamingAudioInput,
     FakeTTS,
     FakeVAD,
 )
-from code.doda.providers.voice.stt import FakeSTT
-from code.doda.voice import RealtimeVoiceSession
+from doda.providers.voice.stt import FakeSTT
+from doda.voice import RealtimeVoiceSession
 
 
 class EchoAgent:

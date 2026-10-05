@@ -10,7 +10,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.telemetry import SystemStats
+from doda.core.models.telemetry import SystemStats
 
 
 @runtime_checkable

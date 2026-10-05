@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import AsyncIterator, Sequence
 
-from code.doda.core.models.speech import SpeechResult
+from doda.core.models.speech import SpeechResult
 
 
 class FakeSTT:

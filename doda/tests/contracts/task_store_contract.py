@@ -8,8 +8,8 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
-from code.doda.core.interfaces.scheduler import TaskStore
-from code.doda.core.models.task import ScheduledTask, TaskStatus
+from doda.core.interfaces.scheduler import TaskStore
+from doda.core.models.task import ScheduledTask, TaskStatus
 
 
 class TaskStoreContract:

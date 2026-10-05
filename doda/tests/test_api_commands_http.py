@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from collections.abc import AsyncIterator
 
-from code.doda.container import build_container
-from code.doda.core.errors import LLMError, LLMUnavailableError
-from code.doda.interfaces.api import http_api
-from code.doda.interfaces.api.commands import CommandRouter
-from code.doda.interfaces.api.protocol import ClientMessage
-from code.doda.providers.observability import BasicObservability
+from doda.container import build_container
+from doda.core.errors import LLMError, LLMUnavailableError
+from doda.interfaces.api import http_api
+from doda.interfaces.api.commands import CommandRouter
+from doda.interfaces.api.protocol import ClientMessage
+from doda.providers.observability import BasicObservability
 
 
 class FakeAgent:

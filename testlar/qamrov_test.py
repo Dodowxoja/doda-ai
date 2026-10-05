@@ -17,7 +17,7 @@ def _boom(*a, **k):
     raise RuntimeError("net-off")
 urllib.request.urlopen = _boom
 
-import code.asistent as asistent
+import asistent as asistent
 asistent.say = _noop
 asistent.say_random = _noop
 asistent.AI_CHAT_ENABLED = False

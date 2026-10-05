@@ -12,8 +12,8 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from code.doda.core.errors import STTError
-from code.doda.providers.voice.runner import FileRunner, subprocess_to_file
+from doda.core.errors import STTError
+from doda.providers.voice.runner import FileRunner, subprocess_to_file
 
 
 class WhisperSTT:

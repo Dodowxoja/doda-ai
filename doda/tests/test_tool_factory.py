@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from code.doda.tools import build_tool_registry
+from doda.tools import build_tool_registry
 
 
 def test_default_toolset(tmp_path: Path) -> None:

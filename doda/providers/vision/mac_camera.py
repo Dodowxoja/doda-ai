@@ -7,8 +7,8 @@ import os
 import tempfile
 from pathlib import Path
 
-from code.doda.core.models.media import MediaFrame
-from code.doda.providers.vision.runner import CaptureRunner, subprocess_capture
+from doda.core.models.media import MediaFrame
+from doda.providers.vision.runner import CaptureRunner, subprocess_capture
 
 
 class MacCameraProvider:

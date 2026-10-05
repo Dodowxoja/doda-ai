@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from collections.abc import AsyncIterator
 
-from code.doda.providers.voice import FakeAudioInput, FrameStreamAdapter
-from code.doda.providers.voice.stt import FakeStreamingSTT
+from doda.providers.voice import FakeAudioInput, FrameStreamAdapter
+from doda.providers.voice.stt import FakeStreamingSTT
 
 
 async def test_frame_stream_yields_bounded_chunks() -> None:

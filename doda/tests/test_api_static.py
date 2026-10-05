@@ -5,8 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from code.doda.container import build_container
-from code.doda.interfaces.api.server import resolve_static, serve_path
+from doda.container import build_container
+from doda.interfaces.api.server import resolve_static, serve_path
 
 
 def _make_site(tmp_path: Path) -> Path:

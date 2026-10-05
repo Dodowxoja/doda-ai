@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from code.doda.core.models.llm import ImageContent, TextContent
-from code.doda.interfaces.api.vision import describe_image, split_data_url
-from code.doda.providers.llm import FakeLLMProvider
+from doda.core.models.llm import ImageContent, TextContent
+from doda.interfaces.api.vision import describe_image, split_data_url
+from doda.providers.llm import FakeLLMProvider
 
 
 def test_split_data_url_jpeg() -> None:

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from code.doda.core.errors import VADError
+from doda.core.errors import VADError
 
 
 class SileroVAD:

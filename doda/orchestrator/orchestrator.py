@@ -10,11 +10,11 @@ from __future__ import annotations
 from collections.abc import Mapping
 from uuid import uuid4
 
-from code.doda.core.interfaces.agent import Agent
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.interfaces.orchestrator import AgentRouter
-from code.doda.core.models.event import Event
+from doda.core.interfaces.agent import Agent
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.observability import Observability
+from doda.core.interfaces.orchestrator import AgentRouter
+from doda.core.models.event import Event
 
 _SOURCE = "orchestrator"
 

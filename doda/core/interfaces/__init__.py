@@ -10,14 +10,14 @@ barqaror shaklda (YAGNI + "public API stable"). Qarang: ``doda/README.md``.
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.agent import Agent, ToolExecutor
-from code.doda.core.interfaces.bus import EventBus, EventHandler, Subscription
-from code.doda.core.interfaces.flags import FeatureFlags
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.interfaces.memory import EmbeddingProvider, MemoryStore
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.interfaces.perception import EnvSensor, VisionProvider
-from code.doda.core.interfaces.secrets import SecretStore
+from doda.core.interfaces.agent import Agent, ToolExecutor
+from doda.core.interfaces.bus import EventBus, EventHandler, Subscription
+from doda.core.interfaces.flags import FeatureFlags
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.interfaces.memory import EmbeddingProvider, MemoryStore
+from doda.core.interfaces.observability import Observability
+from doda.core.interfaces.perception import EnvSensor, VisionProvider
+from doda.core.interfaces.secrets import SecretStore
 
 __all__ = [
     "Agent",

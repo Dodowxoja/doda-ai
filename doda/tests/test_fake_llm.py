@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pytest
 
-from code.doda.core.errors import LLMError
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.models.llm import LLMRequest, Message, Role
-from code.doda.providers.llm import FakeLLMProvider
-from code.doda.tests.contracts.llm_provider_contract import LLMProviderContract
+from doda.core.errors import LLMError
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.models.llm import LLMRequest, Message, Role
+from doda.providers.llm import FakeLLMProvider
+from doda.tests.contracts.llm_provider_contract import LLMProviderContract
 
 
 class TestFakeLLMProvider(LLMProviderContract):

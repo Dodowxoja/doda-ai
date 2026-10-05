@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from code.doda.core.interfaces import voice as ports
-from code.doda.providers.voice.audio import base as audio_base
-from code.doda.providers.voice.stt import base as stt_base
-from code.doda.providers.voice.tts import base as tts_base
-from code.doda.providers.voice.vad import base as vad_base
-from code.doda.providers.voice.wake import base as wake_base
+from doda.core.interfaces import voice as ports
+from doda.providers.voice.audio import base as audio_base
+from doda.providers.voice.stt import base as stt_base
+from doda.providers.voice.tts import base as tts_base
+from doda.providers.voice.vad import base as vad_base
+from doda.providers.voice.wake import base as wake_base
 
 
 def test_base_modules_reexport_ports() -> None:

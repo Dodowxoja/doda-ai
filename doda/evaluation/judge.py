@@ -6,10 +6,10 @@ ishlamasa, holat o'tmagan (passed=False, score=0) deb hisoblanadi — sifat test
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.models.evaluation import EvalCase, EvalResult
-from code.doda.core.models.llm import LLMRequest, Message, Role
-from code.doda.planning.parsing import extract_json_object
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.models.evaluation import EvalCase, EvalResult
+from doda.core.models.llm import LLMRequest, Message, Role
+from doda.planning.parsing import extract_json_object
 
 _SYSTEM = (
     "Sen sifat-hakamisan. Berilgan savol va javobni bahola va FAQAT JSON obyekt qaytar: "

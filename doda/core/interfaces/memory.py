@@ -11,7 +11,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.memory import MemoryItem, MemoryType
+from doda.core.models.memory import MemoryItem, MemoryType
 
 
 @runtime_checkable

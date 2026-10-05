@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.core.models.media import MediaFrame
+from doda.core.models.media import MediaFrame
 
 
 class FakeVisionProvider:

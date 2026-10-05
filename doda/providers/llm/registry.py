@@ -10,10 +10,10 @@ from __future__ import annotations
 import time
 from collections.abc import AsyncIterator, Callable, Sequence
 
-from code.doda.core.errors import ConfigError, LLMError, LLMUnavailableError
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.models.llm import Capabilities, LLMRequest, LLMResponse, StreamChunk
+from doda.core.errors import ConfigError, LLMError, LLMUnavailableError
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.interfaces.observability import Observability
+from doda.core.models.llm import Capabilities, LLMRequest, LLMResponse, StreamChunk
 
 _KNOWN_UNIMPLEMENTED = frozenset({"gemini", "openai", "ollama", "lmstudio", "openrouter"})
 
@@ -123,7 +123,7 @@ def build_llm(
         LLMUnavailableError: Provayder ma'lum, lekin hali qo'llab-quvvatlanmaydi (v1.1+).
         ConfigError: Provayder nomi noma'lum.
     """
-    from code.doda.providers.llm.claude import ClaudeProvider
+    from doda.providers.llm.claude import ClaudeProvider
 
     name = provider.lower()
     if name == "claude":

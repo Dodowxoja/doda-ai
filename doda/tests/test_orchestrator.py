@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import pytest
 
-from code.doda.core.models.event import Event
-from code.doda.orchestrator import KeywordRouter, Orchestrator
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.observability import BasicObservability
+from doda.core.models.event import Event
+from doda.orchestrator import KeywordRouter, Orchestrator
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.observability import BasicObservability
 
 
 class NamedAgent:

@@ -34,12 +34,12 @@ from telegram.error import NetworkError, TimedOut
 from telegram.ext import (Application, CommandHandler, MessageHandler, filters,
                           ContextTypes, CallbackQueryHandler)
 
-import code.asistent as asistent  # DODA motori (buyruqlarni bajaradi)
-import code.foydalanuvchi as foydalanuvchi
-import code.vision as vision      # ekran/kamera rasmini olish
-import code.tarmoq as tarmoq      # uy tarmog'i monitoringi
-import code.mac_system as mac_system  # batareya / CPU / RAM holati
-import code.ruxsatlar as ruxsatlar   # macOS ruxsatlarini tekshirish (Screen/Accessibility/Full Disk/Camera)
+import asistent as asistent  # DODA motori (buyruqlarni bajaradi)
+import foydalanuvchi as foydalanuvchi
+import vision as vision      # ekran/kamera rasmini olish
+import tarmoq as tarmoq      # uy tarmog'i monitoringi
+import mac_system as mac_system  # batareya / CPU / RAM holati
+import ruxsatlar as ruxsatlar   # macOS ruxsatlarini tekshirish (Screen/Accessibility/Full Disk/Camera)
 
 _DIR = os.path.dirname(os.path.abspath(__file__))
 OTP_FILE = os.path.expanduser("~/.doda_otp")

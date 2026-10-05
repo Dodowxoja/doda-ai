@@ -9,14 +9,14 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from code.doda.core.interfaces.observability import Observability
-from code.doda.tools.clipboard_tool import ClipboardTool
-from code.doda.tools.clock_tool import ClockTool
-from code.doda.tools.files_tool import FilesTool
-from code.doda.tools.notification_tool import NotificationTool
-from code.doda.tools.open_tool import OpenTool
-from code.doda.tools.registry import ToolRegistry
-from code.doda.tools.shell_tool import ShellTool
+from doda.core.interfaces.observability import Observability
+from doda.tools.clipboard_tool import ClipboardTool
+from doda.tools.clock_tool import ClockTool
+from doda.tools.files_tool import FilesTool
+from doda.tools.notification_tool import NotificationTool
+from doda.tools.open_tool import OpenTool
+from doda.tools.registry import ToolRegistry
+from doda.tools.shell_tool import ShellTool
 
 
 def build_tool_registry(

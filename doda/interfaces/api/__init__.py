@@ -4,11 +4,11 @@
 Agentga yo'naltiradi, telemetriyani uzatadi. ``python -m doda.interfaces.api`` bilan ishga tushadi.
 """
 
-from code.doda.interfaces.api.bridge import EVENT_CATALOG, ClientSink, EventBridge
-from code.doda.interfaces.api.commands import CommandRouter
-from code.doda.interfaces.api.metrics import MetricsPump
-from code.doda.interfaces.api.protocol import ClientMessage, encode, parse_client_message, translate
-from code.doda.interfaces.api.server import APIServer, default_static_dir
+from doda.interfaces.api.bridge import EVENT_CATALOG, ClientSink, EventBridge
+from doda.interfaces.api.commands import CommandRouter
+from doda.interfaces.api.metrics import MetricsPump
+from doda.interfaces.api.protocol import ClientMessage, encode, parse_client_message, translate
+from doda.interfaces.api.server import APIServer, default_static_dir
 
 __all__ = [
     "EVENT_CATALOG",

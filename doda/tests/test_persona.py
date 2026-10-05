@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from code.doda.core.models.memory import MemoryItem, MemoryType
-from code.doda.core.models.persona import Persona
+from doda.core.models.memory import MemoryItem, MemoryType
+from doda.core.models.persona import Persona
 
 
 def test_render_includes_identity() -> None:

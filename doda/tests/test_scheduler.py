@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
-from code.doda.core.models.event import Event
-from code.doda.core.models.task import TaskStatus
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.observability import BasicObservability
-from code.doda.providers.scheduler import InMemoryTaskStore
-from code.doda.scheduler import Scheduler
+from doda.core.models.event import Event
+from doda.core.models.task import TaskStatus
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.observability import BasicObservability
+from doda.providers.scheduler import InMemoryTaskStore
+from doda.scheduler import Scheduler
 
 _NOW = datetime(2026, 8, 9, 12, 0, 0)
 

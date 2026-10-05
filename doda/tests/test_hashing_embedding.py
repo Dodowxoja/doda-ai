@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from code.doda.providers.memory import HashingEmbedding
+from doda.providers.memory import HashingEmbedding
 
 
 async def test_dimension() -> None:

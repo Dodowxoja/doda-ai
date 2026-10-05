@@ -9,7 +9,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 from dataclasses import dataclass
 
-from code.doda.core.models.memory import MemoryItem
+from doda.core.models.memory import MemoryItem
 
 _DEFAULT_IDENTITY = (
     "Sening isming DODA — Muhammadxo'ja yaratgan shaxsiy sun'iy intellekt yordamchi. "

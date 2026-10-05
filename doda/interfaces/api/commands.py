@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from collections.abc import AsyncIterator
 
-from code.doda.core.errors import LLMError, LLMUnavailableError
-from code.doda.core.interfaces.agent import Agent, StreamingAgent
-from code.doda.core.interfaces.observability import Observability
-from code.doda.interfaces.api.protocol import ClientMessage
+from doda.core.errors import LLMError, LLMUnavailableError
+from doda.core.interfaces.agent import Agent, StreamingAgent
+from doda.core.interfaces.observability import Observability
+from doda.interfaces.api.protocol import ClientMessage
 
 _KEY_MISSING = (
     "⚠️ Claude API kaliti sozlanmagan. SecretStore'ga 'anthropic.key' qo'ying "

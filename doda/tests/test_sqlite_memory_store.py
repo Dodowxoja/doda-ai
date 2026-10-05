@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from code.doda.core.interfaces.memory import MemoryStore
-from code.doda.core.models.memory import MemoryItem, MemoryType
-from code.doda.providers.memory import SQLiteMemoryStore
-from code.doda.tests.contracts.memory_store_contract import MemoryStoreContract
+from doda.core.interfaces.memory import MemoryStore
+from doda.core.models.memory import MemoryItem, MemoryType
+from doda.providers.memory import SQLiteMemoryStore
+from doda.tests.contracts.memory_store_contract import MemoryStoreContract
 
 
 class TestSQLiteMemoryStore(MemoryStoreContract):

@@ -12,7 +12,7 @@ from __future__ import annotations
 from collections.abc import AsyncIterator
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.llm import ToolCall
+from doda.core.models.llm import ToolCall
 
 
 @runtime_checkable

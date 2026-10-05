@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import json
 
-from code.doda.core.models.event import Event
-from code.doda.interfaces.api.protocol import encode, parse_client_message, translate
+from doda.core.models.event import Event
+from doda.interfaces.api.protocol import encode, parse_client_message, translate
 
 
 def test_encode_json() -> None:

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.voice import (
+from doda.core.interfaces.voice import (
     AudioInput,
     AudioOutput,
     SpeechToText,

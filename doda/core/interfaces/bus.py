@@ -12,7 +12,7 @@ from __future__ import annotations
 from collections.abc import Awaitable, Callable
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.event import Event
+from doda.core.models.event import Event
 
 EventHandler = Callable[[Event], Awaitable[None]]
 """Hodisani qabul qiladigan asinxron funksiya turi."""

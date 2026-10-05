@@ -6,7 +6,7 @@ tashqaridan. Application faqat core'ni biladi; Infrastructure core portlarini im
 
 from __future__ import annotations
 
-from code.doda.core.errors import (
+from doda.core.errors import (
     AudioError,
     ConfigError,
     DodaError,

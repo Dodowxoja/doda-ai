@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Protocol
 
-from code.doda.core.models.telemetry import TelemetrySnapshot
+from doda.core.models.telemetry import TelemetrySnapshot
 
 _RAM_TOTAL_GB = 16.0
 _DISK_TOTAL_GB = 512.0

@@ -8,8 +8,8 @@ from __future__ import annotations
 
 from collections.abc import AsyncIterator, Sequence
 
-from code.doda.core.errors import LLMError
-from code.doda.core.models.llm import (
+from doda.core.errors import LLMError
+from doda.core.models.llm import (
     Capabilities,
     LLMRequest,
     LLMResponse,

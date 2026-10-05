@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.models.llm import LLMRequest, Message, Role
-from code.doda.core.models.plan import Verdict
-from code.doda.planning.parsing import extract_json_object
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.models.llm import LLMRequest, Message, Role
+from doda.core.models.plan import Verdict
+from doda.planning.parsing import extract_json_object
 
 _SYSTEM = (
     "Sen sifat-nazoratchisisan. Maqsad va bajarilgan ish natijasini solishtir. FAQAT JSON "

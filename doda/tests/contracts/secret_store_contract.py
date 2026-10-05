@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pytest
 
-from code.doda.core.errors import SecretNotFoundError
-from code.doda.core.interfaces.secrets import SecretStore
+from doda.core.errors import SecretNotFoundError
+from doda.core.interfaces.secrets import SecretStore
 
 
 class SecretStoreContract:

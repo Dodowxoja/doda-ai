@@ -12,8 +12,8 @@ from __future__ import annotations
 
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.interfaces.bus import EventHandler
-from code.doda.core.interfaces.tool import Tool
+from doda.core.interfaces.bus import EventHandler
+from doda.core.interfaces.tool import Tool
 
 
 @runtime_checkable

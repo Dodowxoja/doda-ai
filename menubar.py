@@ -19,10 +19,10 @@ import webbrowser
 
 import rumps
 
-import code.asistent as asistent
-import code.mac_system as mac_system
-import code.tarmoq as tarmoq
-import code.vision as vision
+import asistent as asistent
+import mac_system as mac_system
+import tarmoq as tarmoq
+import vision as vision
 
 HEARTBEAT = os.path.expanduser("~/.doda_bot_heartbeat")
 TOKEN_FILE = os.path.expanduser("~/.doda_web_token")

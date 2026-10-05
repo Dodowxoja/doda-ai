@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from code.doda.providers.observability import BasicObservability
+from doda.providers.observability import BasicObservability
 
 
 def test_log_without_fields(caplog: pytest.LogCaptureFixture) -> None:

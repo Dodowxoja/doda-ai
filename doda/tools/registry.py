@@ -9,9 +9,9 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.interfaces.tool import Tool
-from code.doda.core.models.llm import ToolCall, ToolSpec
+from doda.core.interfaces.observability import Observability
+from doda.core.interfaces.tool import Tool
+from doda.core.models.llm import ToolCall, ToolSpec
 
 
 def tool_spec(tool: Tool) -> ToolSpec:

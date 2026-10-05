@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.voice.language import detect_language
+from doda.voice.language import detect_language
 
 
 def test_detects_russian_by_cyrillic() -> None:

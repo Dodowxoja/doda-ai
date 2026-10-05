@@ -12,9 +12,9 @@ from __future__ import annotations
 import asyncio
 from typing import Any
 
-from code.doda.core.interfaces.bus import EventHandler
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.models.event import Event
+from doda.core.interfaces.bus import EventHandler
+from doda.core.interfaces.observability import Observability
+from doda.core.models.event import Event
 
 
 class _Subscription:

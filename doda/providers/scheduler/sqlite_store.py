@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from code.doda.core.models.task import ScheduledTask, TaskStatus
+from doda.core.models.task import ScheduledTask, TaskStatus
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS tasks (

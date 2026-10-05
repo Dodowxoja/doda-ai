@@ -12,10 +12,10 @@ from __future__ import annotations
 from collections.abc import AsyncIterator
 from typing import Any
 
-from code.doda.core.errors import LLMError, LLMUnavailableError
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.models.llm import Capabilities, LLMRequest, LLMResponse, StreamChunk
-from code.doda.providers.llm.mapping import from_anthropic_response, to_anthropic_params
+from doda.core.errors import LLMError, LLMUnavailableError
+from doda.core.interfaces.observability import Observability
+from doda.core.models.llm import Capabilities, LLMRequest, LLMResponse, StreamChunk
+from doda.providers.llm.mapping import from_anthropic_response, to_anthropic_params
 
 _CAPABILITIES = Capabilities(streaming=True, tools=True, vision=True)
 

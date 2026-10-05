@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from code.doda.providers.voice import FakeAudioInput, KeywordWakeDetector
-from code.doda.tests.contracts.voice_contracts import WakeWordContract
+from doda.providers.voice import FakeAudioInput, KeywordWakeDetector
+from doda.tests.contracts.voice_contracts import WakeWordContract
 
 
 class ScriptedSTT:

@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-from code.doda.core.errors import STTError, TTSError
-from code.doda.providers.voice.stt import ElevenLabsSTT
-from code.doda.providers.voice.tts import ElevenLabsTTS
+from doda.core.errors import STTError, TTSError
+from doda.providers.voice.stt import ElevenLabsSTT
+from doda.providers.voice.tts import ElevenLabsTTS
 
 
 async def test_stt_without_key_raises() -> None:

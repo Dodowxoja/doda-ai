@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.core.errors import DodaError
+from doda.core.errors import DodaError
 
 
 class FakeEnvSensor:

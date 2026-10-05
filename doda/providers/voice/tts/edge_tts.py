@@ -11,7 +11,7 @@ import os
 import tempfile
 from pathlib import Path
 
-from code.doda.providers.voice.runner import FileRunner, subprocess_to_file
+from doda.providers.voice.runner import FileRunner, subprocess_to_file
 
 DEFAULT_VOICE = "uz-UZ-SardorNeural"
 

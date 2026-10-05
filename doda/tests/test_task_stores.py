@@ -5,10 +5,10 @@ from __future__ import annotations
 from datetime import datetime
 from pathlib import Path
 
-from code.doda.core.interfaces.scheduler import TaskStore
-from code.doda.core.models.task import ScheduledTask
-from code.doda.providers.scheduler import InMemoryTaskStore, SQLiteTaskStore
-from code.doda.tests.contracts.task_store_contract import TaskStoreContract
+from doda.core.interfaces.scheduler import TaskStore
+from doda.core.models.task import ScheduledTask
+from doda.providers.scheduler import InMemoryTaskStore, SQLiteTaskStore
+from doda.tests.contracts.task_store_contract import TaskStoreContract
 
 
 class TestInMemoryTaskStore(TaskStoreContract):

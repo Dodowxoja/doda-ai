@@ -20,14 +20,14 @@ from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
-from code.doda.container import Container
-from code.doda.interfaces.api.bridge import EventBridge
-from code.doda.interfaces.api.commands import CommandRouter, error_message
-from code.doda.interfaces.api.http_api import health, status
-from code.doda.interfaces.api.metrics import MetricsPump
-from code.doda.interfaces.api.protocol import encode, parse_client_message
-from code.doda.interfaces.api.vision import describe_image, split_data_url
-from code.doda.providers.voice import build_tts
+from doda.container import Container
+from doda.interfaces.api.bridge import EventBridge
+from doda.interfaces.api.commands import CommandRouter, error_message
+from doda.interfaces.api.http_api import health, status
+from doda.interfaces.api.metrics import MetricsPump
+from doda.interfaces.api.protocol import encode, parse_client_message
+from doda.interfaces.api.vision import describe_image, split_data_url
+from doda.providers.voice import build_tts
 
 _TEXT_TYPES = ("text/", "application/javascript", "application/json", "image/svg")
 

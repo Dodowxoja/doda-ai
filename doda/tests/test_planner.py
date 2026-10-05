@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from code.doda.core.models.llm import Role, TextContent
-from code.doda.planning import LLMPlanner
-from code.doda.providers.llm import FakeLLMProvider
+from doda.core.models.llm import Role, TextContent
+from doda.planning import LLMPlanner
+from doda.providers.llm import FakeLLMProvider
 
 
 async def test_parses_json_steps() -> None:

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.providers.flags import SettingsFeatureFlags
+from doda.providers.flags import SettingsFeatureFlags
 
 
 def test_enabled_flag_is_true() -> None:

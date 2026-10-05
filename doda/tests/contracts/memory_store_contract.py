@@ -5,8 +5,8 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from pathlib import Path
 
-from code.doda.core.interfaces.memory import MemoryStore
-from code.doda.core.models.memory import MemoryItem, MemoryType
+from doda.core.interfaces.memory import MemoryStore
+from doda.core.models.memory import MemoryItem, MemoryType
 
 
 class MemoryStoreContract:

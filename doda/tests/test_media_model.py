@@ -6,7 +6,7 @@ import dataclasses
 
 import pytest
 
-from code.doda.core.models.media import MediaFrame
+from doda.core.models.media import MediaFrame
 
 
 def test_fields() -> None:

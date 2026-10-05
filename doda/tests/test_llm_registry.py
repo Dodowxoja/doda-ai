@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import pytest
 
-from code.doda.core.errors import ConfigError, LLMError, LLMUnavailableError
-from code.doda.core.models.llm import LLMRequest, Message, Role
-from code.doda.providers.llm import FakeLLMProvider, LLMRegistry, build_llm
-from code.doda.providers.observability import BasicObservability
+from doda.core.errors import ConfigError, LLMError, LLMUnavailableError
+from doda.core.models.llm import LLMRequest, Message, Role
+from doda.providers.llm import FakeLLMProvider, LLMRegistry, build_llm
+from doda.providers.observability import BasicObservability
 
 
 def _request() -> LLMRequest:

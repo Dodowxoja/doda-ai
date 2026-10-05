@@ -16,7 +16,7 @@ Yangi buyruq qo'shish: JSON faylni tahrirlang YOKI DODA'ga "ilova qo'sh / sayt q
 import os
 import json
 
-import code.foydalanuvchi as foydalanuvchi
+import foydalanuvchi as foydalanuvchi
 
 _DIR = os.path.dirname(os.path.abspath(__file__))
 _BUYRUQLAR_JSON = os.path.join(_DIR, "data", "buyruqlar.json")

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.providers.env.runner import TextRunner, subprocess_text
+from doda.providers.env.runner import TextRunner, subprocess_text
 
 _SCRIPT = (
     'tell application "System Events" to name of first application process '

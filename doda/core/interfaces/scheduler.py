@@ -9,7 +9,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.task import ScheduledTask
+from doda.core.models.task import ScheduledTask
 
 
 @runtime_checkable

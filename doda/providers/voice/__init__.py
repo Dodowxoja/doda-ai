@@ -5,7 +5,7 @@ o'zgarmaydi). ``mock_mode`` yoqilsa barchasi soxta (kalitsiz test/ishlash). Bu m
 provayderlarni bitta barqaror import yuzasiga jamlaydi (container/testlar shu yerdan oladi).
 """
 
-from code.doda.providers.voice.audio import (
+from doda.providers.voice.audio import (
     AfplayOutput,
     FakeAudioInput,
     FakeAudioOutput,
@@ -19,18 +19,18 @@ from code.doda.providers.voice.audio import (
     WindowsPlayer,
     WindowsRecorder,
 )
-from code.doda.providers.voice.registry import (
+from doda.providers.voice.registry import (
     build_audio_input,
     build_audio_output,
     build_stt,
     build_tts,
     build_vad,
 )
-from code.doda.providers.voice.runner import FileRunner, subprocess_to_file
-from code.doda.providers.voice.stt import ElevenLabsSTT, FakeStreamingSTT, FakeSTT, WhisperSTT
-from code.doda.providers.voice.tts import DEFAULT_VOICE, EdgeTTS, ElevenLabsTTS, FakeTTS
-from code.doda.providers.voice.vad import EnergyVAD, FakeVAD, SileroVAD
-from code.doda.providers.voice.wake import FakeWakeWord, KeywordWakeDetector
+from doda.providers.voice.runner import FileRunner, subprocess_to_file
+from doda.providers.voice.stt import ElevenLabsSTT, FakeStreamingSTT, FakeSTT, WhisperSTT
+from doda.providers.voice.tts import DEFAULT_VOICE, EdgeTTS, ElevenLabsTTS, FakeTTS
+from doda.providers.voice.vad import EnergyVAD, FakeVAD, SileroVAD
+from doda.providers.voice.wake import FakeWakeWord, KeywordWakeDetector
 
 __all__ = [
     "DEFAULT_VOICE",

@@ -4,6 +4,6 @@
 OS-servis o'rnatish (launchd/systemd) — ``packaging/`` mavzusi.
 """
 
-from code.doda.daemon.service import DaemonService
+from doda.daemon.service import DaemonService
 
 __all__ = ["DaemonService"]

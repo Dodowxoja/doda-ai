@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from code.doda.core.models.event import Event
-from code.doda.core.models.telemetry import SystemStats, TelemetrySnapshot
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.observability import BasicObservability
-from code.doda.providers.telemetry import FakeSystemSampler, PsutilSampler
-from code.doda.telemetry import TelemetryService
+from doda.core.models.event import Event
+from doda.core.models.telemetry import SystemStats, TelemetrySnapshot
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.observability import BasicObservability
+from doda.providers.telemetry import FakeSystemSampler, PsutilSampler
+from doda.telemetry import TelemetryService
 
 _NOW = datetime(2026, 8, 9, 12, 0, 0)
 

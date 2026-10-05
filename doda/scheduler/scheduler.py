@@ -13,12 +13,12 @@ from datetime import datetime, timedelta
 from typing import Any
 from uuid import uuid4
 
-from code.doda.core.interfaces.agent import Agent
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.interfaces.scheduler import TaskStore
-from code.doda.core.models.event import Event
-from code.doda.core.models.task import ScheduledTask, TaskStatus
+from doda.core.interfaces.agent import Agent
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.observability import Observability
+from doda.core.interfaces.scheduler import TaskStore
+from doda.core.models.event import Event
+from doda.core.models.task import ScheduledTask, TaskStatus
 
 _SOURCE = "scheduler"
 

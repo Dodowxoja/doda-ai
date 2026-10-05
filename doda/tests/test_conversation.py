@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from code.doda.agent import Conversation
-from code.doda.core.models.llm import Message, Role, TextContent
+from doda.agent import Conversation
+from doda.core.models.llm import Message, Role, TextContent
 
 
 def _message(text: str) -> Message:

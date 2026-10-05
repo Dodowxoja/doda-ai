@@ -6,9 +6,9 @@ Obunalar yozib boriladi — teardown paytida hammasini bekor qilish uchun.
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.bus import EventBus, EventHandler, Subscription
-from code.doda.core.interfaces.tool import Tool
-from code.doda.tools import ToolRegistry
+from doda.core.interfaces.bus import EventBus, EventHandler, Subscription
+from doda.core.interfaces.tool import Tool
+from doda.tools import ToolRegistry
 
 
 class DefaultPluginContext:

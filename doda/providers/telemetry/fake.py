@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.core.models.telemetry import SystemStats
+from doda.core.models.telemetry import SystemStats
 
 
 class FakeSystemSampler:

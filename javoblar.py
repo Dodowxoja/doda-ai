@@ -11,7 +11,7 @@ Yangi javob qo'shish: JSON'ni tahrirlang YOKI DODA'ga "javob qo'sh <so'z> = <jav
 import os
 import json
 
-import code.foydalanuvchi as foydalanuvchi
+import foydalanuvchi as foydalanuvchi
 
 _DIR = os.path.dirname(os.path.abspath(__file__))
 _JAVOBLAR_JSON = os.path.join(_DIR, "data", "javoblar.json")

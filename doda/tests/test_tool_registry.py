@@ -8,9 +8,9 @@ from typing import Any
 
 import pytest
 
-from code.doda.core.models.llm import ToolCall
-from code.doda.providers.observability import BasicObservability
-from code.doda.tools import ToolRegistry
+from doda.core.models.llm import ToolCall
+from doda.providers.observability import BasicObservability
+from doda.tools import ToolRegistry
 
 
 class _EchoTool:

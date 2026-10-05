@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from code.doda.core.models.llm import (
+from doda.core.models.llm import (
     ContentPart,
     ImageContent,
     LLMRequest,

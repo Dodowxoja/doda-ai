@@ -6,8 +6,8 @@ yetganda almashtiriladi. Public API kirish nuqtasi — :func:`build_container`.
 
 from __future__ import annotations
 
-from code.doda.config import Settings
-from code.doda.container import Container, build_container
+from doda.config import Settings
+from doda.container import Container, build_container
 
 __all__ = ["Container", "Settings", "build_container"]
 

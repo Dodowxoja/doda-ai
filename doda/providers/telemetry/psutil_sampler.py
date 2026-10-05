@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import asyncio
 
-from code.doda.core.models.telemetry import SystemStats
+from doda.core.models.telemetry import SystemStats
 
 
 class PsutilSampler:

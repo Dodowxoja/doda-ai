@@ -13,19 +13,19 @@ from collections.abc import AsyncIterator, Awaitable, Mapping
 from time import perf_counter
 from typing import Any, TypeVar
 
-from code.doda.core.interfaces.agent import Agent
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.interfaces.voice import (
+from doda.core.interfaces.agent import Agent
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.observability import Observability
+from doda.core.interfaces.voice import (
     AudioOutput,
     SpeechToText,
     StreamingAudioInput,
     TextToSpeech,
     VoiceActivityDetector,
 )
-from code.doda.core.models.event import Event
-from code.doda.core.models.speech import VoiceState
-from code.doda.voice.session import VoiceSession
+from doda.core.models.event import Event
+from doda.core.models.speech import VoiceState
+from doda.voice.session import VoiceSession
 
 _SOURCE = "voice"
 _T = TypeVar("_T")

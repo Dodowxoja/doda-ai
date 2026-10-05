@@ -15,7 +15,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass, field
 from typing import Any
 
-from code.doda.core.models.event import Event
+from doda.core.models.event import Event
 
 
 @dataclass(frozen=True, slots=True)

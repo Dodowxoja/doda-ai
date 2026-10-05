@@ -9,18 +9,18 @@ from __future__ import annotations
 
 import sys
 
-from code.doda.config import VoiceSettings
-from code.doda.core.errors import ConfigError
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.interfaces.secrets import SecretStore
-from code.doda.core.interfaces.voice import (
+from doda.config import VoiceSettings
+from doda.core.errors import ConfigError
+from doda.core.interfaces.observability import Observability
+from doda.core.interfaces.secrets import SecretStore
+from doda.core.interfaces.voice import (
     AudioInput,
     AudioOutput,
     SpeechToText,
     TextToSpeech,
     VoiceActivityDetector,
 )
-from code.doda.providers.voice.audio import (
+from doda.providers.voice.audio import (
     FakeAudioInput,
     FakeAudioOutput,
     LinuxPlayer,
@@ -30,10 +30,10 @@ from code.doda.providers.voice.audio import (
     WindowsPlayer,
     WindowsRecorder,
 )
-from code.doda.providers.voice.stt import ElevenLabsSTT, FakeSTT, WhisperSTT
-from code.doda.providers.voice.stt.elevenlabs import UNCERTAIN_LANGUAGES
-from code.doda.providers.voice.tts import EdgeTTS, ElevenLabsTTS, FakeTTS
-from code.doda.providers.voice.vad import EnergyVAD, FakeVAD, SileroVAD
+from doda.providers.voice.stt import ElevenLabsSTT, FakeSTT, WhisperSTT
+from doda.providers.voice.stt.elevenlabs import UNCERTAIN_LANGUAGES
+from doda.providers.voice.tts import EdgeTTS, ElevenLabsTTS, FakeTTS
+from doda.providers.voice.vad import EnergyVAD, FakeVAD, SileroVAD
 
 _STT_KEY = "speech.stt.key"
 _TTS_KEY = "speech.tts.key"

@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.models.llm import LLMRequest, Message, Role
-from code.doda.core.models.plan import Plan, PlanStep
-from code.doda.planning.parsing import extract_json_array
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.models.llm import LLMRequest, Message, Role
+from doda.core.models.plan import Plan, PlanStep
+from doda.planning.parsing import extract_json_array
 
 _SYSTEM = (
     "Sen rejalashtiruvchisan. Foydalanuvchi maqsadini ketma-ket bajariladigan aniq "

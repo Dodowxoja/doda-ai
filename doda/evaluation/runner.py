@@ -8,12 +8,12 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from code.doda.core.interfaces.agent import Agent
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.evaluation import Evaluator
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.models.evaluation import EvalCase, EvalReport, EvalResult
-from code.doda.core.models.event import Event
+from doda.core.interfaces.agent import Agent
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.evaluation import Evaluator
+from doda.core.interfaces.observability import Observability
+from doda.core.models.evaluation import EvalCase, EvalReport, EvalResult
+from doda.core.models.event import Event
 
 _SOURCE = "evaluation"
 

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from code.doda.planning import LLMVerifier
-from code.doda.providers.llm import FakeLLMProvider
+from doda.planning import LLMVerifier
+from doda.providers.llm import FakeLLMProvider
 
 
 async def test_parses_ok_true() -> None:

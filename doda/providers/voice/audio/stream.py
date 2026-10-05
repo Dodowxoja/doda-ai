@@ -9,8 +9,8 @@ from __future__ import annotations
 
 from collections.abc import AsyncIterator
 
-from code.doda.core.interfaces.voice import AudioInput
-from code.doda.core.models.speech import SpeechChunk
+from doda.core.interfaces.voice import AudioInput
+from doda.core.models.speech import SpeechChunk
 
 
 class FrameStreamAdapter:

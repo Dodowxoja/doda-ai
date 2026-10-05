@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from code.doda.core.models.task import ScheduledTask, TaskStatus
+from doda.core.models.task import ScheduledTask, TaskStatus
 
 
 class InMemoryTaskStore:

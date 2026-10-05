@@ -6,7 +6,7 @@ import dataclasses
 
 import pytest
 
-from code.doda.core.models.llm import (
+from doda.core.models.llm import (
     Capabilities,
     LLMResponse,
     Message,

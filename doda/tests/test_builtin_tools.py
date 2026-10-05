@@ -9,9 +9,9 @@ from typing import Any
 
 import pytest
 
-from code.doda.core.interfaces.tool import Tool
-from code.doda.tests.contracts.tool_contract import ToolContract
-from code.doda.tools import (
+from doda.core.interfaces.tool import Tool
+from doda.tests.contracts.tool_contract import ToolContract
+from doda.tools import (
     ClipboardTool,
     ClockTool,
     FilesTool,
@@ -19,7 +19,7 @@ from code.doda.tools import (
     OpenTool,
     ShellTool,
 )
-from code.doda.tools.runner import CommandResult
+from doda.tools.runner import CommandResult
 
 
 def make_runner(

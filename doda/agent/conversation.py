@@ -6,7 +6,7 @@ Bu 7-qatlamli xotiraning **Conversation** qatlami (vaqtinchalik, RAM'da).
 
 from __future__ import annotations
 
-from code.doda.core.models.llm import Message
+from doda.core.models.llm import Message
 
 
 class Conversation:

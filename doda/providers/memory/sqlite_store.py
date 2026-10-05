@@ -20,7 +20,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from code.doda.core.models.memory import MemoryItem, MemoryType
+from doda.core.models.memory import MemoryItem, MemoryType
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS memories (

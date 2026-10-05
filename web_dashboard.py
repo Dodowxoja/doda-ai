@@ -23,12 +23,12 @@ import http.server
 import urllib.parse
 import socketserver
 
-import code.asistent as asistent
-import code.mac_system as mac_system
-import code.tarmoq as tarmoq
-import code.vision as vision
-import code.ruxsatlar as ruxsatlar   # macOS ruxsatlarini tekshirish
-import code.boshqaruv as boshqaruv   # uzoqdan tap-to-control (sichqoncha/klaviatura)
+import asistent as asistent
+import mac_system as mac_system
+import tarmoq as tarmoq
+import vision as vision
+import ruxsatlar as ruxsatlar   # macOS ruxsatlarini tekshirish
+import boshqaruv as boshqaruv   # uzoqdan tap-to-control (sichqoncha/klaviatura)
 
 PORT = 8765
 _DIR = os.path.dirname(os.path.abspath(__file__))

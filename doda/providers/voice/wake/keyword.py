@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from code.doda.core.interfaces.voice import AudioInput, SpeechToText
+from doda.core.interfaces.voice import AudioInput, SpeechToText
 
 
 class KeywordWakeDetector:

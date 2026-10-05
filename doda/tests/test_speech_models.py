@@ -6,7 +6,7 @@ import dataclasses
 
 import pytest
 
-from code.doda.core.models.speech import (
+from doda.core.models.speech import (
     SpeechChunk,
     SpeechConfig,
     SpeechResult,

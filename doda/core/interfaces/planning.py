@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.plan import Plan, Verdict
+from doda.core.models.plan import Plan, Verdict
 
 
 @runtime_checkable

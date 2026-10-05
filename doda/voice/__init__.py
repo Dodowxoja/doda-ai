@@ -5,9 +5,9 @@ realtime suhbat (barge-in bilan). ``VoiceSession`` — holat-mashina. Konkret ov
 ``doda/providers/voice/`` da; bu qatlam ularni birlashtiradi.
 """
 
-from code.doda.voice.language import detect_language
-from code.doda.voice.pipeline import VoicePipeline
-from code.doda.voice.realtime import RealtimeVoiceSession
-from code.doda.voice.session import VoiceSession
+from doda.voice.language import detect_language
+from doda.voice.pipeline import VoicePipeline
+from doda.voice.realtime import RealtimeVoiceSession
+from doda.voice.session import VoiceSession
 
 __all__ = ["RealtimeVoiceSession", "VoicePipeline", "VoiceSession", "detect_language"]

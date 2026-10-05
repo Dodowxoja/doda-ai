@@ -2,6 +2,6 @@
 
 from __future__ import annotations
 
-from code.doda.providers.observability.basic import BasicObservability
+from doda.providers.observability.basic import BasicObservability
 
 __all__ = ["BasicObservability"]

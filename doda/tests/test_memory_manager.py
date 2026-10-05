@@ -5,9 +5,9 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from pathlib import Path
 
-from code.doda.agent import MemoryManager
-from code.doda.core.models.memory import MemoryItem, MemoryType
-from code.doda.providers.memory import HashingEmbedding, SQLiteMemoryStore
+from doda.agent import MemoryManager
+from doda.core.models.memory import MemoryItem, MemoryType
+from doda.providers.memory import HashingEmbedding, SQLiteMemoryStore
 
 
 def _manager(tmp_path: Path) -> tuple[MemoryManager, SQLiteMemoryStore, HashingEmbedding]:

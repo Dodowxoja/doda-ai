@@ -11,12 +11,12 @@ import base64
 from collections.abc import Mapping
 from typing import Any
 
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.interfaces.perception import VisionProvider
-from code.doda.core.models.event import Event
-from code.doda.core.models.llm import ImageContent, LLMRequest, Message, Role, TextContent
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.interfaces.observability import Observability
+from doda.core.interfaces.perception import VisionProvider
+from doda.core.models.event import Event
+from doda.core.models.llm import ImageContent, LLMRequest, Message, Role, TextContent
 
 _DEFAULT_QUESTION = "Nima ko'ryapsan? Qisqa tasvirlab ber."
 _SOURCE = "vision"

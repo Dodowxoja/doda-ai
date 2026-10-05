@@ -6,10 +6,10 @@ Ma'lumot: buyruq_baza.py + javoblar.py.
 Ishga tushirish:  python3 xlsx_yarat.py
 """
 import openpyxl
-import code.buyruq_baza as b
+import buyruq_baza as b
 
 try:
-    from code.javoblar import JAVOBLAR
+    from javoblar import JAVOBLAR
 except Exception:
     JAVOBLAR = []
 

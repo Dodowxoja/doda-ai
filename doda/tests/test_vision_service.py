@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from code.doda.core.models.event import Event
-from code.doda.core.models.llm import ImageContent, TextContent
-from code.doda.core.models.media import MediaFrame
-from code.doda.perception import VisionService
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.llm import FakeLLMProvider
-from code.doda.providers.vision import FakeVisionProvider
+from doda.core.models.event import Event
+from doda.core.models.llm import ImageContent, TextContent
+from doda.core.models.media import MediaFrame
+from doda.perception import VisionService
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.llm import FakeLLMProvider
+from doda.providers.vision import FakeVisionProvider
 
 
 async def test_describe_returns_llm_text() -> None:

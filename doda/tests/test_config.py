@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from code.doda.config import Settings, default_data_dir
+from doda.config import Settings, default_data_dir
 
 
 def test_defaults() -> None:

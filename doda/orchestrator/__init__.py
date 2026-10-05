@@ -4,7 +4,7 @@
 agentga uzatadi. v1.0 da bitta "main" agent; yangi agentlar interfeys orqali qo'shiladi.
 """
 
-from code.doda.orchestrator.orchestrator import Orchestrator
-from code.doda.orchestrator.router import KeywordRouter
+from doda.orchestrator.orchestrator import Orchestrator
+from doda.orchestrator.router import KeywordRouter
 
 __all__ = ["KeywordRouter", "Orchestrator"]

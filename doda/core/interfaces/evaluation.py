@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.evaluation import EvalCase, EvalResult
+from doda.core.models.evaluation import EvalCase, EvalResult
 
 
 @runtime_checkable

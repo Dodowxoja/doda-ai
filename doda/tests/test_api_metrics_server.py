@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from code.doda.container import build_container
-from code.doda.core.models.telemetry import SystemStats, TelemetrySnapshot
-from code.doda.interfaces.api import APIServer, MetricsPump
-from code.doda.interfaces.api.server import default_static_dir
+from doda.container import build_container
+from doda.core.models.telemetry import SystemStats, TelemetrySnapshot
+from doda.interfaces.api import APIServer, MetricsPump
+from doda.interfaces.api.server import default_static_dir
 
 
 class FakeTelemetry:
@@ -54,7 +54,7 @@ def test_default_static_dir_has_dashboard() -> None:
 def test_audio_payload_base64_roundtrip() -> None:
     import base64
 
-    from code.doda.interfaces.api.server import audio_payload
+    from doda.interfaces.api.server import audio_payload
 
     payload = audio_payload({"session_id": "s1", "correlation_id": "c1"}, b"MP3-DATA")
     assert payload["session_id"] == "s1"
@@ -63,6 +63,6 @@ def test_audio_payload_base64_roundtrip() -> None:
 
 
 def test_main_module_importable() -> None:
-    import code.doda.interfaces.api.__main__ as entry
+    import doda.interfaces.api.__main__ as entry
 
     assert callable(entry.main)

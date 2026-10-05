@@ -4,16 +4,16 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from code.doda.agent import CognitiveAgent, MemoryManager
-from code.doda.core.interfaces.agent import ToolExecutor
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.models.event import Event
-from code.doda.core.models.llm import LLMResponse, ToolCall, ToolSpec
-from code.doda.core.models.memory import MemoryType
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.llm import FakeLLMProvider
-from code.doda.providers.memory import HashingEmbedding, SQLiteMemoryStore
-from code.doda.providers.observability import BasicObservability
+from doda.agent import CognitiveAgent, MemoryManager
+from doda.core.interfaces.agent import ToolExecutor
+from doda.core.interfaces.bus import EventBus
+from doda.core.models.event import Event
+from doda.core.models.llm import LLMResponse, ToolCall, ToolSpec
+from doda.core.models.memory import MemoryType
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.llm import FakeLLMProvider
+from doda.providers.memory import HashingEmbedding, SQLiteMemoryStore
+from doda.providers.observability import BasicObservability
 
 
 def _memory(tmp_path: Path) -> MemoryManager:

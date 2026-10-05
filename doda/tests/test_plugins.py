@@ -7,12 +7,12 @@ from typing import Any
 
 import pytest
 
-from code.doda.core.interfaces.plugin import PluginContext
-from code.doda.core.models.event import Event
-from code.doda.plugins import DefaultPluginContext, PluginManager
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.observability import BasicObservability
-from code.doda.tools import ToolRegistry
+from doda.core.interfaces.plugin import PluginContext
+from doda.core.models.event import Event
+from doda.plugins import DefaultPluginContext, PluginManager
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.observability import BasicObservability
+from doda.tools import ToolRegistry
 
 
 class _EchoTool:

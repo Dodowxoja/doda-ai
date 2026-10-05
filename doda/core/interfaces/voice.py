@@ -10,7 +10,7 @@ from __future__ import annotations
 from collections.abc import AsyncIterator
 from typing import Protocol, runtime_checkable
 
-from code.doda.core.models.speech import SpeechChunk, SpeechResult
+from doda.core.models.speech import SpeechChunk, SpeechResult
 
 
 @runtime_checkable

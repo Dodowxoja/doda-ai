@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from code.doda.core.models.llm import (
+from doda.core.models.llm import (
     ImageContent,
     LLMRequest,
     Message,
@@ -13,7 +13,7 @@ from code.doda.core.models.llm import (
     ToolResultContent,
     ToolSpec,
 )
-from code.doda.providers.llm.mapping import from_anthropic_response, to_anthropic_params
+from doda.providers.llm.mapping import from_anthropic_response, to_anthropic_params
 
 
 def test_system_role_goes_to_system_param() -> None:

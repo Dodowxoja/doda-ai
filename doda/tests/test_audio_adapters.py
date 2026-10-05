@@ -8,8 +8,8 @@ from typing import Any
 
 import pytest
 
-from code.doda.core.errors import STTError
-from code.doda.providers.voice import (
+from doda.core.errors import STTError
+from doda.providers.voice import (
     LinuxPlayer,
     LinuxRecorder,
     WhisperSTT,

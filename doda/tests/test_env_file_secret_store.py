@@ -7,9 +7,9 @@ from pathlib import Path
 
 import pytest
 
-from code.doda.core.interfaces.secrets import SecretStore
-from code.doda.providers.secrets import EnvFileSecretStore
-from code.doda.tests.contracts.secret_store_contract import SecretStoreContract
+from doda.core.interfaces.secrets import SecretStore
+from doda.providers.secrets import EnvFileSecretStore
+from doda.tests.contracts.secret_store_contract import SecretStoreContract
 
 
 class TestEnvFileSecretStore(SecretStoreContract):

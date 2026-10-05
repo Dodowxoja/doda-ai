@@ -10,11 +10,11 @@ from __future__ import annotations
 from collections.abc import Callable
 from datetime import datetime
 
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.interfaces.telemetry import MetricsReader, SystemSampler
-from code.doda.core.models.event import Event
-from code.doda.core.models.telemetry import TelemetrySnapshot
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.observability import Observability
+from doda.core.interfaces.telemetry import MetricsReader, SystemSampler
+from doda.core.models.event import Event
+from doda.core.models.telemetry import TelemetrySnapshot
 
 _SOURCE = "telemetry"
 _HEALTH_THRESHOLD = 95.0

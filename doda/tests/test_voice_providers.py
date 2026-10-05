@@ -6,13 +6,13 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
-from code.doda.core.interfaces.voice import (
+from doda.core.interfaces.voice import (
     AudioInput,
     AudioOutput,
     SpeechToText,
     TextToSpeech,
 )
-from code.doda.providers.voice import (
+from doda.providers.voice import (
     AfplayOutput,
     EdgeTTS,
     FakeAudioInput,
@@ -22,7 +22,7 @@ from code.doda.providers.voice import (
     FfmpegRecorder,
     WhisperSTT,
 )
-from code.doda.tests.contracts.voice_contracts import (
+from doda.tests.contracts.voice_contracts import (
     AudioInputContract,
     AudioOutputContract,
     STTContract,

@@ -6,10 +6,10 @@ from array import array
 
 import pytest
 
-from code.doda.core.errors import VADError
-from code.doda.core.interfaces.voice import VoiceActivityDetector
-from code.doda.providers.voice.vad import EnergyVAD, FakeVAD, SileroVAD
-from code.doda.tests.contracts.voice_contracts import VADContract
+from doda.core.errors import VADError
+from doda.core.interfaces.voice import VoiceActivityDetector
+from doda.providers.voice.vad import EnergyVAD, FakeVAD, SileroVAD
+from doda.tests.contracts.voice_contracts import VADContract
 
 
 class TestEnergyVADContract(VADContract):

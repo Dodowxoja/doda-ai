@@ -6,7 +6,7 @@ import dataclasses
 
 import pytest
 
-from code.doda.core.models.event import Event
+from doda.core.models.event import Event
 
 
 def test_defaults() -> None:

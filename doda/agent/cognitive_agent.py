@@ -14,14 +14,14 @@ from collections.abc import AsyncIterator, Mapping, Sequence
 from typing import Any
 from uuid import uuid4
 
-from code.doda.agent.conversation import Conversation
-from code.doda.agent.memory_manager import MemoryManager
-from code.doda.core.interfaces.agent import ToolExecutor
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.models.event import Event
-from code.doda.core.models.llm import (
+from doda.agent.conversation import Conversation
+from doda.agent.memory_manager import MemoryManager
+from doda.core.interfaces.agent import ToolExecutor
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.interfaces.observability import Observability
+from doda.core.models.event import Event
+from doda.core.models.llm import (
     LLMRequest,
     LLMResponse,
     Message,
@@ -29,8 +29,8 @@ from code.doda.core.models.llm import (
     ToolResultContent,
     ToolSpec,
 )
-from code.doda.core.models.memory import MemoryType
-from code.doda.core.models.persona import Persona
+from doda.core.models.memory import MemoryType
+from doda.core.models.persona import Persona
 
 _SOURCE = "agent"
 

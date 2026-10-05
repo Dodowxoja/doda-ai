@@ -19,10 +19,10 @@ import datetime as dt
 import edge_tts
 import speech_recognition as sr
 
-from code.buyruq_baza import APPS, SITES, FOLDERS, SEARCH_ENGINES, KOMANDALAR
-import code.buyruq_baza as buyruq_baza
-import code.foydalanuvchi as foydalanuvchi
-import code.mac_system as mac_system  # batareya/CPU/RAM/bufer holati
+from buyruq_baza import APPS, SITES, FOLDERS, SEARCH_ENGINES, KOMANDALAR
+import buyruq_baza as buyruq_baza
+import foydalanuvchi as foydalanuvchi
+import mac_system as mac_system  # batareya/CPU/RAM/bufer holati
 
 # Ovoz jinsi (erkak/ayol) — faylдan yuklanadi, "ayol ovoz"/"erkak ovoz" buyrug'i bilan almashtiriladi
 VOICE_FILE = os.path.expanduser("~/.doda_voice")
@@ -782,7 +782,7 @@ def process_text(message):
 # ===== Suhbat javoblari — javoblar.py faylidan yuklanadi =====
 # asistent.py da buyruq YO'Q: harakatlar -> buyruq_baza.py, suhbat javoblari -> javoblar.py
 try:
-    from code.javoblar import JAVOBLAR
+    from javoblar import JAVOBLAR
 except Exception as _e:
     print("javoblar.py yuklanmadi:", _e)
     JAVOBLAR = []
@@ -889,7 +889,7 @@ def agent_with_claude(user_text):
     asbob bajariladi -> natija Claude'ga qaytadi -> Claude tugatguncha davom etadi.
     (javob_matni, til) qaytaradi.
     """
-    import code.agent_tools as agent_tools
+    import agent_tools as agent_tools
     agent_tools.set_workspace(AGENT_WORKSPACE)
     client = _get_claude()
 
@@ -1958,7 +1958,7 @@ VISION_SYSTEM_PROMPT = (
 
 def _describe_image_claude(image_path, question):
     """Rasmni Claude'ga yuborib, nima ko'rinayotganini o'zbekcha qaytaradi (multimodal)."""
-    from code.vision import image_to_base64
+    from vision import image_to_base64
     data, media_type = image_to_base64(image_path)
     client = _get_claude()
     resp = client.messages.create(
@@ -1990,7 +1990,7 @@ def _vision_question(message):
 
 def _capture_and_see(source, message):
     """source='camera' yoki 'screen': rasm oladi, Claude bilan tushuntiradi."""
-    from code.vision import capture_camera, capture_screen
+    from vision import capture_camera, capture_screen
     if source == "camera":
         say("Kameraga qarayapman.", lang="uz")
         path = capture_camera()
@@ -2031,7 +2031,7 @@ def _extract_person_name(message):
 
 def see_and_remember(message):
     """Kameradan yuzni ism bilan eslab qoladi (lokal face_recognition kutubxonasi kerak)."""
-    from code.vision import capture_camera, remember_face
+    from vision import capture_camera, remember_face
     name = _extract_person_name(message)
     if not name:
         say("Kimni eslab qolay? Ismini ayting.", lang="uz")
@@ -2054,7 +2054,7 @@ def see_and_remember(message):
 
 def see_who(message):
     """Kameradagi odamlarni saqlangan yuzlar bilan taniydi (lokal)."""
-    from code.vision import capture_camera, identify_faces
+    from vision import capture_camera, identify_faces
     path = capture_camera()
     if not path:
         say("Kamerani ocholmadim.", lang="uz")
@@ -2096,7 +2096,7 @@ def _clean_spoken_name(text):
 def meet_and_greet(message=""):
     """Kameradagi odamlarni taniydi (ko'p odam ham). Notanish bo'lsa — DODA o'zini
     tanishtirib, ismini so'raydi va yuzini eslab qoladi. «Yonimда yangi odam» stsenariysi."""
-    from code.vision import capture_camera, identify_faces, remember_face
+    from vision import capture_camera, identify_faces, remember_face
     path = capture_camera()
     if not path:
         say("Kamerani ocholmadim. Kamera ruxsatini tekshiring.", lang="uz")
@@ -2156,7 +2156,7 @@ def remember_me(message=""):
     """«Meni eslab qol» — foydalanuvchining O'Z yuzini ism bilan yodlaydi.
     Ism: xabarda bo'lsa undan («meni eslab qol Bobur»), bo'lmasa saqlangan ismdan
     (~/.doda_user_name), bo'lmasa desktop'да so'raladi."""
-    from code.vision import capture_camera, remember_face
+    from vision import capture_camera, remember_face
     # Xabar oxirida ism bormi? (buyruq so'zlarини olib tashlab qaraymiz)
     cleaned = re.sub(r"(?i)\b(meni|o'zimni|ozimni|mening|yuzimni|yuzim|eslab qol(gin)?|eslab ol|"
                      r"yodla(b ol)?|tanib ol|tani|bu|deb chaqir|запомни|меня)\b", " ", message)
@@ -2240,7 +2240,7 @@ def _teach_after(raw, verbs):
 def _rebuild_rules():
     """Foydalanuvchi javob qo'shgach RULES'ni qayta quradi (yangi javob darhol ishlasin)."""
     global RULES, JAVOBLAR
-    import code.javoblar as _jv
+    import javoblar as _jv
     JAVOBLAR = _jv.load_javoblar()
     RULES = [(_kw, _make_reply(_resp, _lang)) for _kw, _resp, _lang in JAVOBLAR]
 
@@ -2487,7 +2487,7 @@ def _get_vocab():
             for k in kws:
                 v.update(_norm(k).split())
         try:
-            from code.javoblar import JAVOBLAR as _J
+            from javoblar import JAVOBLAR as _J
         except Exception:
             _J = []
         for e in _J:
@@ -2863,7 +2863,7 @@ if __name__ == '__main__':
     _cleanup_temp_files()   # oldingi ishdan qolган vaqtinchalik fayllarni tozalaymiz
     # BUYRUQLAR.md ni har ishga tushganда avtomatik yangilaymiz
     try:
-        import code.royxat_yarat as royxat_yarat
+        import royxat_yarat as royxat_yarat
         royxat_yarat.yarat()
     except Exception as _e:
         print("BUYRUQLAR.md yangilanmadi:", _e)

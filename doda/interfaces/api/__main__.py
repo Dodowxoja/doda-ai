@@ -8,8 +8,8 @@ from __future__ import annotations
 
 import asyncio
 
-from code.doda.container import build_container
-from code.doda.interfaces.api.server import APIServer
+from doda.container import build_container
+from doda.interfaces.api.server import APIServer
 
 
 def main() -> None:  # pragma: no cover

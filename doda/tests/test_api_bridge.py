@@ -5,10 +5,10 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from code.doda.core.models.event import Event
-from code.doda.interfaces.api.bridge import EventBridge
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.observability import BasicObservability
+from doda.core.models.event import Event
+from doda.interfaces.api.bridge import EventBridge
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.observability import BasicObservability
 
 
 class FakeSink:

@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from code.doda.core.errors import ConfigError
-from code.doda.core.interfaces.perception import VisionProvider
-from code.doda.providers.vision.mac_camera import MacCameraProvider
-from code.doda.providers.vision.screen import ScreenCaptureProvider
+from doda.core.errors import ConfigError
+from doda.core.interfaces.perception import VisionProvider
+from doda.providers.vision.mac_camera import MacCameraProvider
+from doda.providers.vision.screen import ScreenCaptureProvider
 
 _UNIMPLEMENTED = frozenset({"usb", "rtsp", "ip"})
 

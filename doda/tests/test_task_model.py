@@ -7,7 +7,7 @@ from datetime import datetime
 
 import pytest
 
-from code.doda.core.models.task import ScheduledTask, TaskStatus
+from doda.core.models.task import ScheduledTask, TaskStatus
 
 
 def test_defaults() -> None:

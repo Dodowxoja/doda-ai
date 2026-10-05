@@ -7,10 +7,10 @@ Ishga tushirish:  python3 royxat_yarat.py
 (asistent.py ham har ishga tushganда buni chaqiradi.)
 """
 import os
-import code.buyruq_baza as b
+import buyruq_baza as b
 
 try:
-    from code.javoblar import JAVOBLAR
+    from javoblar import JAVOBLAR
 except Exception:
     JAVOBLAR = []
 

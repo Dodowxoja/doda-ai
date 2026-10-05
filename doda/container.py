@@ -13,32 +13,32 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 
-from code.doda.agent import CognitiveAgent, MemoryManager
-from code.doda.config import Settings
-from code.doda.core.interfaces.agent import Agent
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.bus import EventBus
-from code.doda.core.interfaces.flags import FeatureFlags
-from code.doda.core.interfaces.llm import LLMProvider
-from code.doda.core.interfaces.observability import Observability
-from code.doda.core.interfaces.secrets import SecretStore
-from code.doda.daemon import DaemonService
-from code.doda.evaluation import EvalRunner, KeywordEvaluator
-from code.doda.orchestrator import KeywordRouter, Orchestrator
-from code.doda.perception import EnvironmentService, VisionService
-from code.doda.planning import LLMPlanner, LLMVerifier, PlanningEngine
-from code.doda.plugins import DefaultPluginContext, PluginManager
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.env import ActiveWindowSensor, ClipboardSensor, ClockSensor
-from code.doda.providers.flags import SettingsFeatureFlags
-from code.doda.providers.llm import build_llm
-from code.doda.providers.memory import HashingEmbedding, SQLiteMemoryStore
-from code.doda.providers.observability import BasicObservability
-from code.doda.providers.scheduler import SQLiteTaskStore
-from code.doda.providers.secrets import EnvFileSecretStore
-from code.doda.providers.telemetry import PsutilSampler
-from code.doda.providers.vision import build_vision_provider
-from code.doda.providers.voice import (
+from doda.agent import CognitiveAgent, MemoryManager
+from doda.config import Settings
+from doda.core.interfaces.agent import Agent
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.bus import EventBus
+from doda.core.interfaces.flags import FeatureFlags
+from doda.core.interfaces.llm import LLMProvider
+from doda.core.interfaces.observability import Observability
+from doda.core.interfaces.secrets import SecretStore
+from doda.daemon import DaemonService
+from doda.evaluation import EvalRunner, KeywordEvaluator
+from doda.orchestrator import KeywordRouter, Orchestrator
+from doda.perception import EnvironmentService, VisionService
+from doda.planning import LLMPlanner, LLMVerifier, PlanningEngine
+from doda.plugins import DefaultPluginContext, PluginManager
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.env import ActiveWindowSensor, ClipboardSensor, ClockSensor
+from doda.providers.flags import SettingsFeatureFlags
+from doda.providers.llm import build_llm
+from doda.providers.memory import HashingEmbedding, SQLiteMemoryStore
+from doda.providers.observability import BasicObservability
+from doda.providers.scheduler import SQLiteTaskStore
+from doda.providers.secrets import EnvFileSecretStore
+from doda.providers.telemetry import PsutilSampler
+from doda.providers.vision import build_vision_provider
+from doda.providers.voice import (
     FrameStreamAdapter,
     KeywordWakeDetector,
     build_audio_input,
@@ -47,10 +47,10 @@ from code.doda.providers.voice import (
     build_tts,
     build_vad,
 )
-from code.doda.scheduler import Scheduler
-from code.doda.telemetry import TelemetryService
-from code.doda.tools import ToolRegistry, build_tool_registry
-from code.doda.voice import RealtimeVoiceSession, VoicePipeline
+from doda.scheduler import Scheduler
+from doda.telemetry import TelemetryService
+from doda.tools import ToolRegistry, build_tool_registry
+from doda.voice import RealtimeVoiceSession, VoicePipeline
 
 _SECRETS_FILENAME = "secrets.json"
 _DB_FILENAME = "doda.db"

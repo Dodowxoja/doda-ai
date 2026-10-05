@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from code.doda.core.models.event import Event
-from code.doda.core.models.plan import Plan, PlanStep, Verdict
-from code.doda.planning import PlanningEngine
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.observability import BasicObservability
+from doda.core.models.event import Event
+from doda.core.models.plan import Plan, PlanStep, Verdict
+from doda.planning import PlanningEngine
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.observability import BasicObservability
 
 
 class FakePlanner:

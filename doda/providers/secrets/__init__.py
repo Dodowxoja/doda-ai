@@ -2,6 +2,6 @@
 
 from __future__ import annotations
 
-from code.doda.providers.secrets.env_file_store import EnvFileSecretStore
+from doda.providers.secrets.env_file_store import EnvFileSecretStore
 
 __all__ = ["EnvFileSecretStore"]

@@ -1,19 +1,19 @@
 """Audio provayderlari — OS-specific mikrofon/karnay + streaming adapter + soxta."""
 
-from code.doda.providers.voice.audio.fake import (
+from doda.providers.voice.audio.fake import (
     FakeAudioInput,
     FakeAudioOutput,
     FakeStreamingAudioInput,
 )
-from code.doda.providers.voice.audio.linux import LinuxPlayer, LinuxRecorder
-from code.doda.providers.voice.audio.macos import (
+from doda.providers.voice.audio.linux import LinuxPlayer, LinuxRecorder
+from doda.providers.voice.audio.macos import (
     AfplayOutput,
     FfmpegRecorder,
     MacPlayer,
     MacRecorder,
 )
-from code.doda.providers.voice.audio.stream import FrameStreamAdapter
-from code.doda.providers.voice.audio.windows import WindowsPlayer, WindowsRecorder
+from doda.providers.voice.audio.stream import FrameStreamAdapter
+from doda.providers.voice.audio.windows import WindowsPlayer, WindowsRecorder
 
 __all__ = [
     "AfplayOutput",

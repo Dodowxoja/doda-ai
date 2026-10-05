@@ -6,11 +6,11 @@ import logging
 
 import pytest
 
-from code.doda.core.models.event import Event
-from code.doda.perception import EnvironmentService
-from code.doda.providers.bus import AsyncioEventBus
-from code.doda.providers.env import FakeEnvSensor
-from code.doda.providers.observability import BasicObservability
+from doda.core.models.event import Event
+from doda.perception import EnvironmentService
+from doda.providers.bus import AsyncioEventBus
+from doda.providers.env import FakeEnvSensor
+from doda.providers.observability import BasicObservability
 
 
 async def test_snapshot_aggregates_sensors() -> None:

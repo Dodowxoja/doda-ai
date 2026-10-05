@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from code.doda.providers.env.runner import TextRunner, subprocess_text
+from doda.providers.env.runner import TextRunner, subprocess_text
 
 _MAX_CHARS = 500
 
