@@ -1,0 +1,1617 @@
+{
+  "APPS": {
+    "chrome": "Google Chrome",
+    "xrom": "Google Chrome",
+    "hrom": "Google Chrome",
+    "хром": "Google Chrome",
+    "edge": "Microsoft Edge",
+    "эйдж": "Microsoft Edge",
+    "firefox": "Firefox",
+    "фаерфокс": "Firefox",
+    "opera": "Opera",
+    "опера": "Opera",
+    "safari": "Safari",
+    "сафари": "Safari",
+    "brauzer": "Safari",
+    "браузер": "Safari",
+    "telegram": "Telegram",
+    "телеграм": "Telegram",
+    "discord": "Discord",
+    "дискорд": "Discord",
+    "slack": "Slack",
+    "слак": "Slack",
+    "teams": "Microsoft Teams",
+    "тимс": "Microsoft Teams",
+    "zoom": "zoom.us",
+    "зум": "zoom.us",
+    "spotify": "Spotify",
+    "спотифай": "Spotify",
+    "figma": "Figma",
+    "фигма": "Figma",
+    "postman": "Postman",
+    "постман": "Postman",
+    "docker": "Docker",
+    "докер": "Docker",
+    "cursor": "Cursor",
+    "vs code": "Visual Studio Code",
+    "vscode": "Visual Studio Code",
+    "visual studio code": "Visual Studio Code",
+    "vs kod": "Visual Studio Code",
+    "код редактор": "Visual Studio Code",
+    "android studio": "Android Studio",
+    "obs": "OBS",
+    "OBS": "OBS",
+    "Obs": "OBS",
+    "обс": "OBS",
+    "terminal": "Terminal",
+    "терминал": "Terminal",
+    "finder": "Finder",
+    "файндер": "Finder",
+    "calculator": "Calculator",
+    "kalkulyator": "Calculator",
+    "калькулятор": "Calculator",
+    "calendar": "Calendar",
+    "kalendar": "Calendar",
+    "календарь": "Calendar",
+    "notes": "Notes",
+    "eslatma": "Notes",
+    "заметки": "Notes",
+    "settings": "System Settings",
+    "sozlamalar": "System Settings",
+    "настройки": "System Settings",
+    "photos": "Photos",
+    "фото": "Photos",
+    "camera": "Photo Booth",
+    "камера": "Photo Booth",
+    "preview": "Preview",
+    "paint": "Preview",
+    "excel": "Microsoft Excel",
+    "эксель": "Microsoft Excel",
+    "word": "Microsoft Word",
+    "ворд": "Microsoft Word",
+    "powerpoint": "Microsoft PowerPoint",
+    "поверпоинт": "Microsoft PowerPoint",
+    "music": "Music",
+    "musiqa": "Music",
+    "музыка": "Music",
+    "музыку": "Music",
+    "player": "Music",
+    "плеер": "Music"
+  },
+  "SITES": {
+    "google": "https://google.com",
+    "гугл": "https://google.com",
+    "gugl": "https://google.com",
+    "youtube": "https://youtube.com",
+    "ютуб": "https://youtube.com",
+    "yutub": "https://youtube.com",
+    "youtube music": "https://music.youtube.com",
+    "github": "https://github.com",
+    "гитхаб": "https://github.com",
+    "gmail": "https://mail.google.com",
+    "джимейл": "https://mail.google.com",
+    "pochta": "https://mail.google.com",
+    "chatgpt": "https://chat.openai.com",
+    "чатжпт": "https://chat.openai.com",
+    "claude": "https://claude.ai",
+    "клод": "https://claude.ai",
+    "gemini": "https://gemini.google.com",
+    "джемини": "https://gemini.google.com",
+    "stackoverflow": "https://stackoverflow.com",
+    "linkedin": "https://linkedin.com",
+    "линкедин": "https://linkedin.com",
+    "tarjimon": "https://translate.google.com",
+    "переводчик": "https://translate.google.com",
+    "instagram": "https://instagram.com",
+    "инстаграм": "https://instagram.com",
+    "insta": "https://instagram.com",
+    "facebook": "https://facebook.com",
+    "фейсбук": "https://facebook.com",
+    "feysbuk": "https://facebook.com",
+    "tiktok": "https://tiktok.com",
+    "тикток": "https://tiktok.com",
+    "tik tok": "https://tiktok.com",
+    "twitter": "https://twitter.com",
+    "твиттер": "https://twitter.com",
+    "iks": "https://x.com",
+    "telegram web": "https://web.telegram.org",
+    "телеграм веб": "https://web.telegram.org",
+    "whatsapp": "https://web.whatsapp.com",
+    "вотсап": "https://web.whatsapp.com",
+    "vatsap": "https://web.whatsapp.com",
+    "netflix": "https://netflix.com",
+    "нетфликс": "https://netflix.com",
+    "reddit": "https://reddit.com",
+    "реддит": "https://reddit.com",
+    "wikipedia": "https://wikipedia.org",
+    "википедия": "https://wikipedia.org",
+    "vikipediya": "https://wikipedia.org",
+    "spotify web": "https://open.spotify.com",
+    "aliexpress": "https://aliexpress.com",
+    "алиэкспресс": "https://aliexpress.com",
+    "amazon": "https://amazon.com",
+    "амазон": "https://amazon.com",
+    "olx": "https://olx.uz",
+    "uzum": "https://uzum.uz",
+    "узум": "https://uzum.uz"
+  },
+  "FOLDERS": {
+    "desktop": "~/Desktop",
+    "ish stoli": "~/Desktop",
+    "рабочий стол": "~/Desktop",
+    "downloads": "~/Downloads",
+    "download": "~/Downloads",
+    "yuklamalar": "~/Downloads",
+    "daunlods": "~/Downloads",
+    "загрузки": "~/Downloads",
+    "documents": "~/Documents",
+    "document": "~/Documents",
+    "hujjatlar": "~/Documents",
+    "документы": "~/Documents",
+    "pictures": "~/Pictures",
+    "rasmlar": "~/Pictures",
+    "foto": "~/Pictures",
+    "картинки": "~/Pictures",
+    "изображения": "~/Pictures",
+    "videos": "~/Movies",
+    "videolar": "~/Movies",
+    "видео": "~/Movies",
+    "music papka": "~/Music",
+    "musiqalar": "~/Music",
+    "музыка папка": "~/Music",
+    "home": "~",
+    "asosiy papka": "~",
+    "домашняя": "~",
+    "домашнюю": "~",
+    "trash": "~/.Trash",
+    "savatcha": "~/.Trash",
+    "корзина": "~/.Trash",
+    "корзину": "~/.Trash",
+    "projects": "~/Projects",
+    "project": "~/Projects",
+    "loyihalar": "~/Projects",
+    "проекты": "~/Projects",
+    "workspace": "~/workspace"
+  },
+  "SEARCH_ENGINES": {
+    "youtube": "https://www.youtube.com/results?search_query=",
+    "github": "https://github.com/search?q=",
+    "stackoverflow": "https://stackoverflow.com/search?q=",
+    "google": "https://www.google.com/search?q="
+  },
+  "KOMANDALAR": [
+    [
+      [
+        "sms yoz",
+        "sms yubor",
+        "sms jonat",
+        "xabar yoz",
+        "xabar yubor",
+        "смс напиши",
+        "смс отправь",
+        "sms",
+        "смс"
+      ],
+      "sms",
+      null
+    ],
+    [
+      [
+        "qongiroq qil",
+        "qo'ng'iroq qil",
+        "telefon qil",
+        "qongiroq",
+        "video qongiroq",
+        "videochat",
+        "video chat",
+        "позвони",
+        "call",
+        "facetime",
+        "feystaym"
+      ],
+      "call",
+      null
+    ],
+    [
+      [
+        "email yoz",
+        "email yubor",
+        "elektron xat",
+        "имейл",
+        "почту напиши"
+      ],
+      "email",
+      null
+    ],
+    [
+      [
+        "kalendarga qosh",
+        "kalendarga qo'sh",
+        "kalendarga yoz",
+        "tadbir qosh",
+        "uchrashuv qosh",
+        "event qosh",
+        "добавь в календарь"
+      ],
+      "calendar",
+      null
+    ],
+    [
+      [
+        "necha som",
+        "necha somga",
+        "necha mil",
+        "necha km",
+        "necha kilometr",
+        "necha funt",
+        "necha kilogram",
+        "farengeyt",
+        "selsiy",
+        "gradus",
+        "aylantir",
+        "konvert"
+      ],
+      "convert",
+      null
+    ],
+    [
+      [
+        "qayd qil",
+        "qaydga yoz",
+        "note yoz",
+        "notes yoz",
+        "zametka yoz",
+        "запиши"
+      ],
+      "note",
+      null
+    ],
+    [
+      [
+        "ayol ovoz",
+        "ayol ovozida",
+        "ayolcha gapir",
+        "erkak ovoz",
+        "erkak ovozida",
+        "erkakcha gapir",
+        "ovozni ayol",
+        "ovozni erkak",
+        "женский голос",
+        "мужской голос"
+      ],
+      "voice",
+      null
+    ],
+    [
+      [
+        "hissiyot",
+        "ohangda gapir",
+        "ovozda gapir",
+        "hursand gapir",
+        "xursand gapir",
+        "hafa gapir",
+        "xafa gapir",
+        "jahl bilan",
+        "achchiqlanib",
+        "xotirjam gapir",
+        "hayajon bilan",
+        "gamgin gapir",
+        "g'amgin gapir",
+        "oddiy ohang",
+        "hissiyotsiz gapir",
+        "kayfiyat bilan",
+        "с эмоцией",
+        "весёлым голосом",
+        "грустным голосом"
+      ],
+      "emotion",
+      null
+    ],
+    [
+      [
+        "tinglashni toxtat",
+        "tinglashni to'xtat",
+        "eshitishni toxtat",
+        "eshitishni to'xtat",
+        "meni tinglama",
+        "endi tinglama",
+        "перестань слушать",
+        "хватит слушать",
+        "прекрати слушать"
+      ],
+      "listen",
+      "stop"
+    ],
+    [
+      [
+        "tinglashni boshla",
+        "yana tingla",
+        "ovozdan tingla",
+        "meni tingla",
+        "начни слушать",
+        "слушай меня",
+        "продолжай слушать"
+      ],
+      "listen",
+      "start"
+    ],
+    [
+      [
+        "eslatma yarat",
+        "menga eslat",
+        "eslatib qoy",
+        "eslatib qo'y",
+        "eslatib ber",
+        "создай напоминание",
+        "напомни мне",
+        "поставь напоминание"
+      ],
+      "reply",
+      [
+        "Nimani va qachon eslatay? Masalan: 'soat 10 da majlisni eslat' yoki '5 daqiqadan keyin suv ich'.",
+        "Albatta eslataman — vaqtini ayting, masalan 'ertaga soat 9 da eslat'."
+      ]
+    ],
+    [
+      [
+        "nusxa ol",
+        "nusxala",
+        "nusxalab ol",
+        "copy",
+        "kopiya qil",
+        "скопируй",
+        "копировать"
+      ],
+      "screen",
+      "copy"
+    ],
+    [
+      [
+        "joylashtir",
+        "nusxani qoy",
+        "paste",
+        "вставь",
+        "вставить"
+      ],
+      "screen",
+      "paste"
+    ],
+    [
+      [
+        "kesib ol",
+        "kesib olib",
+        "cut",
+        "вырежи"
+      ],
+      "screen",
+      "cut"
+    ],
+    [
+      [
+        "hammasini belgila",
+        "hammasini tanla",
+        "barchasini belgila",
+        "select all",
+        "выдели всё"
+      ],
+      "screen",
+      "select_all"
+    ],
+    [
+      [
+        "bekor qil",
+        "ortga qaytar",
+        "undo",
+        "отмени"
+      ],
+      "screen",
+      "undo"
+    ],
+    [
+      [
+        "qaytar oldingi",
+        "redo",
+        "qayta bajar",
+        "верни"
+      ],
+      "screen",
+      "redo"
+    ],
+    [
+      [
+        "saqla",
+        "saqlab qoy",
+        "save qil",
+        "сохрани"
+      ],
+      "screen",
+      "save"
+    ],
+    [
+      [
+        "sahifada qidir",
+        "matn qidir",
+        "find",
+        "topish oynasi",
+        "найди на странице"
+      ],
+      "screen",
+      "find"
+    ],
+    [
+      [
+        "oynani yop",
+        "bu oynani yop",
+        "закрой окно"
+      ],
+      "screen",
+      "close_window"
+    ],
+    [
+      [
+        "yangi ichki oyna",
+        "yangi tab",
+        "new tab",
+        "новая вкладка"
+      ],
+      "screen",
+      "new_tab"
+    ],
+    [
+      [
+        "yangi oyna",
+        "new window",
+        "новое окно"
+      ],
+      "screen",
+      "new_window"
+    ],
+    [
+      [
+        "oynani yigib qoy",
+        "oynani kichraytir",
+        "minimize",
+        "сверни окно"
+      ],
+      "screen",
+      "minimize"
+    ],
+    [
+      [
+        "ilovani almashtir",
+        "oynalar orasida almash",
+        "boshqa ilovaga ot",
+        "переключи приложение"
+      ],
+      "screen",
+      "switch_app"
+    ],
+    [
+      [
+        "yopilgan oynani qaytar",
+        "oxirgi oynani qaytar",
+        "верни вкладку"
+      ],
+      "screen",
+      "reopen_tab"
+    ],
+    [
+      [
+        "kattalashtir",
+        "zoom kattalashtir",
+        "приблизь",
+        "увеличь масштаб"
+      ],
+      "screen",
+      "zoom_in"
+    ],
+    [
+      [
+        "kichraytir",
+        "zoom kichraytir",
+        "отдали",
+        "уменьши масштаб"
+      ],
+      "screen",
+      "zoom_out"
+    ],
+    [
+      [
+        "pastga scroll",
+        "pastga sur",
+        "pastga tush",
+        "scroll down",
+        "прокрути вниз"
+      ],
+      "screen",
+      "scroll_down"
+    ],
+    [
+      [
+        "yuqoriga scroll",
+        "yuqoriga sur",
+        "tepaga chiq",
+        "scroll up",
+        "прокрути вверх"
+      ],
+      "screen",
+      "scroll_up"
+    ],
+    [
+      [
+        "eng boshiga",
+        "sahifa boshiga",
+        "tepaga qaytar",
+        "в начало страницы"
+      ],
+      "screen",
+      "scroll_top"
+    ],
+    [
+      [
+        "eng oxiriga",
+        "sahifa oxiriga",
+        "pastgacha tush",
+        "в конец страницы"
+      ],
+      "screen",
+      "scroll_bottom"
+    ],
+    [
+      [
+        "enter bos",
+        "enterni bos",
+        "нажми enter"
+      ],
+      "screen",
+      "enter"
+    ],
+    [
+      [
+        "escape bos",
+        "escapeni bos",
+        "esc bos",
+        "нажми escape"
+      ],
+      "screen",
+      "escape"
+    ],
+    [
+      [
+        "orqaga ochir",
+        "backspace bos",
+        "belgini ochir",
+        "нажми backspace"
+      ],
+      "screen",
+      "backspace"
+    ],
+    [
+      [
+        "tab bos",
+        "tabni bos",
+        "нажми tab"
+      ],
+      "screen",
+      "tab_key"
+    ],
+    [
+      [
+        "klaviaturada yoz",
+        "matn yoz",
+        "yozib yubor",
+        "yozib ber",
+        "yozib qoy",
+        "напиши",
+        "печатай"
+      ],
+      "type",
+      null
+    ],
+    [
+      [
+        "kameraga qara",
+        "nima koryapsan",
+        "nimani koryapsan",
+        "atrofimga qara",
+        "atrofda nima",
+        "oldimda nima",
+        "qarab ayt",
+        "korib ayt",
+        "kameradan qara",
+        "buni kor",
+        "bu narsa nima",
+        "posmohna qara",
+        "что ты видишь",
+        "посмотри камерой"
+      ],
+      "vision",
+      "camera"
+    ],
+    [
+      [
+        "ekranda nima",
+        "ekranni kor",
+        "ekranni oqi",
+        "ekranga qara",
+        "ekrandagi",
+        "что на экране",
+        "посмотри на экран"
+      ],
+      "vision",
+      "screen"
+    ],
+    [
+      [
+        "eslab qol bu",
+        "bu odamni eslab",
+        "bu kishini eslab",
+        "yuzini eslab qol",
+        "tanishtiraman",
+        "bu odam",
+        "bu kishi",
+        "запомни этого"
+      ],
+      "vision",
+      "remember"
+    ],
+    [
+      [
+        "meni eslab qol",
+        "o'zimni eslab qol",
+        "ozimni eslab qol",
+        "meni yodlab ol",
+        "meni yodla",
+        "meni tanib ol",
+        "mening yuzimni eslab qol",
+        "meni eslab qolgin",
+        "o'zimni yodla",
+        "запомни меня"
+      ],
+      "vision",
+      "rememberme"
+    ],
+    [
+      [
+        "bu kim",
+        "kim bu",
+        "oldimda kim",
+        "meni tanidingmi",
+        "kimni koryapsan",
+        "yuzimni tani",
+        "кто это",
+        "кто передо мной"
+      ],
+      "vision",
+      "identify"
+    ],
+    [
+      [
+        "atrofda kim",
+        "atrofimda kim",
+        "yonimda kim",
+        "kimlar bor",
+        "odamlarni skanerla",
+        "odamlarni skaner",
+        "yangi odam bilan tanish",
+        "yangi odam",
+        "tanishtir",
+        "tanishaylik",
+        "kim keldi",
+        "meni ko'r",
+        "meni skanerla",
+        "yuzlarni skanerla",
+        "познакомься",
+        "кто рядом"
+      ],
+      "vision",
+      "meet"
+    ],
+    [
+      [
+        "papkalarni yop",
+        "papkalarni yopib",
+        "finder oynalarini yop",
+        "hamma papkani yop",
+        "barcha papkani yop",
+        "finderni yop",
+        "закрой папки"
+      ],
+      "closefolders",
+      null
+    ],
+    [
+      [
+        "papka yarat",
+        "jild yarat",
+        "yangi papka",
+        "papka yasab",
+        "папку создай",
+        "создай папку"
+      ],
+      "makefolder",
+      null
+    ],
+    [
+      [
+        "fayl yarat",
+        "file yarat",
+        "yangi fayl",
+        "fayl yasab",
+        "создай файл",
+        "новый файл"
+      ],
+      "makefile",
+      null
+    ],
+    [
+      [
+        "nima ochiq",
+        "kompyuterda nima",
+        "kompda nima",
+        "qanday ilovalar ochiq",
+        "qanaqa ilovalar ochiq",
+        "ochiq ilovalar",
+        "nima ish qilyapti",
+        "что открыто"
+      ],
+      "status",
+      null
+    ],
+    [
+      [
+        "sistemani tekshir",
+        "tizimni tekshir",
+        "tizim holati",
+        "tizim holatini",
+        "umumiy holat",
+        "kompyuter holatini tekshir",
+        "проверь систему",
+        "состояние системы"
+      ],
+      "syscheck",
+      null
+    ],
+    [
+      [
+        "buferda nima",
+        "buferda nima bor",
+        "buferni oqi",
+        "buferni o'qi",
+        "clipboard",
+        "almashtirish buferi",
+        "bufer matni",
+        "что в буфере",
+        "буфер обмена"
+      ],
+      "clipboard",
+      null
+    ],
+    [
+      [
+        "yopib qoy",
+        "yopib ber",
+        "ni yop",
+        "ilovani yop",
+        "dasturni yop",
+        "zakroy",
+        "закрой"
+      ],
+      "quit",
+      null
+    ],
+    [
+      [
+        "qoshigini qoy",
+        "qoshigini qoyib",
+        "musiqasini qoy",
+        "youtubeда oynat",
+        "youtubeда qoy",
+        "videosini qoy",
+        "qoshiqni oynat"
+      ],
+      "play",
+      null
+    ],
+    [
+      [
+        "musiqani qoy",
+        "musiqa qoy",
+        "qoshiqni qoy",
+        "qoshiq qoy",
+        "play qil",
+        "ijro et",
+        "videoni qoy",
+        "video qoy",
+        "включи музыку",
+        "включи видео",
+        "davom ettir"
+      ],
+      "media",
+      "play"
+    ],
+    [
+      [
+        "musiqani pauza",
+        "pauza qil",
+        "pauza",
+        "toxtatib tur",
+        "videoni pauza",
+        "muzikani pauza",
+        "пауза"
+      ],
+      "media",
+      "pause"
+    ],
+    [
+      [
+        "musiqani toxtat",
+        "ijroni toxtat",
+        "videoni toxtat",
+        "musiqa toxtat",
+        "останови музыку",
+        "останови видео"
+      ],
+      "media",
+      "stop"
+    ],
+    [
+      [
+        "keyingi qoshiq",
+        "keyingi trek",
+        "keyingi",
+        "следующий трек"
+      ],
+      "media",
+      "next"
+    ],
+    [
+      [
+        "oldingi qoshiq",
+        "oldingi trek",
+        "предыдущий трек"
+      ],
+      "media",
+      "previous"
+    ],
+    [
+      [
+        "toliq ekran",
+        "fullscreen",
+        "полный экран",
+        "toliq ekrandan chiq",
+        "выйди из полного"
+      ],
+      "media",
+      "fullscreen"
+    ],
+    [
+      [
+        "aralashtir",
+        "shuffle",
+        "перемешай",
+        "перемешивание"
+      ],
+      "media",
+      "shuffle"
+    ],
+    [
+      [
+        "takrorla",
+        "qoshiqni takrorla",
+        "повтори трек"
+      ],
+      "media",
+      "repeat"
+    ],
+    [
+      [
+        "ekranni qulufla",
+        "ekranni qulfla",
+        "kompyuterni qulfla",
+        "kompyuterni qulufla",
+        "lock screen",
+        "заблокируй"
+      ],
+      "system",
+      "lock"
+    ],
+    [
+      [
+        "uxlat",
+        "uyqu rejim",
+        "sleep mode",
+        "kompyuterni uxlat",
+        "спящий режим",
+        "переведи в сон"
+      ],
+      "system",
+      "sleep"
+    ],
+    [
+      [
+        "restart qil",
+        "qayta ishga tushir",
+        "kompyuterni qayta",
+        "перезагрузи",
+        "reboot"
+      ],
+      "system",
+      "restart"
+    ],
+    [
+      [
+        "kompyuterni ochir",
+        "shutdown qil",
+        "kompyuterni uchir",
+        "выключи компьютер"
+      ],
+      "system",
+      "shutdown"
+    ],
+    [
+      [
+        "wifini yoq",
+        "wifi yoq",
+        "wifi ni yoq",
+        "internetni yoq",
+        "internetni ulash",
+        "включи wifi",
+        "включи интернет"
+      ],
+      "system",
+      "wifi_on"
+    ],
+    [
+      [
+        "wifini ochir",
+        "wifi ochir",
+        "wifi ni ochir",
+        "internetni uz",
+        "internetni ochir",
+        "выключи wifi",
+        "выключи интернет"
+      ],
+      "system",
+      "wifi_off"
+    ],
+    [
+      [
+        "bluetoothni yoq",
+        "bluetooth yoq",
+        "bluetooth ni yoq",
+        "bluetoothni ishga",
+        "включи bluetooth",
+        "включи блютуз"
+      ],
+      "system",
+      "bt_on"
+    ],
+    [
+      [
+        "bluetoothni ochir",
+        "bluetooth ochir",
+        "bluetooth ni ochir",
+        "bluetoothni toxtat",
+        "выключи bluetooth",
+        "выключи блютуз"
+      ],
+      "system",
+      "bt_off"
+    ],
+    [
+      [
+        "yorqinlikni oshir",
+        "ekranni yorqin",
+        "brightnessni oshir",
+        "yorqinlikni kotar",
+        "прибавь яркость",
+        "увеличь яркость"
+      ],
+      "system",
+      "bright_up"
+    ],
+    [
+      [
+        "yorqinlikni pasaytir",
+        "ekranni xira",
+        "brightnessni kamaytir",
+        "убавь яркость",
+        "уменьши яркость"
+      ],
+      "system",
+      "bright_down"
+    ],
+    [
+      [
+        "ovozni ochir",
+        "ovozni butunlay",
+        "ovozsiz",
+        "mute qil",
+        "jim qil",
+        "mediya ovozini ochir",
+        "выключи звук",
+        "без звука"
+      ],
+      "system",
+      "mute"
+    ],
+    [
+      [
+        "ovozni qaytar",
+        "unmute",
+        "mute dan chiqar",
+        "ovozni yoq",
+        "ovozni yoqib",
+        "mediya ovozini yoq",
+        "включи звук"
+      ],
+      "system",
+      "unmute"
+    ],
+    [
+      [
+        "ovozni oshir",
+        "ovozni oshr",
+        "ovozni balandlat",
+        "ovozni kotar",
+        "balandroq qil",
+        "громче",
+        "увеличь громкость"
+      ],
+      "system",
+      "vol_up"
+    ],
+    [
+      [
+        "ovozni pasaytir",
+        "ovozni kamaytir",
+        "ovozni tushir",
+        "pastroq qil",
+        "тише",
+        "уменьши громкость"
+      ],
+      "system",
+      "vol_down"
+    ],
+    [
+      [
+        "skrinshot",
+        "snimok ekrana",
+        "ekranni suratga",
+        "скриншот"
+      ],
+      "system",
+      "screenshot"
+    ],
+    [
+      [
+        "batareya",
+        "batareyani",
+        "quvvat qancha",
+        "zaryad",
+        "батарея"
+      ],
+      "system",
+      "battery"
+    ],
+    [
+      [
+        "protsessor yuklanishi",
+        "cpu holati",
+        "protsessor holati",
+        "процессор"
+      ],
+      "system",
+      "cpu"
+    ],
+    [
+      [
+        "xotira qancha",
+        "ram holati",
+        "xotira holati",
+        "память",
+        "озу"
+      ],
+      "system",
+      "memory"
+    ],
+    [
+      [
+        "internet ishlayaptimi",
+        "internet holati",
+        "internet bormi",
+        "internet tekshir",
+        "интернет работает",
+        "работает интернет",
+        "работает ли интернет",
+        "есть интернет"
+      ],
+      "system",
+      "internet"
+    ],
+    [
+      [
+        "savatchani bosat",
+        "savatni bosat",
+        "trashni bosat",
+        "korzinani ochist",
+        "очисти корзину"
+      ],
+      "system",
+      "emptytrash"
+    ],
+    [
+      [
+        "soat nechi",
+        "soat necha",
+        "vaqtni ayt",
+        "hozir soat",
+        "hozir vaqt",
+        "vaqt",
+        "который час",
+        "сколько времени",
+        "скажи время",
+        "время"
+      ],
+      "time",
+      "time"
+    ],
+    [
+      [
+        "bugun sana",
+        "bugungi sana",
+        "sana nechi",
+        "sana nechchi",
+        "bugun necha",
+        "какое число",
+        "сегодняшняя дата",
+        "сегодня число",
+        "дата сегодня"
+      ],
+      "time",
+      "date"
+    ],
+    [
+      [
+        "bugun qaysi kun",
+        "bugungi kun",
+        "haftaning kuni",
+        "qaysi kun",
+        "какой день",
+        "сегодня день",
+        "день недели"
+      ],
+      "time",
+      "day"
+    ],
+    [
+      [
+        "qaysi oy",
+        "hozir qaysi oy",
+        "какой месяц"
+      ],
+      "time",
+      "month"
+    ],
+    [
+      [
+        "qaysi yil",
+        "hozir qaysi yil",
+        "какой год"
+      ],
+      "time",
+      "year"
+    ],
+    [
+      [
+        "hafta raqami",
+        "nechanchi hafta",
+        "hafta nechanchi",
+        "какая неделя"
+      ],
+      "time",
+      "week"
+    ],
+    [
+      [
+        "timer",
+        "таймер",
+        "daqiqaga",
+        "minutga",
+        "sekundga",
+        "orqaga sanash",
+        "обратный отсчет"
+      ],
+      "timer",
+      null
+    ],
+    [
+      [
+        "sekundomerni yoq",
+        "sekundomer boshla",
+        "запусти секундомер"
+      ],
+      "stopwatch",
+      "start"
+    ],
+    [
+      [
+        "sekundomerni toxtat",
+        "sekundomer toxtat",
+        "останови секундомер"
+      ],
+      "stopwatch",
+      "stop"
+    ],
+    [
+      [
+        "git status",
+        "git holati"
+      ],
+      "dev",
+      "git status"
+    ],
+    [
+      [
+        "git pull",
+        "pull qil",
+        "repositoryni yangila"
+      ],
+      "dev",
+      "git pull"
+    ],
+    [
+      [
+        "git push",
+        "push qil",
+        "ozgarishlarni yubor"
+      ],
+      "dev",
+      "git push"
+    ],
+    [
+      [
+        "git commit",
+        "commit qil",
+        "commit",
+        "сделай commit"
+      ],
+      "dev",
+      "git add -A && git commit -m update"
+    ],
+    [
+      [
+        "git clone",
+        "clone qil",
+        "клонируй",
+        "repositoryni clone"
+      ],
+      "dev",
+      "echo 'git clone <url>'"
+    ],
+    [
+      [
+        "flutter run",
+        "flutterни ishga",
+        "dasturni ishga tushir"
+      ],
+      "dev",
+      "flutter run"
+    ],
+    [
+      [
+        "flutter clean",
+        "loyihani tozala"
+      ],
+      "dev",
+      "flutter clean"
+    ],
+    [
+      [
+        "flutter pub get",
+        "packagelarni yukla",
+        "paketlarni yukla"
+      ],
+      "dev",
+      "flutter pub get"
+    ],
+    [
+      [
+        "apk build",
+        "flutter build apk",
+        "apk yasa"
+      ],
+      "dev",
+      "flutter build apk"
+    ],
+    [
+      [
+        "ios build",
+        "flutter build ios"
+      ],
+      "dev",
+      "flutter build ios"
+    ],
+    [
+      [
+        "npm install",
+        "package ornat",
+        "paket ornat",
+        "kutubxona ornat"
+      ],
+      "dev",
+      "npm install"
+    ],
+    [
+      [
+        "npm run",
+        "npm start"
+      ],
+      "dev",
+      "npm run start"
+    ],
+    [
+      [
+        "pip install",
+        "kutubxona ornat",
+        "paket ornat"
+      ],
+      "dev",
+      "echo 'pip install <paket>'"
+    ],
+    [
+      [
+        "pythonni ishga",
+        "python faylni ishga",
+        "запусти python"
+      ],
+      "dev",
+      "python3 main.py"
+    ],
+    [
+      [
+        "docker start",
+        "dockerni ishga"
+      ],
+      "dev",
+      "docker start"
+    ],
+    [
+      [
+        "dockerni toxtat",
+        "docker stop"
+      ],
+      "dev",
+      "docker stop"
+    ],
+    [
+      [
+        "docker ps",
+        "containerlarni korsat"
+      ],
+      "dev",
+      "docker ps"
+    ],
+    [
+      [
+        "docker compose up",
+        "compose ishga"
+      ],
+      "dev",
+      "docker compose up"
+    ],
+    [
+      [
+        "ob havo",
+        "obhavo",
+        "OB HAVO",
+        "Ob havo",
+        "Ob Havo",
+        "Ob-havo",
+        "погода",
+        "havo qanday"
+      ],
+      "weather",
+      null
+    ],
+    [
+      [
+        "haqida ayt",
+        "haqida malumot",
+        "haqida gapir",
+        "wikipedia",
+        "википедия",
+        "malumot ber",
+        "kim edi",
+        "nima edi",
+        "что такое",
+        "кто такой",
+        "расскажи про"
+      ],
+      "wiki",
+      null
+    ],
+    [
+      [
+        "tarjima qil",
+        "tarjima qilib ber",
+        "tarjima",
+        "перевести",
+        "переведи"
+      ],
+      "translate",
+      null
+    ],
+    [
+      [
+        "dollar kursi",
+        "valyuta kursi",
+        "euro kursi",
+        "rubl kursi",
+        "valyuta",
+        "курс доллара",
+        "курс валют"
+      ],
+      "currency",
+      null
+    ],
+    [
+      [
+        "bitcoin narxi",
+        "bitcoin",
+        "btc narxi",
+        "kripto narxi",
+        "kripto",
+        "efirium narxi",
+        "ethereum narxi",
+        "dogecoin",
+        "биткоин",
+        "крипто"
+      ],
+      "crypto",
+      null
+    ],
+    [
+      [
+        "hisobla",
+        "hisoblab ber",
+        "nechchi boladi",
+        "necha boladi",
+        "сколько будет"
+      ],
+      "math",
+      null
+    ],
+    [
+      [
+        "hijriy sana",
+        "hijriy",
+        "islomiy sana",
+        "musulmoncha sana",
+        "хиджра",
+        "исламская дата"
+      ],
+      "hijri",
+      null
+    ],
+    [
+      [
+        "namoz vaqt",
+        "namoz vaqtlari",
+        "namoz qachon",
+        "peshin qachon",
+        "shom qachon",
+        "bomdod qachon",
+        "xufton qachon",
+        "namaz",
+        "молитва",
+        "время намаза"
+      ],
+      "prayer",
+      null
+    ],
+    [
+      [
+        "yangiliklar",
+        "yangilik ayt",
+        "новости",
+        "yangilik bormi"
+      ],
+      "news",
+      null
+    ],
+    [
+      [
+        "versiya",
+        "qaysi versiya",
+        "версия"
+      ],
+      "reply",
+      [
+        "Men DODA, birinchi versiyaman. Muhammadxo'ja meni doim yangilaydi."
+      ]
+    ],
+    [
+      [
+        "yordam",
+        "nima buyruqlar bor",
+        "buyruqlarni korsat",
+        "помощь"
+      ],
+      "reply",
+      [
+        "Menga 'chrome och', 'musiqa qo'y', 'soat nechi', 'skrinshot ol', 'wifini o'chir' kabi buyruqlar bering. To'liq ro'yxat BUYRUQLAR faylida."
+      ]
+    ],
+    [
+      [
+        "fayl",
+        "файл"
+      ],
+      "reply",
+      [
+        "Fayl amallari uchun avval faylни Finder'да tanlang. Bu imkoniyat keyingi versiyada to'liq bo'ladi."
+      ]
+    ],
+    [
+      [
+        "papkani",
+        "papka yarat",
+        "yangi papka",
+        "создай папку",
+        "удали папку",
+        "создай"
+      ],
+      "reply",
+      [
+        "Papka amallari keyingi versiyada qo'shiladi. Hozircha Finder orqali qiling."
+      ]
+    ],
+    [
+      [
+        "tezlikni oshir",
+        "tezlikni kamaytir",
+        "tezroq qoy",
+        "sekinroq qoy",
+        "tezroq",
+        "sekinroq",
+        "увеличь скорость",
+        "уменьши скорость"
+      ],
+      "reply",
+      [
+        "Ijro tezligini pleyer ichida sozlang. Bu imkoniyat keyingi versiyada bo'ladi."
+      ]
+    ],
+    [
+      [
+        "tilni ozgartir",
+        "tilni ruschaga",
+        "tilni ozbekchaga",
+        "til ozgartir",
+        "смени язык",
+        "поменяй язык"
+      ],
+      "reply",
+      [
+        "Men o'zbek va rus tillarini tushunaman. Qaysi tilda gapirsangiz, o'sha tilda javob beraman."
+      ]
+    ],
+    [
+      [
+        "bugungi rejalar",
+        "ertangi rejalar",
+        "keyingi tadbir",
+        "события",
+        "событие",
+        "следующее",
+        "мероприятия"
+      ],
+      "reply",
+      [
+        "Rejalaringizni ko'rish uchun 'kalendar och' deng — kalendarni ochib beraman."
+      ]
+    ]
+  ]
+}

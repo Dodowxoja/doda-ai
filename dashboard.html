@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DODA</title>
+<style>
+  :root{
+    --bg:#070d0c; --bg2:#0b1413; --glass:rgba(22,34,32,.62); --glass2:rgba(14,24,22,.72);
+    --ink:#eaf4f1; --muted:#8ba39d; --line:rgba(80,120,112,.28);
+    --accent:#2fd6bd; --accent2:#5ff0da; --accent-deep:#12a893; --wash:rgba(47,214,189,.12);
+    --good:#54d38a; --bad:#f0736f; --amber:#f0c05a;
+    --rail:66px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{margin:0;color:var(--ink);overflow:hidden;
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(1100px 700px at 78% -10%, rgba(47,214,189,.16), transparent 60%),
+      radial-gradient(900px 600px at -10% 110%, rgba(47,214,189,.10), transparent 55%),
+      linear-gradient(160deg, var(--bg2), var(--bg));}
+
+  .app{display:grid;grid-template-columns:var(--rail) 1fr;height:100dvh}
+
+  /* ---------- Chap menyu (rail) ---------- */
+  .rail{background:var(--glass2);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    border-right:1px solid var(--line);display:flex;flex-direction:column;gap:4px;
+    padding:10px 8px;overflow-y:auto;overflow-x:hidden}
+  .brand{display:flex;align-items:center;gap:8px;padding:6px 8px 12px;margin-bottom:4px}
+  .brand .logo{width:30px;height:30px;border-radius:9px;flex:none;
+    background:radial-gradient(circle at 32% 28%,var(--accent2),var(--accent-deep) 70%);
+    box-shadow:0 0 16px var(--wash),inset 0 -4px 8px rgba(0,0,0,.3);position:relative}
+  .brand .logo::before,.brand .logo::after{content:"";position:absolute;top:10px;width:5px;height:6px;
+    border-radius:50%;background:#05201c}
+  .brand .logo::before{left:7px}.brand .logo::after{right:7px}
+  .brand .txt{font-weight:800;letter-spacing:.04em;font-size:17px;white-space:nowrap;
+    background:linear-gradient(90deg,var(--accent2),var(--accent));-webkit-background-clip:text;
+    background-clip:text;-webkit-text-fill-color:transparent}
+  .nav{background:none;border:none;color:var(--muted);cursor:pointer;font-family:inherit;
+    display:flex;align-items:center;gap:11px;padding:11px 10px;border-radius:12px;
+    font-size:14.5px;font-weight:600;transition:.16s;white-space:nowrap;width:100%;text-align:left}
+  .nav .ic{font-size:19px;flex:none;width:24px;text-align:center;filter:grayscale(.2)}
+  .nav .lb{opacity:0;width:0;overflow:hidden;transition:.16s}
+  .nav:hover{background:var(--wash);color:var(--ink)}
+  .nav.on{background:linear-gradient(90deg,var(--wash),transparent);color:var(--accent2);
+    box-shadow:inset 3px 0 0 var(--accent)}
+  .nav.on .ic{filter:none}
+  .rail .spacer{flex:1}
+  .mic-dot{width:7px;height:7px;border-radius:50%;background:var(--muted);flex:none;margin-left:auto}
+  .nav.live .mic-dot{background:var(--bad);box-shadow:0 0 8px var(--bad);animation:pulse 1s infinite}
+  @keyframes pulse{50%{opacity:.35}}
+
+  /* Kengroq ekranда menyu yozuvlari ochiladi */
+  @media(min-width:760px){
+    :root{--rail:212px}
+    .nav .lb{opacity:1;width:auto}
+  }
+
+  /* ---------- Asosiy maydon ---------- */
+  .main{position:relative;overflow-y:auto;overflow-x:hidden;padding:20px 18px 40px}
+  .panel{display:none;animation:fade .32s ease}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .ptitle{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);
+    font-weight:700;margin:2px 0 15px;display:flex;align-items:center;gap:8px}
+
+  .card{background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,.28)}
+
+  .btns{display:flex;flex-wrap:wrap;gap:9px}
+  button{background:var(--wash);color:var(--accent2);border:1px solid var(--line);
+    border-radius:12px;padding:11px 16px;font-size:14px;font-weight:700;cursor:pointer;
+    transition:.15s;font-family:inherit}
+  button:hover{background:var(--accent);color:#04211d;border-color:transparent}
+  button:active{transform:translateY(1px)}
+  button:disabled{opacity:.5;cursor:wait}
+  .cmd{display:flex;gap:9px}
+  .cmd input{flex:1;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:12px;
+    padding:12px 15px;color:var(--ink);font-size:15px;font-family:inherit}
+  .cmd input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--wash)}
+  pre{background:rgba(0,0,0,.32);border:1px solid var(--line);border-radius:12px;padding:13px;
+    overflow:auto;max-height:300px;font-size:12.5px;color:var(--muted);white-space:pre-wrap;margin:0;
+    font-family:"SF Mono",Menlo,monospace}
+  .reply{background:var(--wash);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;
+    padding:12px 15px;margin-top:12px;font-size:14.5px;display:none}
+  img.shot{width:100%;border-radius:13px;border:1px solid var(--line);margin-top:12px;display:none}
+  .muted{color:var(--muted);font-size:12.5px}
+  .spin{display:inline-block;width:13px;height:13px;border:2px solid var(--wash);
+    border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+
+  /* ---------- Bosh sahifa: 3D yuz ---------- */
+  .hero{display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding-top:6px;min-height:calc(100dvh - 60px)}
+  .halo{position:relative;width:min(78vw,320px);height:min(78vw,320px);display:flex;
+    align-items:center;justify-content:center;margin-top:4px}
+  .halo::before{content:"";position:absolute;inset:6%;border-radius:50%;
+    background:radial-gradient(circle,var(--wash),transparent 68%);filter:blur(8px);
+    animation:breathe 5s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.08);opacity:.8}}
+  .avatar-frame{width:100%;height:100%;border:0;background:transparent;display:block;position:relative;z-index:1}
+  .ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line);
+    box-shadow:0 0 60px -12px var(--accent) inset;pointer-events:none}
+  .hello{font-size:22px;font-weight:800;margin:14px 0 3px;letter-spacing:-.01em}
+  .status-line{color:var(--muted);font-size:13.5px;min-height:20px;margin-bottom:16px}
+  .voice-cta{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:40px;
+    font-size:15px;font-weight:700;background:linear-gradient(90deg,var(--accent-deep),var(--accent));
+    color:#042420;border:none;box-shadow:0 8px 24px -6px var(--accent)}
+  .voice-cta.live{background:linear-gradient(90deg,#c0453f,#f0736f);color:#fff;
+    box-shadow:0 8px 24px -6px var(--bad);animation:pulse 1.1s infinite}
+
+  .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;width:100%;max-width:440px;margin-top:22px}
+  @media(min-width:560px){.tiles{grid-template-columns:repeat(4,1fr)}}
+  .tile{background:var(--glass);border:1px solid var(--line);border-radius:15px;padding:14px;text-align:left}
+  .tile .l{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .tile .v{font-size:21px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px}
+  .dot.on{background:var(--good);box-shadow:0 0 9px var(--good)}.dot.off{background:var(--bad)}
+  code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:6px;font-size:12px}
+</style>
+</head>
+<body>
+<div id="authgate" style="display:none;position:fixed;inset:0;z-index:99;
+  background:linear-gradient(160deg,#0b1413,#070d0c);color:var(--ink);
+  align-items:center;justify-content:center;text-align:center;padding:30px">
+  <div style="max-width:340px">
+    <div style="font-size:52px;margin-bottom:14px">🔒</div>
+    <div style="font-size:19px;font-weight:800;margin-bottom:10px">Kirish uchun token kerak</div>
+    <div class="muted" style="font-size:14px;line-height:1.6">
+      Xavfsizlik uchun DODA'ni faqat SIZ ocholasiz.<br><br>
+      Telegram botда <b>/app</b> deб yozing va <b>«DODA'ni ochish»</b> tugmasini bosing —
+      shundа token bilan ochiladi.<br><br>
+      <span style="opacity:.7">Yalang'och havola (tokensiz) ataylab bloklanган — havolani bilган
+      begona odam Mac'ingizni boshqara olmasin uchun.</span>
+    </div>
+  </div>
+</div>
+<div class="app">
+  <!-- ============ CHAP MENYU ============ -->
+  <nav class="rail">
+    <div class="brand"><span class="logo"></span><span class="txt">DODA</span></div>
+    <button class="nav on" data-panel="home"><span class="ic">🏠</span><span class="lb">Bosh sahifa</span></button>
+    <button class="nav" data-panel="screen"><span class="ic">🖥</span><span class="lb">Ekran</span></button>
+    <button class="nav" data-panel="camera"><span class="ic">📷</span><span class="lb">Kamera</span></button>
+    <button class="nav" data-panel="control"><span class="ic">🕹</span><span class="lb">Boshqaruv</span></button>
+    <button class="nav" data-panel="command"><span class="ic">💬</span><span class="lb">Buyruq</span></button>
+    <button class="nav" data-panel="network"><span class="ic">📡</span><span class="lb">Tarmoq</span></button>
+    <button class="nav" data-panel="perms"><span class="ic">🔐</span><span class="lb">Ruxsatlar</span></button>
+    <button class="nav" data-panel="logs"><span class="ic">🛠</span><span class="lb">Loglar</span></button>
+    <div class="spacer"></div>
+    <button class="nav" id="nav-voice" onclick="toggleVoice()"><span class="ic">🎤</span><span class="lb">Ovozli rejim</span><span class="mic-dot"></span></button>
+  </nav>
+
+  <!-- ============ ASOSIY MAYDON ============ -->
+  <main class="main">
+
+    <!-- BOSH: 3D yuz -->
+    <section class="panel on" id="p-home">
+      <div class="hero">
+        <div class="halo">
+          <div class="ring"></div>
+          <iframe id="avatar" class="avatar-frame" src="/avatar.html?bg=transparent"
+                  title="DODA" scrolling="no" frameborder="0"></iframe>
+        </div>
+        <div class="hello">Assalomu alaykum 👋</div>
+        <div class="status-line" id="face-status">DODA — tayyor. «Doda» deб gapiring yoki menyudan tanlang.</div>
+        <button class="voice-cta" id="voice-cta" onclick="toggleVoice()">🎤 Gaplashish</button>
+
+        <div class="tiles">
+          <div class="tile"><div class="l">Bot</div><div class="v" id="t-bot">—</div></div>
+          <div class="tile"><div class="l">Batareya</div><div class="v" id="t-batt">—</div></div>
+          <div class="tile"><div class="l">Protsessor</div><div class="v" id="t-cpu">—</div></div>
+          <div class="tile"><div class="l">Xotira</div><div class="v" id="t-ram">—</div></div>
+        </div>
+        <div class="reply" id="reply" style="max-width:440px;width:100%"></div>
+      </div>
+    </section>
+
+    <!-- EKRAN -->
+    <section class="panel" id="p-screen">
+      <div class="ptitle">🖥 Ekran</div>
+      <div class="card">
+        <div class="btns">
+          <button onclick="shot('screen')">🖥 Ekran rasmini ol</button>
+          <button onclick="showPanel('control')">🕹 Boshqarishga o'tish</button>
+        </div>
+        <img class="shot" id="shot" alt="ekran">
+      </div>
+    </section>
+
+    <!-- KAMERA -->
+    <section class="panel" id="p-camera">
+      <div class="ptitle">📷 Kamera</div>
+      <div class="card">
+        <div class="btns"><button onclick="shot('camera')">📷 Suratга ol</button></div>
+        <img class="shot" id="shot-cam" alt="kamera">
+      </div>
+    </section>
+
+    <!-- MASOFAVIY BOSHQARUV -->
+    <section class="panel" id="p-control">
+      <div class="ptitle">🕹 Masofaviy boshqaruv</div>
+      <div class="card">
+        <p class="muted" style="margin:0 0 11px">Ekran rasmiga BOSING — o'sha joyга klik bo'ladi.</p>
+        <div class="btns" style="margin-bottom:11px">
+          <button onclick="rcShot()">🔄 Yangilash</button>
+          <button id="rc-right" onclick="rcToggle('right')">🖱 O'ng klik: off</button>
+          <button id="rc-dbl" onclick="rcToggle('dbl')">⚡️ Ikki klik: off</button>
+          <button onclick="rcScroll('up')">⬆️</button>
+          <button onclick="rcScroll('down')">⬇️</button>
+          <button onclick="rcKey('enter')">⏎</button>
+          <button onclick="rcKey('esc')">⎋</button>
+          <button onclick="rcKey('backspace')">⌫</button>
+        </div>
+        <div class="cmd" style="margin-bottom:11px">
+          <input id="rc-type" placeholder="yoziladigan matn..." autocomplete="off">
+          <button onclick="rcType()">⌨️ Yoz</button>
+        </div>
+        <img class="shot" id="rc-img" alt="ekran — bosib boshqaring" style="display:block;cursor:crosshair">
+        <div class="muted" id="rc-msg" style="margin-top:7px"></div>
+      </div>
+    </section>
+
+    <!-- BUYRUQ -->
+    <section class="panel" id="p-command">
+      <div class="ptitle">💬 Buyruq berish</div>
+      <div class="card">
+        <div class="cmd">
+          <input id="cmd" placeholder="masalan: chrome och, soat nechi, ob-havo" autocomplete="off">
+          <button onclick="sendCmd()">▶ Yubor</button>
+        </div>
+        <div class="reply" id="reply2"></div>
+      </div>
+    </section>
+
+    <!-- TARMOQ -->
+    <section class="panel" id="p-network">
+      <div class="ptitle">📡 Uy tarmog'i</div>
+      <div class="card">
+        <div class="btns"><button onclick="loadNet()">📡 Kim ulangan</button></div>
+        <pre id="net" style="margin-top:12px;display:none"></pre>
+      </div>
+    </section>
+
+    <!-- RUXSATLAR -->
+    <section class="panel" id="p-perms">
+      <div class="ptitle">🔐 macOS ruxsatlari</div>
+      <div class="card">
+        <div class="btns"><button onclick="loadPerms()">🔐 Tekshirish</button></div>
+        <div id="perms" style="margin-top:12px;display:none"></div>
+      </div>
+    </section>
+
+    <!-- LOGLAR -->
+    <section class="panel" id="p-logs">
+      <div class="ptitle">🛠 Xatolar jurnali</div>
+      <div class="card">
+        <div class="btns"><button onclick="loadLogs()">📋 Ko'rsat</button></div>
+        <pre id="logs" style="margin-top:12px;display:none"></pre>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+
+/* ---------- Auth (Telegram initData + maxfiy token) ---------- */
+const TG = window.Telegram && window.Telegram.WebApp;
+const TG_INIT = (TG && TG.initData) ? TG.initData : '';
+if(TG){ try{ TG.ready(); TG.expand(); TG.setHeaderColor && TG.setHeaderColor('#070d0c'); }catch(e){} }
+function tokVal(){ return new URLSearchParams(location.search).get('t') || ''; }
+function apiUrl(path){
+  const t = tokVal();
+  return t ? path + (path.includes('?')?'&':'?') + 't=' + encodeURIComponent(t) : path;
+}
+async function api(path, opts){
+  opts = opts || {};
+  if(TG_INIT) opts.headers = Object.assign({}, opts.headers, {'X-Telegram-Init': TG_INIT});
+  const r = await fetch(apiUrl(path), opts);
+  if(!r.ok) throw new Error(await r.text());
+  return r;
+}
+async function apiJSON(path, opts){ return (await api(path, opts)).json(); }
+function postJSON(path, obj){
+  return api(path, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(obj||{})});
+}
+
+/* ---------- Menyu almashtirish ---------- */
+function showPanel(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  const el = $('p-'+name); if(el) el.classList.add('on');
+  document.querySelectorAll('.nav[data-panel]').forEach(n=>
+    n.classList.toggle('on', n.dataset.panel===name));
+  $('main-scroll') && ($('main-scroll').scrollTop=0);
+  document.querySelector('.main').scrollTop = 0;
+}
+document.querySelectorAll('.nav[data-panel]').forEach(n=>
+  n.addEventListener('click', ()=>showPanel(n.dataset.panel)));
+
+/* ---------- Holat (Mac ma'lumoti) ---------- */
+async function loadStatus(){
+  try{
+    const d = await apiJSON('/api/status');
+    $('authgate').style.display='none';
+    $('t-bot').innerHTML = d.bot ? '<span class="dot on"></span>ishlayapti'
+                                 : '<span class="dot off"></span>o\'chgan';
+    $('t-batt').textContent = d.battery_pct ? d.battery_pct+'%' : '—';
+    $('t-cpu').textContent  = d.cpu ? d.cpu+'%' : '—';
+    $('t-ram').textContent  = d.ram ? d.ram.split(' ')[0] : '—';
+  }catch(e){
+    // Token/auth yo'q -> aniq xabar (jim xato o'rniga)
+    if(/Ruxsat|403/i.test(e.message)) $('authgate').style.display='flex';
+    $('t-bot').innerHTML='<span class="dot off"></span>xato';
+  }
+}
+
+/* ---------- Ekran / kamera ---------- */
+async function shot(kind){
+  const img = kind==='camera' ? $('shot-cam') : $('shot');
+  img.style.display='block'; img.alt='olinyapti...'; img.removeAttribute('src');
+  try{
+    const r = await api('/api/'+(kind==='camera'?'camera':'screenshot'));
+    img.src = URL.createObjectURL(await r.blob());
+  }catch(e){ img.style.display='none'; alert('Olinmadi: '+e.message); }
+}
+
+/* ---------- Buyruq (ovoz javobi bilan) ---------- */
+async function runCmd(text, replyBox){
+  if(!text) return;
+  const box = replyBox || $('reply');
+  box.style.display='block'; box.innerHTML='<span class="spin"></span> bajarilyapti...';
+  faceState('thinking','DODA bajaryapti…');
+  try{
+    const d = await apiJSON('/api/command', {method:'POST',
+      headers:{'Content-Type':'application/json'}, body:JSON.stringify({text})});
+    box.textContent = d.reply || '(javob yo\'q)';
+    speak(d.reply || '');
+    setTimeout(loadStatus, 700);
+  }catch(e){ box.textContent='Xato: '+e.message; faceState('idle'); }
+}
+function sendCmd(){ const t=$('cmd').value.trim(); if(t){ runCmd(t, $('reply2')); $('cmd').value=''; } }
+
+/* ---------- Tarmoq / loglar / ruxsatlar ---------- */
+async function loadNet(){
+  const p=$('net'); p.style.display='block'; p.textContent='skanerlanyapti...';
+  try{ p.textContent=(await apiJSON('/api/network')).summary; }
+  catch(e){ p.textContent='Xato: '+e.message; }
+}
+async function loadLogs(){
+  const p=$('logs'); p.style.display='block'; p.textContent='yuklanyapti...';
+  try{ p.textContent=(await apiJSON('/api/logs')).logs || '✅ Xato yo\'q.'; }
+  catch(e){ p.textContent='Xato: '+e.message; }
+}
+async function loadPerms(){
+  const box=$('perms'); box.style.display='block'; box.innerHTML='<span class="spin"></span> tekshirilyapti...';
+  try{
+    const d = await apiJSON('/api/permissions');
+    let html='';
+    for(const it of d.items){
+      const icon = it.ok===true?'✅':(it.ok===false?'❌':'❓');
+      const hint = it.ok===false?('<div class="muted" style="margin:2px 0 8px 26px">'+it.path+'</div>'):'';
+      html += '<div style="padding:4px 0;font-size:14.5px">'+icon+'  '+it.title+'</div>'+hint;
+    }
+    html += d.all_ok
+      ? '<div class="reply" style="display:block">✅ Barcha ruxsatlar joyida.</div>'
+      : '<div class="muted" style="margin-top:8px">Yoqiladigan ilova:<br><code>'+d.python+'</code><br>Yoqgач botni qayta ishga tushiring.</div>';
+    box.innerHTML = html;
+  }catch(e){ box.textContent='Xato: '+e.message; }
+}
+
+/* ---------- Masofaviy tap-to-control ---------- */
+let rcRight=false, rcDbl=false;
+async function rcShot(){
+  const img=$('rc-img');
+  try{
+    const r=await api('/api/screenshot'); const blob=await r.blob();
+    if(img.dataset.url) URL.revokeObjectURL(img.dataset.url);
+    const u=URL.createObjectURL(blob); img.dataset.url=u; img.src=u;
+  }catch(e){ $('rc-msg').textContent='Ekran olinmadi: '+e.message; }
+}
+function rcToggle(w){
+  if(w==='right'){ rcRight=!rcRight; $('rc-right').textContent='🖱 O\'ng klik: '+(rcRight?'ON':'off'); }
+  else{ rcDbl=!rcDbl; $('rc-dbl').textContent='⚡️ Ikki klik: '+(rcDbl?'ON':'off'); }
+}
+async function rcPost(path,data){
+  try{ await postJSON(path,data); return true; }
+  catch(e){ $('rc-msg').textContent='Xato: '+e.message; return false; }
+}
+$('rc-img').addEventListener('click', async (e)=>{
+  const img=$('rc-img'); const r=img.getBoundingClientRect();
+  const xf=(e.clientX-r.left)/r.width, yf=(e.clientY-r.top)/r.height;
+  $('rc-msg').textContent='klik: '+Math.round(xf*100)+'% , '+Math.round(yf*100)+'%';
+  if(await rcPost('/api/click',{xf,yf,button:rcRight?'right':'left',double:rcDbl})) setTimeout(rcShot,450);
+});
+async function rcType(){ const t=$('rc-type').value; if(!t) return;
+  if(await rcPost('/api/type',{text:t})){ $('rc-type').value=''; setTimeout(rcShot,450); } }
+async function rcKey(k){ if(await rcPost('/api/key',{key:k})) setTimeout(rcShot,450); }
+async function rcScroll(d){ if(await rcPost('/api/scroll',{dir:d,amount:5})) setTimeout(rcShot,450); }
+$('rc-type').addEventListener('keydown',e=>{ if(e.key==='Enter') rcType(); });
+$('cmd').addEventListener('keydown',e=>{ if(e.key==='Enter') sendCmd(); });
+
+/* ---------- Avatar (3D yuz) holati ---------- */
+function avatarMsg(o){ const f=$('avatar');
+  if(f && f.contentWindow) f.contentWindow.postMessage(Object.assign({type:'avatar'},o),'*'); }
+function faceState(state,msg){
+  avatarMsg({state:{talking:'speaking'}[state]||state});
+  if(msg) $('face-status').textContent=msg;
+}
+function faceTalkFor(text){
+  const ms=Math.min(9000,1200+(text||'').length*55);
+  avatarMsg({speakMs:ms}); faceState('speaking','DODA gapiryapti…');
+  clearTimeout(window._ft); window._ft=setTimeout(()=>{ faceState('idle');
+    $('face-status').textContent='DODA — tayyor'; }, ms);
+}
+
+/* ---------- OVOZ: server TTS (haqiqiy uz ovoz) + zaxira brauzer TTS ---------- */
+let _audio=null;
+function speak(text){
+  faceTalkFor(text);
+  if(!text) return;
+  try{
+    if(_audio){ _audio.pause(); _audio=null; }
+    _audio = new Audio(apiUrl('/api/tts?text='+encodeURIComponent(text)));
+    _audio.play().catch(()=>speakBrowser(text));   // avtoplay bloklansa -> brauzer TTS
+  }catch(e){ speakBrowser(text); }
+}
+function speakBrowser(text){
+  if(!('speechSynthesis' in window)||!text) return;
+  try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text);
+    u.lang='uz-UZ'; u.rate=1.0; speechSynthesis.speak(u); }catch(e){}
+}
+
+/* ---------- Ovozli rejim (brauzer mikrofoni «Doda») ---------- */
+let recog=null, voiceOn=false, awaitingCmd=false, cmdTimer=null, voiceLang='uz-UZ';
+const WAKE=['doda','дода','dada','dodo','тода','toda','дадо'];
+function supportsVoice(){ return ('webkitSpeechRecognition' in window)||('SpeechRecognition' in window); }
+function onVoiceResult(e){
+  const res=e.results[e.results.length-1];
+  const txt=(res[0].transcript||'').toLowerCase().trim();
+  $('face-status').textContent='🎧 "'+txt+'"';
+  if(!res.isFinal||!txt) return;
+  if(awaitingCmd){ awaitingCmd=false; clearTimeout(cmdTimer); runCmd(txt,$('reply')); showPanel('home'); return; }
+  const hit=WAKE.find(w=>txt.includes(w));
+  if(!hit) return;
+  const after=txt.split(hit)[1] ? txt.split(hit)[1].trim() : '';
+  if(after.length>=2){ runCmd(after,$('reply')); showPanel('home'); }
+  else{ faceState('listening','Labbay! Buyruq ayting…'); speak('Labbay');
+    awaitingCmd=true; cmdTimer=setTimeout(()=>{awaitingCmd=false; faceState('idle');},8000); }
+}
+function startRecog(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  recog=new SR(); recog.lang=voiceLang; recog.continuous=true; recog.interimResults=true;
+  recog.onresult=onVoiceResult;
+  recog.onerror=(ev)=>{ const er=ev.error||'';
+    if(er==='not-allowed'||er==='service-not-allowed'){ voiceOn=false; setVoiceUI(false);
+      $('face-status').textContent='❌ Mikrofon ruxsati berilmadi'; }
+    else if(er==='language-not-supported'){ voiceLang=voiceLang==='uz-UZ'?'ru-RU':'en-US';
+      $('face-status').textContent='⚠️ «uz» yo\'q, «'+voiceLang+'» ga o\'tdim'; }
+    else if(er==='no-speech'){ $('face-status').textContent='🎤 tinglayapman — «Doda» deng'; }
+  };
+  recog.onend=()=>{ if(voiceOn){ try{recog.start()}catch(e){} } };
+  try{ recog.start(); }catch(e){ $('face-status').textContent='⚠️ '+e.message; }
+}
+function setVoiceUI(on){
+  $('nav-voice').classList.toggle('live',on);
+  const cta=$('voice-cta');
+  cta.classList.toggle('live',on);
+  cta.textContent = on ? '🔴 Tinglayapman — «Doda»' : '🎤 Gaplashish';
+}
+function toggleVoice(){
+  showPanel('home');
+  if(voiceOn){ voiceOn=false; if(recog){try{recog.stop()}catch(e){}} setVoiceUI(false); faceState('idle'); return; }
+  if(!supportsVoice()){ alert('Bu brauzer ovozni qo\'llab-quvvatlamaydi. Chrome (Mac/telefon) ishlating.'); return; }
+  if(!window.isSecureContext){ alert('Mikrofon faqat HTTPS/localhost\'da ishlaydi.'); return; }
+  voiceOn=true; voiceLang='uz-UZ'; setVoiceUI(true);
+  faceState('listening','Ovozli rejim yoqildi — «Doda» deng'); startRecog();
+}
+
+/* ---------- Ishga tushirish ---------- */
+loadStatus(); setInterval(loadStatus,15000);
+</script>
+</body>
+</html>

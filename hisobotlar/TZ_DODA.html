@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<title>DODA — Texnik Topshiriq (TZ)</title>
+<style>
+  body{font-family:"Helvetica Neue",Arial,sans-serif;font-size:12pt;line-height:1.5;color:#111;max-width:850px;margin:0 auto;padding:24px}
+  h1{font-size:24pt;color:#0b5;border-bottom:3px solid #0b5;padding-bottom:8px}
+  h2{font-size:17pt;color:#084;margin-top:26px;border-bottom:1px solid #ccc;padding-bottom:4px}
+  h3{font-size:13pt;color:#063;margin-top:16px}
+  table{border-collapse:collapse;width:100%;margin:10px 0}
+  th,td{border:1px solid #bbb;padding:6px 9px;text-align:left;vertical-align:top;font-size:11pt}
+  th{background:#eafaf1}
+  code{background:#f2f2f2;padding:1px 4px;border-radius:3px;font-family:Menlo,monospace;font-size:10.5pt}
+  .muted{color:#666;font-size:10.5pt}
+  ul{margin:6px 0}
+  li{margin:3px 0}
+  .box{background:#f7fdf9;border-left:4px solid #0b5;padding:8px 12px;margin:10px 0}
+</style>
+</head>
+<body>
+
+<h1>DODA — Texnik Topshiriq (TZ)</h1>
+<p class="muted">Shaxsiy ovozli AI yordamchi · macOS (Apple Silicon M1) · Muallif: Muhammadxo'ja (GitHub: Dodowxoja)<br>
+Hujjat sanasi: 2026-08-03 · Versiya: 1.0</p>
+
+<div class="box">
+<b>Qisqacha:</b> DODA — o'zbek/rus tillarida ishlaydigan shaxsiy ovozli yordamchi va masofaviy kompyuter boshqaruv tizimi. U ovoz va matn orqali buyruqlarni bajaradi, Telegram bot orqali masofadan boshqariladi, kamera/ekranni ko'rsatadi, yuzlarni tanaydi, eslatma/budilnik qo'yadi, hamda AI (Claude) bilan erkin suhbatlashadi.
+</div>
+
+<h2>1. Loyiha maqsadi</h2>
+<ul>
+<li>Foydalanuvchining shaxsiy kompyuterini <b>ovoz</b> (o'zbek/rus) va <b>matn</b> orqali boshqarish.</li>
+<li>Uydan tashqarida ham <b>Telegram bot</b> orqali kompyuterni to'liq boshqarish (ekran, kamera, terminal, fayllar).</li>
+<li>Kundalik yordam: eslatma, budilnik, ob-havo, tarjima, valyuta, namoz vaqtlari, yangiliklar, matematik hisob va h.k.</li>
+<li>AI (Claude) bilan erkin suhbat va kod yozish (agent rejimi).</li>
+<li>Ko'rish: kamera orqali odamlar va narsalarni ko'rish, yuzlarni ism bilan tanish.</li>
+</ul>
+
+<h2>2. Umumiy arxitektura</h2>
+<p>Tizim modulli: buyruq <b>ma'lumotlari</b> (JSON) va <b>dvigatel</b> (Python) ajratilgan. Bir nechta mustaqil jarayon (launchd servislari) 24/7 ishlaydi.</p>
+<table>
+<tr><th>Fayl / Modul</th><th>Vazifasi</th></tr>
+<tr><td><code>asistent.py</code></td><td>Asosiy dvigatel: STT/TTS, buyruq dispetcheri, barcha funksiya-handlerlar, eslatma/budilnik, AI suhbat/agent, ko'rish.</td></tr>
+<tr><td><code>telegram_bot.py</code></td><td>Telegram bot: avtorizatsiya (egasi), buyruqlar, panel, masofaviy boshqaruv, xabar/rasm/video yuborish.</td></tr>
+<tr><td><code>data/buyruqlar.json</code></td><td>Buyruq ma'lumotlari: APPS/SITES/FOLDERS/SEARCH_ENGINES + KOMANDALAR ro'yxati (kalit so'z, tur, argument).</td></tr>
+<tr><td><code>data/javoblar.json</code></td><td>Suhbat javoblari ma'lumotlari (o'zbek/rus: salom, hazil, motivatsiya va h.k.).</td></tr>
+<tr><td><code>buyruq_baza.py</code>, <code>javoblar.py</code></td><td>JSON yuklovchilar (baza + foydalanuvchi qo'shimchalari birlashtiriladi).</td></tr>
+<tr><td><code>foydalanuvchi.py</code></td><td>Ish paytida qo'shilgan buyruqlar/javoblarni saqlash (<code>data/foydalanuvchi.json</code>).</td></tr>
+<tr><td><code>vision.py</code></td><td>Ko'rish: ekran/kamera surati va videosi, yuz tanish (face_recognition).</td></tr>
+<tr><td><code>boshqaruv.py</code></td><td>Uzoqdan tap-to-control: sichqoncha/klaviatura hodisalari (Quartz CGEvent).</td></tr>
+<tr><td><code>ruxsatlar.py</code></td><td>macOS ruxsatlarini tekshirish (Screen Recording, Accessibility, Full Disk, Camera).</td></tr>
+<tr><td><code>tarmoq.py</code></td><td>Uy Wi-Fi tarmog'i monitoringi: ulangan qurilmalar tarixi (faqat uy Wi-Fi'da).</td></tr>
+<tr><td><code>mac_system.py</code></td><td>Tizim holati: batareya, CPU, RAM, clipboard.</td></tr>
+<tr><td><code>web_dashboard.py</code> + <code>dashboard.html</code></td><td>Veb boshqaruv paneli (brauzer/telefon) + Telegram Mini App.</td></tr>
+<tr><td><code>avatar.html</code></td><td>3D point-cloud animatsion avatar (neon ko'k yuz).</td></tr>
+<tr><td><code>menubar.py</code></td><td>macOS menyu-panel ilovasi (🎙️ DODA — holat + tez amallar).</td></tr>
+<tr><td><code>tunnel.py</code></td><td>cloudflared tunnel: dashboardni internetga (HTTPS) chiqaradi (Mini App uchun).</td></tr>
+<tr><td><code>watchdog.py</code></td><td>Bot "tirikligini" kuzatadi; o'lса qayta ishga tushiradi va egaga xabar beradi.</td></tr>
+<tr><td><code>uygotkich.py</code></td><td>Belgilangan vaqtда uyg'otkich: Telegram push + baland ovoz.</td></tr>
+</table>
+
+<h2>3. Funksional talablar</h2>
+
+<h3>3.1. Ovoz kiritish (STT)</h3>
+<ul>
+<li><b>Gibrid tanish:</b> internet bo'lsa Google (<code>uz-UZ</code>, keyin <code>ru-RU</code>); bo'lmasa offline <code>faster-whisper</code> (medium model).</li>
+<li><b>Rejimlar (<code>INPUT_MODE</code>):</b> <code>wake</code> (uyg'otkich so'z), <code>hybrid</code> (ovoz+matn), <code>voice</code>, <code>text</code>.</li>
+<li><b>Wake rejim:</b> jimlikда tinglamaydi; «<b>Doda</b>» eshitsa uyg'onadi va «Labbay» deydi, so'ng buyruqни tinglaydi. Matn kiritish parallel ishlaydi.</li>
+<li>Uzbek tili ustuvor; qisqa gaplarda rus tiliga adashmaslik uchun tartib bo'yicha tanlash.</li>
+<li>Fuzzy avtokorreksiya: STT xatolarини (masalan «batariye»→«batareya») difflib bilan to'g'rilaydi.</li>
+</ul>
+
+<h3>3.2. Ovoz chiqarish (TTS)</h3>
+<ul>
+<li><code>edge-tts</code> + macOS <code>afplay</code> (vaqtinchalik mp3 TMPDIR'ga yoziladi, so'ng o'chiriladi).</li>
+<li>Ovoz jinsi: erkak (Sardor) / ayol (Madina) — «erkak/ayol ovoz» bilan almashtiriladi.</li>
+<li>Emotsiya: hursand/xafa/jahl/tinch — rate/pitch/volume orqali (standart: hursand).</li>
+</ul>
+
+<h3>3.3. Buyruq dvigateli</h3>
+<p>Buyruq <code>handle_massage</code> orqali ketma-ketlikда tekshiriladi:</p>
+<ol>
+<li>O'rgatish (ilova/sayt/papka/javob qo'sh)</li>
+<li>Xayrlashuv (til-sezgir: «xayr» / «пока» → chiqish)</li>
+<li>OTP parol / eslatmalar ro'yxati / bekor qilish</li>
+<li>Ism eslash, takroriy eslatma, eslatma/budilnik</li>
+<li>Telegramга xabar yuborish</li>
+<li><code>try_komanda</code> — KOMANDALAR (media, tizim, vaqt, dev, tarjima, valyuta va h.k.)</li>
+<li><code>try_nlu</code> — ilova/sayt/papka/qidiruv (entity moslash)</li>
+<li>Javoblar (javoblar.json)</li>
+<li>Mos kelmasa — AI suhbat yoki agent (yoqilgan bo'lsa)</li>
+</ol>
+<p class="box"><b>Muhim tamoyil:</b> buyruqlar kodда emas, <code>JSON</code>да saqlanadi. Yangi ilova/sayt qo'shish — bitta qator; yangi <i>tur</i> uchungina kod kerak. 100 000 dan ortiq buyruq variantlari 5–130 ta intentga keltirilgan.</p>
+
+<h3>3.4. Amaliy funksiyalar</h3>
+<table>
+<tr><th>Guruh</th><th>Imkoniyatlar</th></tr>
+<tr><td>Ilova/Sayt/Papka</td><td>Ochish, yopish (quit), qidiruv; noma'lum nomни Google'да ochish.</td></tr>
+<tr><td>Tizim</td><td>Wi-Fi, Bluetooth, yorqinlik, ovoz balandligi, uyqu/qulflash/qayta yuklash, savat, papka/fayl yaratish.</td></tr>
+<tr><td>Media</td><td>Play/pauza/keyingi/oldingi, shuffle/repeat, YouTube'да qo'shiq qidirish.</td></tr>
+<tr><td>Vaqt</td><td>Soat, sana, kun, oy, yil, hafta, taymer, sekundomer.</td></tr>
+<tr><td>Ma'lumot</td><td>Ob-havo (wttr.in), Wikipedia, yangiliklar (Kun.uz RSS), namoz vaqtlari (Aladhan), hijriy sana.</td></tr>
+<tr><td>Hisob</td><td>Matematika, valyuta (open.er-api), kripto (CoinGecko), tarjima (Google), o'lchov konvertatsiyasi.</td></tr>
+<tr><td>Aloqa</td><td>SMS/iMessage (Messages), email (mailto), FaceTime qo'ng'iroq, Telegramda kontaktga xabar.</td></tr>
+<tr><td>Eslatma</td><td>Nisbiy/absolyut vaqt, takroriy (har kuni/ish kunlari), budilnik/uyg'otkich, kalendar hodisasi.</td></tr>
+</table>
+
+<h3>3.5. AI suhbat va agent (Claude API)</h3>
+<ul>
+<li><b>Erkin suhbat:</b> buyruqqa tushmagan gap Claude'ga boradi (<code>CHAT_MODEL</code>, standart: Haiku 4.5 — arzon, tez). Javob tili aniqlanib, o'sha tilда aytiladi. Kontekst saqlanadi.</li>
+<li><b>Agent rejimi:</b> «kod yoz / fayl yarat / loyiha» kabi so'rovlar asboblar bilan bajariladi (<code>agent_tools.py</code>: read/write/edit_file, list_dir, search_code, run_command). Sandbox: <code>~/Code</code>; xavfli buyruqlar denylist bilan bloklanadi.</li>
+<li><b>Kalit xavfsizligi:</b> API kalit KODда saqlanmaydi — <code>ANTHROPIC_API_KEY</code> muhit o'zgaruvchisi yoki <code>~/.doda_claude_key</code> (chmod 600) faylidan o'qiladi.</li>
+</ul>
+
+<h3>3.6. Telegram bot va masofaviy boshqaruv</h3>
+<ul>
+<li><b>Avtorizatsiya (egasi):</b> faqat <b>bitta</b> Telegram ID — «egasi». OTP (6 xonali, bir martalik) bilan kirgan birinchi odam yagona egaga aylanadi; keyin boshqa hech kim (parol bilan ham) kira olmaydi, urinса egaga ogohlantirish keladi.</li>
+<li><b>Buyruq menyusi:</b> /start, /panel, /ekran, /kamera, /holat, /tarmoq, /ruxsat, /app, /buyruqlar, /log.</li>
+<li><b>Masofaviy ko'rish:</b> ekran surati (PNG, tiniq), kamera surati, 5s video.</li>
+<li><b>Terminal:</b> «buyruq bajar …» — tasdiqlash tugmasi bilan (xavfli buyruqларга ⚠️ ogohlantirish).</li>
+<li><b>Avto-skrin:</b> biror narsa ochilса/o'zgarса, avtomatik ekran surati yuboriladi (rasm Mac'да saqlanmaydi).</li>
+<li><b>Tap-to-control:</b> Mini App'да ekran rasmiga bosib klik, yozish, scroll (AnyDesk'ga o'xshash, yarim-jonli).</li>
+<li><b>Xabar/ogohlantirish:</b> xatolar, yangi qurilma, watchdog — egaga Telegram orqali.</li>
+</ul>
+
+<h3>3.7. Ko'rish (Vision)</h3>
+<ul>
+<li>Ekran/kamera surati va 5s video (masofadan ko'rish uchun).</li>
+<li><b>Yuz tanish (lokal, face_recognition/dlib):</b> «eslab qol bu &lt;ism&gt;» — yuzни 128-o'lchovli kod bilan saqlaydi (<code>~/.doda_faces/</code>); «bu kim» — taniydi.</li>
+<li><b>Ko'p odam + tanishish:</b> «atrofда kim bor» — hammasini sanaydi (tanish + notanish); notanish bo'lsa DODA o'zini tanishtirib, ismini so'rab, eslab qoladi.</li>
+<li>«Meni ko'ryapsanmi / rasmimni tashla» — haqiqatan kamerani ochib rasm yuboradi (isbot).</li>
+</ul>
+
+<h3>3.8. Veb dashboard, Mini App va avatar</h3>
+<ul>
+<li><b>Dashboard</b> (<code>http.server</code>, port 8765): holat (batareya/CPU/RAM), ekran/kamera, buyruq, tarmoq, loglar, ruxsatlar, tap-to-control.</li>
+<li><b>Ovozли rejim (brauzer):</b> Web Speech API — «Doda» deб chaqirish (faqat HTTPS/localhost'да ishlaydi).</li>
+<li><b>3D avatar:</b> neon ko'k point-cloud yuz (nafas, pirpirash, gapirish, holatlar: idle/listening/thinking/speaking + emotsiyalar). Yengil (sprite glow, ~32 FPS).</li>
+<li><b>Telegram Mini App:</b> dashboard HTTPS tunnel orqali Telegram ичида ochiladi (initData HMAC autentifikatsiyasi bilan himoyalangan).</li>
+<li><b>Xavfsizlik:</b> maxfiy token (<code>?t=</code> yoki cookie) yoki Telegram imzosi; barcha <code>/api/*</code> himoyalangan.</li>
+</ul>
+
+<h3>3.9. Tarmoq monitoringi (uy Wi-Fi)</h3>
+<ul>
+<li>LAN skaneri (<code>arp -a -n</code>): ulangan qurilmalar (IP/MAC), birinchi/oxirgi ko'rilgan vaqt.</li>
+<li>Faqat <b>uy Wi-Fi</b>'да yozadi (bir nechta SSID: «Doda», «Doda_5G»). Boshqa tarmoqда (ishxona) tarix yozmaydi, xabar bermaydi.</li>
+<li>Yangi qurilma ulanса egaga ogohlantirish (faqat uyда).</li>
+</ul>
+
+<h3>3.10. 24/7 servislar va barqarorlik</h3>
+<table>
+<tr><th>launchd servis</th><th>Vazifasi</th></tr>
+<tr><td>com.doda.bot</td><td>Telegram bot (RunAtLoad + KeepAlive)</td></tr>
+<tr><td>com.doda.dashboard</td><td>Veb dashboard (port 8765)</td></tr>
+<tr><td>com.doda.tunnel</td><td>cloudflared HTTPS tunnel (Mini App uchun)</td></tr>
+<tr><td>com.doda.menubar</td><td>Menyu-panel ilovasi</td></tr>
+<tr><td>com.doda.watchdog</td><td>Bot heartbeat kuzatuvi (StartInterval 120s)</td></tr>
+<tr><td>com.doda.alarm</td><td>Har kuni 07:00 uyg'otkich (StartCalendarInterval)</td></tr>
+</table>
+<ul>
+<li>Watchdog: bot heartbeat (<code>~/.doda_bot_heartbeat</code>) eskirса — botни qayta ishga tushiradi + egaga xabar (Telegram + macOS bildirishnoma).</li>
+<li>Xatolar markaziy jurnalda (<code>logs/.doda_errors.log</code>); tuzalgan xatolar avtomatik tozalanadi; jiddiy xato egaga xabar qilinadi.</li>
+<li>Handler xatolari dasturни qulatmaydi (try/except, «davom etaman»).</li>
+</ul>
+
+<h2>4. Nofunksional talablar</h2>
+<table>
+<tr><th>Talab</th><th>Tavsif</th></tr>
+<tr><td>Platforma</td><td>macOS (Apple Silicon M1, 16GB), Python 3.13.14 (pyenv).</td></tr>
+<tr><td>Tillar</td><td>O'zbek va rus ( inglizcha qisman).</td></tr>
+<tr><td>Ishlash</td><td>Ovoz javob kechikishi past (Haiku, effort past); avatar yengil (~32 FPS).</td></tr>
+<tr><td>Ishonchlilik</td><td>24/7 launchd + watchdog; xatoga chidamli; avtomatik qayta ishga tushish.</td></tr>
+<tr><td>Xavfsizlik</td><td>Egasi-only bot; maxfiy tokenlar fayllarда (chmod 600), kodда emas; xavfli terminal buyruqlari denylist + tasdiqlash.</td></tr>
+<tr><td>Maxfiylik</td><td>Ekran suratlari Mac'да saqlanmaydi (yuboriladi va o'chiriladi); kalitlar chatga yozilmaydi.</td></tr>
+</table>
+
+<h2>5. Texnologiyalar va kutubxonalar</h2>
+<ul>
+<li><b>STT:</b> SpeechRecognition, PyAudio, faster-whisper</li>
+<li><b>TTS:</b> edge-tts + afplay</li>
+<li><b>AI:</b> anthropic (Claude — Haiku/Opus/Sonnet), tool_runner (agent)</li>
+<li><b>Bot:</b> python-telegram-bot 22.8</li>
+<li><b>Ko'rish:</b> dlib, face_recognition, ffmpeg, screencapture</li>
+<li><b>macOS API:</b> pyobjc (Quartz, ApplicationServices, AVFoundation, Cocoa), osascript, rumps (menyu-panel)</li>
+<li><b>Web:</b> Python http.server (Flask'siz), cloudflared (tunnel)</li>
+<li><b>Tarmoq:</b> arp; ma'lumotlar: JSON fayllar</li>
+</ul>
+
+<h2>6. Ma'lumotlar va konfiguratsiya fayllari</h2>
+<table>
+<tr><th>Fayl</th><th>Mazmuni</th></tr>
+<tr><td><code>~/.doda_bot_token</code></td><td>Telegram bot tokeni (chmod 600)</td></tr>
+<tr><td><code>~/.doda_owner_id</code></td><td>Egasining Telegram ID'si (yagona)</td></tr>
+<tr><td><code>~/.doda_bot_users</code></td><td>Avtorizatsiya qilingan chat_id (faqat egasi)</td></tr>
+<tr><td><code>~/.doda_claude_key</code></td><td>Claude API kaliti (chmod 600)</td></tr>
+<tr><td><code>~/.doda_web_token</code></td><td>Dashboard maxfiy tokeni</td></tr>
+<tr><td><code>~/.doda_home_wifi</code></td><td>Uy Wi-Fi nomlari (Doda, Doda_5G)</td></tr>
+<tr><td><code>~/.doda_network.json</code></td><td>Uy tarmog'i qurilmalar tarixi</td></tr>
+<tr><td><code>~/.doda_faces/</code></td><td>Saqlangan yuz kodlari (ism.npy)</td></tr>
+<tr><td><code>~/.doda_reminders.json</code>, <code>~/.doda_recurring.json</code></td><td>Eslatmalar (bir martalik + takroriy)</td></tr>
+<tr><td><code>logs/.doda_errors.log</code></td><td>Markaziy xatolar jurnali</td></tr>
+</table>
+
+<h2>7. Xavfsizlik talablari</h2>
+<ul>
+<li>Botni faqat <b>egasi</b> boshqaradi; begona ID rad etiladi + ogohlantirish.</li>
+<li>Barcha maxfiy kalitlar/tokenlar fayllarда (chmod 600), <b>kodда yoki chatда emas</b>.</li>
+<li>Terminal buyruqlari: sandbox + denylist (<code>rm -rf</code>, <code>sudo</code>, <code>mkfs</code>, fork bomba va h.k.) + har doim tasdiqlash.</li>
+<li>Mini App: Telegram initData HMAC-SHA256 imzosi yoki maxfiy token; anonim kirish yo'q.</li>
+<li>Yuz tanish — lokal (Claude yuzni tanimaydi); faqat foydalanuvchi o'z qurilmasida.</li>
+</ul>
+
+<h2>8. Cheklovlar va kelajak rejalari</h2>
+<ul>
+<li><b>Uzbek offline STT</b> zaif (Whisper cheklovi) — online Google yaxshiroq; kelajakда fine-tune Uzbek model.</li>
+<li><b>Bepul tunnel (trycloudflare)</b> URL'ni tez-tez o'zgartiradi — doimiy Mini App uchun domenli tunnel kerak.</li>
+<li>Brauzer ovozли rejimi faqat HTTPS/localhost'да (LAN http'да mikrofon bloklanadi).</li>
+<li>Rejalar: doimiy tunnel (domen), foto-realistik avatar (WebGL), o'z Uzbek LLM, bank SMS monitoringi.</li>
+</ul>
+
+<hr>
+<p class="muted">© 2026 DODA loyihasi · Muhammadxo'ja. Ushbu hujjat loyiha holatining texnik tavsifi (TZ) hisoblanadi.</p>
+
+</body>
+</html>

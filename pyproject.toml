@@ -1,0 +1,57 @@
+# DODA v2 (doda/ paketi) — build + tool konfiguratsiyasi.
+# Eslatma: barcha asboblar FAQAT doda/ ga yo'naltiriladi (eski v1.0.0 flat-kod tegilmaydi).
+[project]
+name = "doda"
+version = "2.0.0-dev"
+description = "DODA — enterprise personal AI Agent platform (engine)."
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic>=2.7",
+    "pydantic-settings>=2.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "mypy>=1.10", "ruff>=0.5", "black>=24"]
+# Ovoz (STT/TTS/VAD). Yadro bularsiz ham ishlaydi (edge-tts + energy-VAD default; testlar
+# soxta provayderlar bilan). Bu ekstralar real bulutli/neyron provayderlar uchun.
+voice = ["edge-tts>=6", "elevenlabs>=1.0"]
+voice-silero = ["torch>=2.0", "silero-vad>=5.0"]
+
+# ---------------- Black ----------------
+[tool.black]
+line-length = 100
+target-version = ["py313"]
+
+# ---------------- Ruff ----------------
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+src = ["doda"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC", "RUF", "SIM", "TID"]
+# D (docstring) qat'iy — lekin har public a'zoда docstring bor; testlarда yumshoqroq.
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+# B011: assert False testlarda maqsadli. ASYNC240: soxta runnerlar test dublyori,
+# haqiqiy async I/O emas — pathlib chaqiruvlari bu yerda xavfsiz.
+"doda/tests/*" = ["B011", "ASYNC240"]
+
+# ---------------- MyPy (strict) ----------------
+[tool.mypy]
+python_version = "3.13"
+strict = true
+files = ["doda"]
+plugins = ["pydantic.mypy"]
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+no_implicit_reexport = true
+
+# ---------------- Pytest ----------------
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["doda/tests"]
+pythonpath = ["."]

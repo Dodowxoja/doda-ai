@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DODA Avatar</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:transparent}
+  body.dark{background:radial-gradient(ellipse at 50% 45%, #06121f 0%, #020509 72%, #000 100%)}
+  #c{display:block;width:100%;height:100%}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+(function(){
+  const q=new URLSearchParams(location.search);
+  if(q.get('bg')!=='transparent') document.body.classList.add('dark');
+  const cv=document.getElementById('c'), ctx=cv.getContext('2d',{alpha:true});
+  const DPR=Math.min(window.devicePixelRatio||1,1.25);
+  let W=0,H=0;
+  function resize(){ W=cv.clientWidth||280; H=cv.clientHeight||300;
+    cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
+  window.addEventListener('resize',resize);
+
+  // ---- Holatlar (rang + jonlilik) ----
+  const STATES={
+    idle:{hue:205,sat:100,pulse:.6,spin:.10}, listening:{hue:195,sat:100,pulse:1.4,spin:.16},
+    thinking:{hue:270,sat:80,pulse:1.0,spin:.30}, processing:{hue:215,sat:100,pulse:1.2,spin:.40},
+    speaking:{hue:195,sat:100,pulse:1.0,spin:.12}, happy:{hue:170,sat:100,pulse:1.1,spin:.12},
+    success:{hue:150,sat:95,pulse:1.1,spin:.12}, error:{hue:2,sat:90,pulse:1.7,spin:.12},
+    neutral:{hue:205,sat:100,pulse:.6,spin:.10},
+  };
+  let state='idle', cur=Object.assign({},STATES.idle), speakUntil=0;
+  function setState(s){ if(STATES[s]){ state=s; if(s==='speaking') speakUntil=performance.now()+99999; } }
+  window.setAvatarState=setState;
+  window.avatarSpeak=function(ms){ state='speaking'; speakUntil=performance.now()+(ms||1500); };
+  window.addEventListener('message',e=>{ const d=e.data||{};
+    if(d.type==='avatar'){ if(d.speakMs) window.avatarSpeak(d.speakMs); else if(d.state) setState(d.state); } });
+
+  // ---- glow sprite (shadowBlur o'rniga — tez) ----
+  const spr=document.createElement('canvas'), sctx=spr.getContext('2d'); let sprHue=-999;
+  function makeSprite(hue,sat){ const S=16; spr.width=S; spr.height=S;
+    const g=sctx.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);
+    g.addColorStop(0,'hsla('+hue+','+sat+'%,85%,1)');
+    g.addColorStop(.4,'hsla('+hue+','+sat+'%,60%,.5)');
+    g.addColorStop(1,'hsla('+hue+','+sat+'%,50%,0)');
+    sctx.clearRect(0,0,S,S); sctx.fillStyle=g; sctx.fillRect(0,0,S,S); sprHue=hue; }
+
+  // ---- Rasmdan zarrachalarni o'qish ----
+  let PTS=[], ready=false, aspect=1;
+  function sampleImage(img){
+    const iw=img.naturalWidth, ih=img.naturalHeight; aspect=iw/ih;
+    const sw=300, sh=Math.round(sw/aspect);
+    const oc=document.createElement('canvas'); oc.width=sw; oc.height=sh;
+    const octx=oc.getContext('2d'); octx.drawImage(img,0,0,sw,sh);
+    const data=octx.getImageData(0,0,sw,sh).data;
+    // Faqat ANIQ yorug' piksellar (xira shovqinni tashlaymiz -> tozaroq)
+    const bright=[];
+    for(let y=0;y<sh;y++) for(let x=0;x<sw;x++){
+      const i=(y*sw+x)*4, r=data[i],g=data[i+1],b=data[i+2];
+      const lum=Math.max(r,g,b);
+      if(lum>95){ bright.push([x/sw, y/sh, lum/255]); }   // u,v,b  (yuqori bo'sag'a)
+    }
+    function region(u,v){        // 1=ko'z, 2=og'iz, 3=burun, 0=boshqa
+      if(v>0.42&&v<0.50 && ((u>0.30&&u<0.47)||(u>0.53&&u<0.70))) return 1;
+      if(v>0.66&&v<0.75 && u>0.37&&u<0.63) return 2;
+      if(v>0.50&&v<0.66 && u>0.43&&u<0.57) return 3;
+      return 0;
+    }
+    // KAMROQ umumiy nuqta, lekin yorug'/xususiyat joylarга OG'IRLIK beramiz
+    const target=(W*H>240000)?1500:1000;
+    const base=Math.min(1, target/Math.max(1,bright.length));
+    PTS=[];
+    for(const p of bright){
+      const u=p[0], v=p[1], b=p[2];
+      const k=region(u,v);
+      const boost=(k===1?3.0:k===2?2.6:k===3?2.2:1.0);   // ko'z/lab/burun zich
+      // yorug'roq nuqta (b^1.6) va xususiyat joylari ko'proq saqlanadi
+      const prob=base*Math.pow(b,1.6)*boost*1.7;
+      if(Math.random()>prob) continue;
+      PTS.push({x:u-0.5, y:v-0.5, b:b, k, ph:Math.random()*6.28});
+    }
+    ready=true;
+  }
+  const img=new Image();
+  img.onload=()=>sampleImage(img);
+  img.onerror=()=>{ ready=false; };
+  img.src='/avatar_face.png';
+
+  let blinkT=0, nextBlink=performance.now()+2500;
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  let last=0; const FRAME=1000/32;      // ~32fps
+  function loop(now){ requestAnimationFrame(loop); if(now-last<FRAME) return; last=now; render(now); }
+
+  function render(now){
+    const tgt=STATES[state]||STATES.idle;
+    for(const k in tgt) cur[k]=lerp(cur[k],tgt[k],0.06);
+    if(state==='speaking'&&now>speakUntil) state='idle';
+    if(Math.abs(cur.hue-sprHue)>1.2) makeSprite(cur.hue|0,cur.sat|0);
+    ctx.clearRect(0,0,W,H);
+    if(!ready){ return; }
+    ctx.globalCompositeOperation='lighter';
+
+    const t=now/1000;
+    // yuzни kadrga sig'dirish
+    const fit=Math.min(W/ (aspect), H)*0.92;
+    const scale=fit;                       // y bo'yicha
+    const cx=W/2, cy=H*0.5;
+    // jonli mikro-harakatlar
+    const roll=Math.sin(t*cur.spin)*0.05;                 // boshning sekin qiyshayishi
+    const swayX=Math.sin(t*0.6)*W*0.012;
+    const breath=Math.sin(t*1.05)*0.010;                  // nafas (yuqori-past)
+    const cosR=Math.cos(roll), sinR=Math.sin(roll);
+    // ko'z pirpirash
+    if(now>nextBlink){ blinkT=1; nextBlink=now+2000+Math.random()*3500; }
+    blinkT=Math.max(0,blinkT-0.16);
+    const eyeHide=blinkT>0.5;
+    // gapirish
+    let mouth=0;
+    if(state==='speaking') mouth=(Math.sin(t*16)*0.5+0.5)*(Math.sin(t*10)*0.4+0.6);
+    const pulse=0.72+0.28*Math.sin(t*2.2*cur.pulse);
+
+    for(let i=0;i<PTS.length;i++){
+      const p=PTS[i];
+      if(p.k===1 && eyeHide) continue;                    // pirpirash
+      let px=p.x, py=p.y+breath;
+      if(p.k===2){ py+=mouth*0.02; }                      // og'iz sal ochiladi
+      // roll (2D aylanish)
+      const rx=px*cosR - py*sinR, ry=px*sinR + py*cosR;
+      const sx=cx + rx*scale*aspect + swayX;
+      const sy=cy + ry*scale;
+      let r=(0.7 + p.b*p.b*2.4);                          // yorug' nuqta kattaroq, xira kichik -> aniqroq
+      let a=(0.18 + p.b*0.72)*pulse;
+      if(p.k===1) a+=0.20;                                // ko'zlar yorqinroq
+      if(p.k===3) a+=0.10;                                // burun
+      if(p.k===2){ a += 0.12 + mouth*0.25; r+=mouth*0.6; }
+      a *= 0.85+0.15*Math.sin(t*3+p.ph);                  // yengil miltillash
+      ctx.globalAlpha=a<0.05?0.05:(a>1?1:a);
+      ctx.drawImage(spr, sx-r, sy-r, r*2, r*2);
+    }
+    ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
+  }
+
+  resize(); makeSprite(cur.hue|0,cur.sat|0); requestAnimationFrame(loop);
+  if(q.get('demo')==='1'){ const seq=['idle','listening','thinking','processing','speaking','happy','success','error'];
+    let i=0; setInterval(()=>setState(seq[i++%seq.length]),2600); }
+})();
+</script>
+</body>
+</html>

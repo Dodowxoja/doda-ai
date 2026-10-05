@@ -1,0 +1,322 @@
+<title>DODA — arxitektura va ishlash jarayoni</title>
+<style>
+  :root{
+    --paper:#f2f5f4; --card:#ffffff; --card2:#f7faf9; --ink:#161c1b; --muted:#5a6663;
+    --line:#dce3e1; --line-soft:#eaefed;
+    --accent:#0e9c8c; --accent-deep:#0a7a6d; --accent-wash:#e0f1ee;
+    --violet:#7a5bd0; --violet-wash:#ece6fa; --amber:#b7791f; --good:#3c9257;
+    --chip:#eef2f1; --chip-ink:#243330;
+    --shadow:0 1px 2px rgba(20,40,36,.05), 0 10px 26px -16px rgba(20,40,36,.22);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#0d1312; --card:#141c1a; --card2:#0f1716; --ink:#e7edeb; --muted:#8f9d99;
+      --line:#24302d; --line:#233029; --line-soft:#1b2422;
+      --accent:#34c6b3; --accent-deep:#57d6c6; --accent-wash:#0f322d;
+      --violet:#b39ae6; --violet-wash:#241b3a; --amber:#e0a94a; --good:#5cc079;
+      --chip:#182220; --chip-ink:#c5d1ce;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -18px rgba(0,0,0,.65);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#f2f5f4; --card:#ffffff; --card2:#f7faf9; --ink:#161c1b; --muted:#5a6663;
+    --line:#dce3e1; --line-soft:#eaefed; --accent:#0e9c8c; --accent-deep:#0a7a6d;
+    --accent-wash:#e0f1ee; --violet:#7a5bd0; --violet-wash:#ece6fa; --amber:#b7791f;
+    --good:#3c9257; --chip:#eef2f1; --chip-ink:#243330;
+    --shadow:0 1px 2px rgba(20,40,36,.05), 0 10px 26px -16px rgba(20,40,36,.22);
+  }
+  :root[data-theme="dark"]{
+    --paper:#0d1312; --card:#141c1a; --card2:#0f1716; --ink:#e7edeb; --muted:#8f9d99;
+    --line:#233029; --line-soft:#1b2422; --accent:#34c6b3; --accent-deep:#57d6c6;
+    --accent-wash:#0f322d; --violet:#b39ae6; --violet-wash:#241b3a; --amber:#e0a94a;
+    --good:#5cc079; --chip:#182220; --chip-ink:#c5d1ce;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px -18px rgba(0,0,0,.65);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:400 17px/1.65 "Helvetica Neue",-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;}
+  .mono{font-family:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;}
+  .wrap{max-width:900px; margin:0 auto; padding:clamp(20px,5vw,56px) clamp(18px,5vw,40px) 80px;}
+  code{font-family:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace; font-size:.86em;
+       background:var(--chip); color:var(--chip-ink); padding:2px 6px; border-radius:5px;}
+
+  /* Masthead */
+  .mast{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:36px;}
+  .eyebrow{font-size:12.5px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--accent-deep); font-weight:600;}
+  h1{font-size:clamp(30px,5.4vw,48px); line-height:1.07; letter-spacing:-.015em;
+    margin:.34em 0 .3em; text-wrap:balance; font-weight:600;}
+  .dek{color:var(--muted); font-size:18px; max-width:64ch; margin:0;}
+
+  /* Fact tiles */
+  .facts{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+    border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:30px 0 46px;}
+  .fact{background:var(--card); padding:16px 15px;}
+  .fact .n{font-size:24px; font-weight:600; letter-spacing:-.02em; font-variant-numeric:tabular-nums;}
+  .fact .l{font-size:12px; color:var(--muted); margin-top:2px;}
+  @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+
+  section{margin:0 0 52px; scroll-margin-top:20px;}
+  .sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:8px;}
+  .sec-num{font-size:13px; font-weight:600; color:var(--accent-deep);
+    font-variant-numeric:tabular-nums; flex:none;}
+  h2{font-size:25px; font-weight:600; letter-spacing:-.01em; margin:0; text-wrap:balance;}
+  .lead{color:var(--muted); font-size:16px; margin:0 0 22px 30px;}
+  @media (max-width:600px){.lead{margin-left:0}}
+
+  /* Diagram */
+  .diagram{background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:20px; box-shadow:var(--shadow); overflow-x:auto; margin-bottom:14px;}
+  .diagram pre.mermaid{margin:0; text-align:center; min-width:520px;}
+  .cap{font-size:13.5px; color:var(--muted); margin:0 0 22px 4px;}
+
+  /* Module cards */
+  .mods{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+  @media (max-width:680px){.mods{grid-template-columns:1fr}}
+  .mod{background:var(--card); border:1px solid var(--line); border-radius:13px;
+    padding:16px 17px; box-shadow:var(--shadow);}
+  .mod .fn{font-size:14.5px; font-weight:600; color:var(--accent-deep);}
+  .mod .role{font-size:14.5px; margin-top:5px; color:var(--ink);}
+  .mod .role b{font-weight:600;}
+  .badge{display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.05em;
+    text-transform:uppercase; padding:2px 7px; border-radius:5px; margin-left:6px; vertical-align:2px;}
+  .b-engine{background:var(--accent-wash); color:var(--accent-deep);}
+  .b-data{background:var(--violet-wash); color:var(--violet);}
+  .b-iface{background:var(--chip); color:var(--muted);}
+
+  /* Pipeline steps */
+  .pipe{display:flex; flex-direction:column; gap:0; counter-reset:p;
+    border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--card);}
+  .step{display:grid; grid-template-columns:34px 1fr; gap:14px; padding:14px 18px;
+    border-bottom:1px solid var(--line-soft);}
+  .step:last-child{border-bottom:0}
+  .step .k{counter-increment:p; width:26px; height:26px; border-radius:7px; flex:none;
+    display:grid; place-items:center; font-weight:600; font-size:13px;
+    background:var(--accent-wash); color:var(--accent-deep); font-variant-numeric:tabular-nums;}
+  .step .k::before{content:counter(p)}
+  .step .t{font-size:15.5px}
+  .step .t b{font-weight:600}
+  .step .t .d{color:var(--muted); font-size:14px}
+  .step.fallback .k{background:var(--violet-wash); color:var(--violet)}
+
+  /* Tables */
+  .tbl{width:100%; border-collapse:collapse; font-size:14.5px; background:var(--card);
+    border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .tbl-wrap{overflow-x:auto; border-radius:12px; box-shadow:var(--shadow);}
+  .tbl th{text-align:left; font-size:12px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--muted); font-weight:600; padding:11px 14px; background:var(--card2);
+    border-bottom:1px solid var(--line);}
+  .tbl td{padding:11px 14px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+  .tbl tr:last-child td{border-bottom:0}
+  .tbl td:first-child{white-space:nowrap}
+
+  /* Integration groups */
+  .grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+  @media (max-width:680px){.grid2{grid-template-columns:1fr}}
+  .igroup{background:var(--card); border:1px solid var(--line); border-radius:13px; padding:16px 17px;}
+  .igroup h3{font-size:14px; margin:0 0 10px; letter-spacing:.02em;}
+  .igroup h3 .dot{display:inline-block; width:8px; height:8px; border-radius:50%;
+    background:var(--accent); margin-right:7px; vertical-align:1px;}
+  .igroup ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:7px;}
+  .igroup li{font-size:14px; color:var(--ink);}
+  .igroup li span{color:var(--muted);}
+
+  .note{background:var(--accent-wash); border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0; padding:14px 18px; margin-top:18px; font-size:14.5px;}
+  .note.warn{background:color-mix(in srgb,var(--amber) 14%,transparent); border-color:var(--amber);}
+  .note b{font-weight:600}
+
+  footer{margin-top:60px; padding-top:22px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:13.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  /* mermaid theming via CSS vars is limited; wrap gives bg. */
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <div class="eyebrow">DODA · texnik hujjat</div>
+    <h1 class="serif">DODA arxitekturasi va ishlash jarayoni</h1>
+    <p class="dek">Shaxsiy o‘zbek/rus ovozli yordamchi qanday tuzilgan: so‘rovni qanday qabul qiladi, qaysi modullardan iborat, qaysi API’lar bilan gaplashadi, ma’lumotni qayerda saqlaydi va har bir buyruq qadamma-qadam qanday bajariladi.</p>
+  </header>
+
+  <div class="facts">
+    <div class="fact"><div class="n">11</div><div class="l">Python moduli</div></div>
+    <div class="fact"><div class="n">100%</div><div class="l">buyruq qamrovi</div></div>
+    <div class="fact"><div class="n">2</div><div class="l">kirish kanali (ovoz·bot)</div></div>
+    <div class="fact"><div class="n">24/7</div><div class="l">launchd + watchdog</div></div>
+  </div>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="serif">Bir qarashda</h2></div>
+    <p class="lead">DODA — kompyuterda ishlaydigan “miya” (motor) va uni tashqaridan boshqaruvchi Telegram bot. Buyruqlar koddan ajratilgan holda JSON’da, javob esa doim ovoz (desktop) yoki matn (bot).</p>
+    <p style="margin-left:30px; max-width:66ch">Ikki tomondan buyruq keladi — <b>kompyuterdagi mikrofon/klaviatura</b> yoki <b>Telegram bot</b> — lekin ikkalasi ham bitta yadroga (<code>asistent.py</code>) boradi. Yadro buyruqni <b>qatlamma-qatlam</b> tekshirib, mos harakatni topadi va bajaradi. Ma’lumot (buyruqlar, javoblar, eslatmalar, sozlamalar) fayllarda saqlanadi — hech qanday tashqi baza yo‘q.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="serif">So‘rov qanday oqadi</h2></div>
+    <p class="lead">Foydalanuvchi so‘rovi kirishdan javobgacha bo‘lgan yo‘l.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart TD
+    U[Foydalanuvchi] --> IN{Kirish kanali}
+    IN -->|Desktop: mikrofon yoki klaviatura| L[listen]
+    IN -->|Telegram bot| B[on_text / on_voice]
+    L -->|STT: ovoz to matn| H[handle_massage]
+    B --> AUTH[OTP: kirish tekshiruvi]
+    AUTH --> IC[Interceptorlar:<br/>rasm / terminal / tarmoq / eslatma]
+    IC --> PT[process_text]
+    PT --> H
+    H --> D[_dispatch: qatlamli tekshiruv]
+    D -->|mos topildi| A[Harakat bajariladi]
+    A --> OUT[Javob: TTS ovoz yoki bot matni]
+    D -->|mos kelmadi| AC[autocorrect + qayta urinish]
+    AC -->|baribir yo'q| AI[Claude AI yoki tushunmadim]
+    AI --> OUT
+      </pre>
+    </div>
+    <p class="cap">Desktop’da javob ovozga aylanadi (<code>edge-tts</code>); bot’da <code>say()</code> matnni <code>_capture</code> ro‘yxatiga yig‘ib, Telegram’ga matn qaytaradi.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="serif">Qismlar — modullar xaritasi</h2></div>
+    <p class="lead">Tamoyil: <b>motor</b> (mantiq) va <b>data</b> (buyruqlar) qat’iy ajratilgan; <b>interfeys</b> alohida.</p>
+    <div class="mods">
+      <div class="mod"><div class="fn">asistent.py <span class="badge b-engine">motor</span></div>
+        <div class="role">Yadro: STT/TTS, <code>_dispatch</code> quvuri, barcha harakat funksiyalari (ilova ochish, tizim, media, ekran), NLU, eslatma, OTP, buyruq o‘rgatish, masofaviy yordamchilar. <code>process_text()</code> — bot uchun ovozsiz kirish nuqtasi.</div></div>
+      <div class="mod"><div class="fn">buyruq_baza.py <span class="badge b-engine">yuklovchi</span></div>
+        <div class="role">JSON’dan buyruq DATA’sini o‘qiydi: <code>APPS</code>, <code>SITES</code>, <code>FOLDERS</code>, <code>SEARCH_ENGINES</code>, <code>KOMANDALAR</code>. <code>reload()</code> — jonli yangilaydi.</div></div>
+      <div class="mod"><div class="fn">javoblar.py <span class="badge b-engine">yuklovchi</span></div>
+        <div class="role">Suhbat javoblarini JSON’dan yuklaydi (salom, hazil, motivatsiya, o‘zi haqida…). Foydalanuvchi javoblari ustunroq.</div></div>
+      <div class="mod"><div class="fn">foydalanuvchi.py <span class="badge b-data">data</span></div>
+        <div class="role">Ovoz/bot orqali <b>jonli qo‘shilgan</b> buyruqlarni boshqaradi — <code>data/foydalanuvchi.json</code> ga yozadi, bazaviy ustiga qo‘shadi.</div></div>
+      <div class="mod"><div class="fn">data/*.json <span class="badge b-data">baza</span></div>
+        <div class="role"><code>buyruqlar.json</code>, <code>javoblar.json</code>, <code>foydalanuvchi.json</code> — barcha buyruqlar shu yerda, koddan tashqarida.</div></div>
+      <div class="mod"><div class="fn">telegram_bot.py <span class="badge b-iface">interfeys</span></div>
+        <div class="role">24/7 Telegram bot: OTP kirish, ovozli xabar, eslatma, masofaviy boshqaruv, tarmoq, <code>/buyruqlar</code>, <code>/log</code>, xato bildirishnomasi, heartbeat.</div></div>
+      <div class="mod"><div class="fn">vision.py <span class="badge b-engine">motor</span></div>
+        <div class="role">Ekran (<code>screencapture</code>) va kamera (<code>ffmpeg</code>) rasmini oladi; yuz xotira uchun skelet (kutubxona kutmoqda).</div></div>
+      <div class="mod"><div class="fn">tarmoq.py <span class="badge b-engine">motor</span></div>
+        <div class="role">Uy Wi-Fi’sini <code>arp -a -n</code> orqali skanerlaydi, qurilma tarixini <code>~/.doda_network.json</code> ga yozadi, yangisini aniqlaydi.</div></div>
+      <div class="mod"><div class="fn">watchdog.py <span class="badge b-iface">mustaqil</span></div>
+        <div class="role">Botdan alohida (har 120s): heartbeat eskirsa botni qayta yoqadi va egasini Telegram + macOS bildirishnoma orqali ogohlantiradi.</div></div>
+      <div class="mod"><div class="fn">royxat_yarat.py <span class="badge b-iface">yordamchi</span></div>
+        <div class="role"><code>BUYRUQLAR.md</code> hujjatini buyruqlar bazasidan avtomatik yaratadi.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="serif">Yadro quvuri — <span class="mono" style="font-size:.8em">_dispatch</span></h2></div>
+    <p class="lead">Bu — DODA’ning yuragi. Har bir buyruq shu tartibda tekshiriladi; birinchi mos kelgan qatlam bajariladi va to‘xtaydi.</p>
+    <div class="pipe">
+      <div class="step"><div class="k"></div><div class="t"><b>Buyruq o‘rgatish</b> — <span class="d">“ilova/sayt/javob qo‘sh …”, “buyruqni o‘chir”, “qo‘shilgan buyruqlar”. Hammasidan oldin, chalkashmasligi uchun.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Xayrlashuv</b> — <span class="d">“xayr”, “пока”, “dasturdan chiq” → dastur yopiladi (til aniqlanadi).</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>OTP parol</b> — <span class="d">“parol ber” → botga kirish uchun 6 xonali bir martalik kod.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Eslatmalar boshqaruvi</b> — <span class="d">“eslatmalarim”, “eslatmani bekor qil”.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Ism xotira</b> — <span class="d">“mening ismim …”, “men kimman” → <code>~/.doda_user_name</code>.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Takroriy eslatma</b> — <span class="d">“har kuni soat 8 da”, “ish kunlari …” → <code>~/.doda_recurring.json</code>.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Bir martalik eslatma</b> — <span class="d">“2 soatdan keyin …”, “soat 10 da …” (vaqt bo‘lsa).</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b><code>try_komanda</code></b> — <span class="d">JSON’dagi <code>KOMANDALAR</code>: tizim, media, vaqt, ob-havo, tarjima, valyuta, ekran boshqaruvi va h.k.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b><code>try_nlu</code></b> — <span class="d">Niyat aniqlash: ilova/sayt/papka ochish va qidiruv — ko‘rilmagan iboralarni ham tushunadi.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b><code>RULES</code> (javoblar)</b> — <span class="d">Suhbat: salom, hazil, motivatsiya, o‘zi haqida — <code>javoblar.json</code>.</span></div></div>
+      <div class="step fallback"><div class="k"></div><div class="t"><b>Autocorrect + qayta</b> — <span class="d">STT sal xato yozsa (masalan “batariye”→“batareya”) yaqin so‘zga tuzatib qayta uriniladi.</span></div></div>
+      <div class="step fallback"><div class="k"></div><div class="t"><b>Claude AI / “tushunmadim”</b> — <span class="d">Hech biri mos kelmasa: AI suhbat (kredit ochilgach) yoki xushmuomala rad javob.</span></div></div>
+    </div>
+    <div class="note"><b>Nega tartib muhim?</b> Har qatlam <code>True</code> qaytarsa to‘xtaydi. Shuning uchun aniq/xavfli narsalar (o‘rgatish, xayrlashuv) yuqorida, umumiy narsalar (suhbat, AI) pastda turadi — chalkashish bo‘lmaydi.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="serif">Bot tomoni — qo‘shimcha qatlamlar</h2></div>
+    <p class="lead">Telegram’dan kelgan xabar <code>process_text</code> ga borishdan oldin bot maxsus interceptorlardan o‘tkazadi.</p>
+    <div class="pipe">
+      <div class="step"><div class="k"></div><div class="t"><b>Avtorizatsiya (OTP)</b> — <span class="d">Ro‘yxatda bo‘lmagan chat avval 6 xonali parolni yuborishi kerak → <code>~/.doda_bot_users</code>.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Rasm so‘rovi</b> — <span class="d">“ekranni ko‘rsat” / “kamerani ko‘rsat” → <code>vision.py</code> rasm oladi va Telegram’ga <b>foto</b> yuboradi.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Terminal buyrug‘i</b> — <span class="d">“buyruq bajar …” → ✅Bajar/❌Bekor tugmalari bilan <b>tasdiqlashdan keyin</b> shell’da ishlaydi.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Tarmoq so‘rovi</b> — <span class="d">“kim ulandi” → <code>tarmoq.py</code> skaneri natijasi.</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Eslatma</b> — <span class="d">Bot Telegram orqali belgilangan vaqtda xabar yuboradi (fon vazifasi).</span></div></div>
+      <div class="step"><div class="k"></div><div class="t"><b>Qolgani → <code>process_text</code></b> — <span class="d">Yuqoridagilarga tushmasa, xabar yadroga boradi va javob matn bo‘lib qaytadi.</span></div></div>
+    </div>
+    <p style="margin-top:16px">Ovozli xabar (<code>on_voice</code>) esa avval <code>ffmpeg</code> bilan WAV’ga o‘giriladi, STT bilan matnga aylanadi, keyin xuddi matn kabi qayta ishlanadi.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><h2 class="serif">Xotira va bazalar</h2></div>
+    <p class="lead">Tashqi baza yo‘q — hammasi lokal fayllar. Buyruqlar loyihada, holat/sozlamalar uy papkasida.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Fayl</th><th>Nima saqlaydi</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">data/buyruqlar.json</td><td>Bazaviy buyruqlar: ilovalar, saytlar, papkalar, KOMANDALAR</td></tr>
+          <tr><td class="mono">data/javoblar.json</td><td>Suhbat javoblari (uz/ru), kalit so‘z → javob</td></tr>
+          <tr><td class="mono">data/foydalanuvchi.json</td><td>Foydalanuvchi jonli qo‘shgan buyruq va javoblar</td></tr>
+          <tr><td class="mono">~/.doda_bot_token</td><td>Telegram bot tokeni (chmod 600, koddan tashqarida)</td></tr>
+          <tr><td class="mono">~/.doda_bot_users</td><td>Avtorizatsiyadan o‘tgan chat ID’lar</td></tr>
+          <tr><td class="mono">~/.doda_otp</td><td>Bir martalik kirish paroli (ishlatilgach o‘chadi)</td></tr>
+          <tr><td class="mono">~/.doda_reminders.json · _recurring.json</td><td>Bir martalik va takroriy eslatmalar</td></tr>
+          <tr><td class="mono">~/.doda_user_name · _voice · _emotion</td><td>Ism, ovoz jinsi, his-tuyg‘u ohangi</td></tr>
+          <tr><td class="mono">~/.doda_bot_heartbeat</td><td>Bot “tirikman” belgisi — watchdog kuzatadi</td></tr>
+          <tr><td class="mono">~/.doda_network.json</td><td>Tarmoq qurilmalari tarixi (birinchi/oxirgi ko‘rilgan)</td></tr>
+          <tr><td class="mono">~/.doda_faces/</td><td>Saqlangan yuz kodlari (kelajakda tanish uchun)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07</span><h2 class="serif">Tashqi API va integratsiyalar</h2></div>
+    <p class="lead">Ko‘pchiligi bepul, kalitsiz. Har biri alohida funksiyada — biri ishlamasa, qolgani ishlayveradi.</p>
+    <div class="grid2">
+      <div class="igroup"><h3><span class="dot"></span>Nutq va ovoz</h3><ul>
+        <li>Google Web Speech <span>— onlayn STT (uz/ru)</span></li>
+        <li>faster-whisper <span>— oflayn STT (zaxira)</span></li>
+        <li>edge-tts <span>— ovozga aylantirish + his-tuyg‘u</span></li>
+      </ul></div>
+      <div class="igroup"><h3><span class="dot"></span>Bilim va ma’lumot</h3><ul>
+        <li>wttr.in <span>— ob-havo</span></li>
+        <li>Wikipedia REST <span>— qisqa ma’lumot</span></li>
+        <li>Kun.uz RSS <span>— yangiliklar</span></li>
+        <li>Aladhan <span>— namoz vaqtlari</span></li>
+      </ul></div>
+      <div class="igroup"><h3><span class="dot"></span>Hisob va valyuta</h3><ul>
+        <li>open.er-api.com <span>— valyuta kursi</span></li>
+        <li>CoinGecko <span>— kripto narxi</span></li>
+        <li>Google Translate <span>— tarjima</span></li>
+      </ul></div>
+      <div class="igroup"><h3><span class="dot"></span>Platforma va boshqaruv</h3><ul>
+        <li>Telegram Bot API <span>— bot interfeysi</span></li>
+        <li>Claude API <span>— AI suhbat (kredit kutmoqda)</span></li>
+        <li>macOS: osascript, screencapture, ffmpeg, arp, pmset, networksetup, launchctl</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08</span><h2 class="serif">24/7 infratuzilma va xavfsizlik</h2></div>
+    <p class="lead">Bot doim ishlaydi, o‘zini tiklaydi, va faqat egasiga bo‘ysunadi.</p>
+    <div class="grid2">
+      <div class="igroup"><h3><span class="dot"></span>Doimiy ishlash</h3><ul>
+        <li><code>com.doda.bot</code> <span>— launchd, 24/7, yiqilsa qayta yoqadi</span></li>
+        <li><code>com.doda.watchdog</code> <span>— har 120s, heartbeat’ni tekshiradi</span></li>
+        <li>Bitta nusxa qulfi <span>— ikki bot to‘qnashmaydi</span></li>
+      </ul></div>
+      <div class="igroup"><h3><span class="dot"></span>Xavfsizlik qatlamlari</h3><ul>
+        <li>OTP <span>— botga kirish bir martalik parol bilan</span></li>
+        <li>Chat ID filtri <span>— faqat tasdiqlangan foydalanuvchi</span></li>
+        <li>Terminal tasdig‘i <span>— har shell buyrug‘i tugma bilan</span></li>
+        <li>Token guard <span>— yaroqsiz token toza to‘xtaydi, logga tushmaydi</span></li>
+      </ul></div>
+    </div>
+    <div class="note warn"><b>Ogohlik:</b> bot orqali to‘liq boshqaruv — bu katta kuch. Token ochilib qolsa, u butun kompyuterning kaliti bo‘ladi. Shuning uchun token maxfiy, OTP + chat filtri majburiy, xavfli amallar tasdiq bilan.</div>
+  </section>
+
+  <footer>
+    <span>DODA — Muhammadxo'ja uchun shaxsiy ovozli yordamchi</span>
+    <span>Arxitektura hujjati · 31-iyul, 2026</span>
+  </footer>
+
+</div>
