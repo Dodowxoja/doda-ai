@@ -788,7 +788,7 @@ async def _prepare_telegram(update: Update, text):
     recipient, msg = asistent.parse_telegram_send(text)
     if not recipient or not msg:
         await update.message.reply_text(
-            "Format: «telegramda <kim> ga <matn> yubor» deб yuboring.")
+            "Format: «telegramda <kim> ga <matn> yubor» deb yuboring.")
         return
     await update.message.reply_text("✍️ «%s» chatini ochyapman..." % recipient)
 

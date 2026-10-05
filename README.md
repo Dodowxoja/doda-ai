@@ -103,7 +103,7 @@ export TELEGRAM_BOT_TOKEN="..."
 
 **Desktop (ovoz):**
 ```bash
-python asistent.py          # «Doda» deб chaqiring
+python asistent.py          # «Doda» deb chaqiring
 ```
 
 **Fon xizmatlari (24/7, launchd):**

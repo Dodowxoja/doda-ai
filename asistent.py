@@ -932,7 +932,7 @@ def _norm(s):
 
 # ===== Niyat (intent) tizimi — ma'lumotlar buyruq_baza.py da =====
 DEV_PROJECT_DIR = "~"       # Developer buyruqlar (git/flutter/npm...) shu papkada bajariladi. O'zgartiring.
-WEATHER_CITY = "Tashkent"   # Standart shahar (ob-havo uchun). "ob havo <shahar>" deб boshqa shahar so'rasa bo'ladi.
+WEATHER_CITY = "Tashkent"   # Standart shahar (ob-havo uchun). "ob havo <shahar>" deb boshqa shahar so'rasa bo'ladi.
 
 _KUNLAR = ["Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba", "Yakshanba"]
 _OYLAR = ["Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun",
@@ -1145,7 +1145,7 @@ def send_sms(message):
         return
     # Ma'lumot to'liq emas
     if _capture is not None:  # bot rejimi -> interaktiv emas
-        say("Format: 'sms yoz raqam ga xabar' deб yuboring.", lang="uz")
+        say("Format: 'sms yoz raqam ga xabar' deb yuboring.", lang="uz")
         return
     # Desktop: bosqichma-bosqich so'raymiz
     say("Kimga yozay? Raqam yoki ismni ayting.", lang="uz")
@@ -1297,7 +1297,7 @@ def send_telegram(message):
         return
     # Format to'liq emas
     if _capture is not None:      # bot rejimi
-        say("Format: «telegramda <kim> ga <matn> yubor» deб yuboring.", lang="uz")
+        say("Format: «telegramda <kim> ga <matn> yubor» deb yuboring.", lang="uz")
         return
     say("Kimga yozay?", lang="uz")
     recipient = listen()
@@ -2169,7 +2169,7 @@ def remember_me(message=""):
             say("Ismingiz nima? Yuzingizni shu ism bilan yodlab qolaman.", lang="uz")
             nm = _clean_spoken_name(listen())
         if not nm:
-            say("Ismingizni ham ayting: «meni eslab qol Bobur» deб.", lang="uz")
+            say("Ismingizni ham ayting: «meni eslab qol Bobur» deb.", lang="uz")
             return
     say(nm + ", kameraга qarab turing — yuzingizni yodlab olyapman.", lang="uz")
     path = capture_camera()
@@ -2838,7 +2838,7 @@ def _text_loop():
     """Klaviatura orqali yozilган matnни qabul qiladi (ovoz oqими bilan parallel)."""
     while True:
         try:
-            c = input("⌨️  Yozing (yoki «Doda» deб gapiring): ")
+            c = input("⌨️  Yozing (yoki «Doda» deb gapiring): ")
         except (EOFError, KeyboardInterrupt):
             raise SystemExit
         command = str(c).lower().strip()

@@ -11,7 +11,7 @@ odamlarni taniydi va istalgan joydan boshqariladi.
 
 ## ✨ Asosiy imkoniyatlar
 
-- 🎙️ **Ovozli boshqaruv** — «Doda» deб chaqiring, davomli suhbat.
+- 🎙️ **Ovozli boshqaruv** — «Doda» deb chaqiring, davomli suhbat.
 - 🧠 **AI suhbat** (Claude) — tabiiy o'zbekcha javoblar.
 - 🛠️ **Agent rejimi** — fayl/kod/terminal ishlarини o'zi bajaradi.
 - 👁️ **Ko'rish + yuz tanish** — kamera/ekran, odamlarni ism bilan eslaydi.
